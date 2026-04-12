@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "minor_version": 1,
+  "key": "lovelace_resources",
+  "data": {
+    "items": [
+      {
+        "url": "/hacsfiles/config-editor-card/config-editor-card.js?hacstag=433577603500",
+        "type": "module",
+        "id": "0f2176ed943e4a7e8f1f5a0e03150756"
+      },
+      {
+        "url": "/hacsfiles/lovelace-google-keep-card/google-keep-card.js?hacstag=199546187120",
+        "type": "module",
+        "id": "898585ba3a214613a2cb79e534387368"
+      },
+      {
+        "url": "/hacsfiles/button-card/button-card.js?hacstag=146194325701",
+        "type": "module",
+        "id": "78dbcfed68314b7787ee67f749fc4642"
+      },
+      {
+        "url": "/hacsfiles/mini-media-player/mini-media-player-bundle.js?hacstag=14852083811611",
+        "type": "module",
+        "id": "73f5889c1f7348e4828c98ad4ae8d1b8"
+      },
+      {
+        "url": "/hacsfiles/lovelace-slider-entity-row/slider-entity-row.js?hacstag=1448997001750",
+        "type": "module",
+        "id": "e6a7f4f421244f80a49d333b5f1bcb4e"
+      },
+      {
+        "url": "/hacsfiles/slider-button-card/slider-button-card.js?hacstag=3754399611103",
+        "type": "module",
+        "id": "d88cf3142522474b94f16e34b9de3a7e"
+      },
+      {
+        "url": "/hacsfiles/bom-weather-card/bom-weather-card.js?hacstag=195497310103",
+        "type": "module",
+        "id": "7dbef079a38847eaa8a31e96f15f8fbb"
+      },
+      {
+        "id": "1f29a983f086451885fc90a1095ab754",
+        "url": "/hacsfiles/lovelace-hass-aarlo/hass-aarlo.js?hacstag=1972451790303",
+        "type": "module"
+      }
+    ]
+  }
+}

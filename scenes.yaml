@@ -1,0 +1,20 @@
+- id: '1640850026306'
+  name: BBQ open
+  entities:
+    automation.bbq_open:
+      last_triggered:
+      mode: single
+      current: 0
+      id: '1640849979199'
+      friendly_name: BBQ open
+      state: 'on'
+- id: '1640850053850'
+  name: BBQ close
+  entities:
+    automation.bbq_open:
+      last_triggered:
+      mode: single
+      current: 0
+      id: '1640849979199'
+      friendly_name: BBQ open
+      state: 'on'

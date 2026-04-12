@@ -1,0 +1,280 @@
+- id: "1639672479276"
+  alias: turn off outside ligths
+  description: ""
+  trigger: []
+  condition: []
+  action:
+    - service: light.turn_off
+      data: {}
+      target:
+        entity_id: light.pergola_lights
+  mode: single
+- id: "1640849979199"
+  alias: BBQ open
+  description: ""
+  trigger: []
+  condition: []
+  action:
+    - service: cover.set_cover_position
+      data:
+        position: 0
+      target:
+        entity_id:
+          - cover.pergola_tenda_nord
+          - cover.tenda_gartenhusl
+  mode: single
+- id: "1640850560236"
+  alias: BBQ close
+  description: ""
+  trigger: []
+  condition: []
+  action:
+    - service: cover.set_cover_position
+      data:
+        position: 100
+      target:
+        entity_id:
+          - cover.pergola_tenda_nord
+          - cover.tenda_gartenhusl
+  mode: single
+- id: "1648143059141"
+  alias: Pergola close roof
+  description: ""
+  trigger: []
+  condition: []
+  action:
+    - service: cover.set_cover_position
+      data:
+        position: 100
+      target:
+        entity_id: cover.pergola_tetto
+  mode: single
+- id: "1650091196760"
+  alias: Pool (auto) Open
+  description: ""
+  trigger: []
+  condition: []
+  action:
+    - service: lcn.send_keys
+      data:
+        address: home.s0.m21
+        keys: A4
+        state: make
+    - delay:
+        hours: 0
+        minutes: 0
+        seconds: 2
+        milliseconds: 0
+    - service: lcn.send_keys
+      data:
+        address: home.s0.m21
+        keys: A3
+        state: hit
+    - delay:
+        hours: 0
+        minutes: 0
+        seconds: 1
+        milliseconds: 0
+    - service: lcn.led
+      data:
+        address: home.s0.m21
+        led: led3
+        state: blink
+    - service: lcn.send_keys
+      data:
+        address: home.s0.m21
+        keys: A2
+        state: hit
+    - delay:
+        hours: 0
+        minutes: 3
+        seconds: 0
+        milliseconds: 0
+    - service: lcn.led
+      data:
+        address: home.s0.m21
+        led: led3
+        state: "on"
+  mode: single
+- id: "1650139852556"
+  alias: Pool (auto) Close
+  description: ""
+  trigger: []
+  condition: []
+  action:
+    - service: lcn.send_keys
+      data:
+        address: home.s0.m21
+        keys: A4
+        state: make
+    - delay:
+        hours: 0
+        minutes: 0
+        seconds: 2
+        milliseconds: 0
+    - service: lcn.send_keys
+      data:
+        address: home.s0.m21
+        keys: A3
+        state: make
+    - delay:
+        hours: 0
+        minutes: 0
+        seconds: 1
+        milliseconds: 0
+    - service: lcn.led
+      data:
+        address: home.s0.m21
+        led: led3
+        state: blink
+    - delay:
+        hours: 0
+        minutes: 3
+        seconds: 0
+        milliseconds: 0
+    - service: lcn.send_keys
+      data:
+        address: home.s0.m21
+        keys: A2
+        state: hit
+    - service: lcn.led
+      data:
+        address: home.s0.m21
+        led: led3
+        state: "off"
+  mode: single
+- id: "1650273458934"
+  alias: garage
+  description: ""
+  trigger: []
+  condition: []
+  action:
+    - service: lcn.relays
+      data:
+        address: home.s0.m101
+        state: 1-------
+    - delay:
+        hours: 0
+        minutes: 0
+        seconds: 1
+        milliseconds: 0
+    - service: lcn.relays
+      data:
+        address: home.s0.m101
+        state: 0-------
+  mode: single
+- id: "1650735139689"
+  alias: Alarm when GARAGE-door left open
+  description: ""
+  triggers:
+    - entity_id:
+        - cover.garage_door
+      to: closing
+      for:
+        hours: 0
+        minutes: 0
+        seconds: 10
+      trigger: state
+  conditions:
+    - condition: and
+      conditions:
+        - condition: state
+          entity_id: person.rudy_federici
+          state:
+            - not_home
+          for:
+            hours: 0
+            minutes: 5
+            seconds: 0
+        - condition: and
+          conditions:
+            - condition: state
+              entity_id: device_tracker.mary_s_iphonex
+              state: not_home
+              for:
+                hours: 0
+                minutes: 5
+                seconds: 0
+  actions:
+    - data:
+        title: ALARM garage open
+        message: Mary & Rudy left home but garage is NOT closed
+      action: notify.notify
+  mode: single
+- id: "1653639138002"
+  alias: Cambiatoio Toggle
+  description: ""
+  trigger: []
+  condition: []
+  action:
+    - if:
+        - condition: device
+          device_id: a8bfbb58c69480ba17f25a3fdc6f168b
+          domain: cover
+          entity_id: cover.pergola_tenda_sud
+          type: is_position
+          above: 95
+      then:
+        - service: cover.set_cover_position
+          data:
+            position: 0
+          target:
+            entity_id: cover.pergola_tenda_sud
+        - service: cover.set_cover_position
+          data:
+            position: 0
+          target:
+            entity_id:
+              - cover.pergola_tenda_nord
+              - cover.pergola_tenda_west
+      else:
+        - service: cover.set_cover_position
+          data:
+            position: 100
+          target:
+            entity_id: cover.pergola_tenda_sud
+        - service: cover.set_cover_position
+          data:
+            position: 75
+          target:
+            entity_id:
+              - cover.pergola_tenda_nord
+              - cover.pergola_tenda_west
+  mode: queued
+- id: "1655246053500"
+  alias: Clean DB
+  description: ""
+  trigger: []
+  condition: []
+  action:
+    - service: recorder.purge
+      data:
+        keep_days: 10
+        repack: true
+  mode: single
+- id: "1670965598190"
+  alias: garage open at 22:00
+  description: post alarm
+  triggers:
+    - at: "22:00:00"
+      trigger: time
+    - at: "23:00:00"
+      trigger: time
+    - at: "23:59:59"
+      trigger: time
+  conditions:
+    - condition: and
+      conditions:
+        - condition: state
+          entity_id: binary_sensor.sonoff_100149f0c6
+          state: "on"
+          for:
+            hours: 0
+            minutes: 0
+            seconds: 0
+  actions:
+    - data:
+        title: ALARM garage open
+        message: it's night and the garage dppr is still open
+      action: notify.notify
+  mode: single

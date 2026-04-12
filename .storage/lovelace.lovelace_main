@@ -1,0 +1,554 @@
+{
+  "version": 1,
+  "minor_version": 1,
+  "key": "lovelace.lovelace_main",
+  "data": {
+    "config": {
+      "title": "Main",
+      "views": [
+        {
+          "path": "default_view",
+          "title": "Main",
+          "badges": [],
+          "cards": [
+            {
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "person.mary"
+                },
+                {
+                  "entity": "person.rudy_federici"
+                }
+              ]
+            },
+            {
+              "show_name": true,
+              "show_icon": true,
+              "type": "button",
+              "entity": "binary_sensor.sonoff_100149f0c6",
+              "show_state": true,
+              "hold_action": {
+                "action": "none"
+              },
+              "name": "Garage Door",
+              "tap_action": {
+                "action": "perform-action",
+                "target": {},
+                "perform_action": "script.pulse_garage_relay"
+              }
+            },
+            {
+              "type": "entities",
+              "entities": [
+                "binary_sensor.sonoff_100149f0b2"
+              ],
+              "title": "DW2 Door Main"
+            },
+            {
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "vacuum.roomba"
+                }
+              ],
+              "title": "Clean"
+            },
+            {
+              "type": "button",
+              "tap_action": {
+                "action": "call-service",
+                "service": "automation.trigger",
+                "service_data": {},
+                "target": {
+                  "entity_id": "automation.going_to_bed"
+                }
+              },
+              "name": "Going To Bed",
+              "icon": "mdi:lightbulb-auto-outline"
+            },
+            {
+              "type": "grid",
+              "square": false,
+              "columns": 1,
+              "cards": [
+                {
+                  "type": "entities",
+                  "entities": [
+                    "remote.family_room_tv"
+                  ],
+                  "title": "Family room TV"
+                },
+                {
+                  "type": "media-control",
+                  "entity": "media_player.family_room_tv_2"
+                }
+              ]
+            },
+            {
+              "show_current": false,
+              "show_forecast": true,
+              "type": "weather-forecast",
+              "entity": "weather.home",
+              "forecast_type": "daily",
+              "forecast_slots": 10
+            }
+          ]
+        },
+        {
+          "theme": "Backend-selected",
+          "title": "Pool",
+          "path": "pool",
+          "icon": "mdi:pool",
+          "badges": [],
+          "cards": [
+            {
+              "show_name": true,
+              "show_icon": true,
+              "type": "button",
+              "tap_action": {
+                "action": "toggle"
+              },
+              "name": "Pool LIGHT",
+              "icon": "mdi:lightbulb-auto",
+              "show_state": true,
+              "entity": "light.pergula_poollight"
+            },
+            {
+              "show_name": true,
+              "show_icon": true,
+              "type": "button",
+              "tap_action": {
+                "action": "call-service",
+                "service": "automation.trigger",
+                "service_data": {},
+                "target": {
+                  "entity_id": "automation.pool_auto_open_duplicate_1_2"
+                }
+              },
+              "entity": "switch.pool_u_aussenbekl_poolclose",
+              "name": "Pool Close",
+              "icon": "mdi:lock-outline",
+              "show_state": true
+            },
+            {
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "sensor.asin_aqua_home_ph"
+                },
+                {
+                  "entity": "sensor.asin_aqua_home_redox"
+                },
+                {
+                  "entity": "sensor.asin_aqua_home_water_level"
+                },
+                {
+                  "entity": "binary_sensor.asin_aqua_home_error"
+                }
+              ],
+              "state_color": true
+            },
+            {
+              "type": "gauge",
+              "entity": "sensor.asin_aqua_home_water_temperature",
+              "name": "Acqua",
+              "unit": "°C",
+              "min": 20,
+              "max": 30,
+              "needle": true
+            },
+            {
+              "show_name": true,
+              "show_icon": true,
+              "type": "button",
+              "tap_action": {
+                "action": "call-service",
+                "service": "automation.trigger",
+                "service_data": {},
+                "target": {
+                  "entity_id": "automation.new_automation"
+                }
+              },
+              "entity": "switch.pool_u_aussenbekl_poolopen",
+              "name": "Pool Open",
+              "icon": "mdi:pool",
+              "show_state": false
+            }
+          ]
+        },
+        {
+          "theme": "Backend-selected",
+          "title": "Pergola",
+          "path": "pergola",
+          "icon": "mdi:garage-open-variant",
+          "badges": [],
+          "cards": [
+            {
+              "type": "glance",
+              "entities": [
+                {
+                  "entity": "sensor.pergula_temperaturepergola",
+                  "name": "pergola"
+                }
+              ]
+            },
+            {
+              "type": "light",
+              "entity": "light.pergola_lights",
+              "name": "Luci (Pergola)",
+              "hold_action": {
+                "action": "none"
+              },
+              "double_tap_action": {
+                "action": "toggle"
+              }
+            },
+            {
+              "show_name": true,
+              "show_icon": true,
+              "type": "button",
+              "tap_action": {
+                "action": "call-service",
+                "service": "automation.trigger",
+                "service_data": {},
+                "target": {
+                  "entity_id": "automation.cambiatoio_toggle"
+                }
+              },
+              "entity": "",
+              "name": "Cambiatoio",
+              "icon": "mdi:curtains-closed",
+              "show_state": true
+            },
+            {
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "cover.pergola_tenda_sud"
+                },
+                {
+                  "entity": "cover.pergola_tenda_nord"
+                },
+                {
+                  "entity": "cover.pergola_tenda_west"
+                },
+                {
+                  "entity": "cover.pergola_tetto"
+                }
+              ],
+              "title": "Pergola"
+            },
+            {
+              "type": "thermostat",
+              "entity": "climate.cosmicbeam_smart",
+              "name": "Riscaldamento (Pergola)"
+            },
+            {
+              "type": "button",
+              "tap_action": {
+                "action": "call-service",
+                "service": "automation.trigger",
+                "service_data": {},
+                "target": {
+                  "entity_id": "automation.bbq_open"
+                }
+              },
+              "name": "open BBQ & Pergola NORD",
+              "icon": "mdi:garage-open-variant",
+              "show_state": true,
+              "hold_action": {
+                "action": "call-service",
+                "service": "",
+                "service_data": {},
+                "target": {}
+              }
+            }
+          ]
+        },
+        {
+          "theme": "Backend-selected",
+          "title": "Garden",
+          "path": "garden",
+          "icon": "mdi:palm-tree",
+          "badges": [],
+          "cards": [
+            {
+              "show_name": true,
+              "show_icon": true,
+              "type": "button",
+              "tap_action": {
+                "action": "toggle"
+              },
+              "icon": "mdi:lightbulb-auto",
+              "show_state": true,
+              "entity": "light.pool_u_aussenbekl_gardenspots",
+              "name": "SPOTS garden"
+            },
+            {
+              "show_name": true,
+              "show_icon": true,
+              "type": "button",
+              "tap_action": {
+                "action": "toggle"
+              },
+              "icon": "mdi:lightbulb-auto",
+              "show_state": true,
+              "name": "SPOTS columns",
+              "entity": "light.pool_u_aussenbekl_columnspots"
+            },
+            {
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "cover.tenda_gartenhusl"
+                },
+                {
+                  "entity": "lawn_mower.automower"
+                },
+                {
+                  "entity": "sensor.automower_battery"
+                }
+              ],
+              "title": "Garden"
+            }
+          ]
+        },
+        {
+          "title": "Media",
+          "path": "media",
+          "icon": "mdi:music",
+          "badges": [],
+          "cards": [
+            {
+              "type": "media-control",
+              "entity": "media_player.bagno_mini"
+            },
+            {
+              "type": "media-control",
+              "entity": "media_player.cast"
+            },
+            {
+              "type": "media-control",
+              "entity": "media_player.cucina_home"
+            },
+            {
+              "type": "media-control",
+              "entity": "media_player.dappertutto"
+            },
+            {
+              "type": "media-control",
+              "entity": "media_player.wifi_og"
+            },
+            {
+              "type": "media-control",
+              "entity": "media_player.lg"
+            },
+            {
+              "type": "media-control",
+              "entity": "media_player.spotify_rudy_federici"
+            }
+          ]
+        },
+        {
+          "title": "Security",
+          "path": "security",
+          "icon": "mdi:cctv",
+          "badges": [],
+          "cards": [
+            {
+              "camera_view": "auto",
+              "fit_mode": "cover",
+              "type": "picture-glance",
+              "entities": [
+                {
+                  "entity": "binary_sensor.aarlo_connected_entry"
+                },
+                {
+                  "entity": "sensor.aarlo_signal_strength_entry"
+                },
+                {
+                  "entity": "sensor.aarlo_battery_level_entry"
+                },
+                {
+                  "entity": "binary_sensor.aarlo_motion_entry"
+                },
+                {
+                  "entity": "binary_sensor.aarlo_sound_entry"
+                },
+                {
+                  "entity": "sensor.aarlo_last_entry"
+                },
+                {
+                  "entity": "alarm_control_panel.aarlo_entry"
+                }
+              ],
+              "camera_image": "camera.aarlo_entry",
+              "title": "Entrata",
+              "entity": "camera.aarlo_entry"
+            },
+            {
+              "camera_view": "auto",
+              "type": "picture-glance",
+              "entities": [
+                {
+                  "entity": "binary_sensor.aarlo_connected_pergola"
+                },
+                {
+                  "entity": "sensor.aarlo_signal_strength_pergola"
+                },
+                {
+                  "entity": "sensor.aarlo_battery_level_pergola"
+                },
+                {
+                  "entity": "binary_sensor.aarlo_motion_pergola"
+                },
+                {
+                  "entity": "binary_sensor.aarlo_sound_pergola"
+                },
+                {
+                  "entity": "sensor.aarlo_last_pergola"
+                },
+                {
+                  "entity": "alarm_control_panel.aarlo_pergola"
+                }
+              ],
+              "title": "Pergola",
+              "entity": "alarm_control_panel.aarlo_pergola",
+              "camera_image": "camera.aarlo_pergola"
+            },
+            {
+              "camera_view": "auto",
+              "type": "picture-glance",
+              "entities": [
+                {
+                  "entity": "binary_sensor.aarlo_connected_lounge"
+                },
+                {
+                  "entity": "sensor.aarlo_signal_strength_lounge"
+                },
+                {
+                  "entity": "sensor.aarlo_battery_level_lounge"
+                },
+                {
+                  "entity": "binary_sensor.aarlo_motion_lounge"
+                },
+                {
+                  "entity": "binary_sensor.aarlo_sound_lounge"
+                },
+                {
+                  "entity": "sensor.aarlo_last_pergola"
+                },
+                {
+                  "entity": "alarm_control_panel.aarlo_lounge"
+                }
+              ],
+              "entity": "alarm_control_panel.aarlo_lounge",
+              "camera_image": "camera.aarlo_lounge",
+              "title": "Lounge"
+            }
+          ]
+        },
+        {
+          "theme": "Backend-selected",
+          "title": "Batteries",
+          "path": "batteries",
+          "icon": "mdi:home-battery-outline",
+          "badges": [],
+          "cards": [
+            {
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "sensor.acqua_siepe_battery_level"
+                },
+                {
+                  "entity": "sensor.acqua_erba_battery_level"
+                },
+                {
+                  "entity": "sensor.sensor_erba_battery_level"
+                },
+                {
+                  "entity": "sensor.sensor_palme_battery_level"
+                }
+              ],
+              "title": "Garden Batteries",
+              "state_color": true
+            },
+            {
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "sensor.garage_door_battery"
+                },
+                {
+                  "entity": "sensor.sonoff_100149f0c6_battery_voltage"
+                },
+                {
+                  "entity": "sensor.sonoff_100149f0b2_battery_voltage"
+                }
+              ],
+              "title": "Sensor Batteries",
+              "state_color": true
+            },
+            {
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "sensor.braava_jet_battery_level"
+                },
+                {
+                  "entity": "sensor.roomba_battery_level"
+                },
+                {
+                  "entity": "sensor.automower_battery"
+                }
+              ],
+              "state_color": true,
+              "title": "Robots Batteries"
+            },
+            {
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "sensor.lenovo_tb_8505f_battery_level"
+                },
+                {
+                  "entity": "sensor.mary_s_iphonex_battery_level"
+                },
+                {
+                  "entity": "sensor.rudys_ipad_battery_level"
+                },
+                {
+                  "entity": "sensor.rudy_s_pixel_6_pro_battery_level"
+                }
+              ],
+              "state_color": true,
+              "title": "Phones & Tablets Batteries"
+            },
+            {
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "sensor.aarlo_battery_level_entry"
+                },
+                {
+                  "entity": "sensor.aarlo_battery_level_lounge"
+                },
+                {
+                  "entity": "sensor.aarlo_battery_level_pergola"
+                }
+              ],
+              "state_color": true,
+              "title": "Cameras"
+            },
+            {
+              "type": "humidifier",
+              "entity": "humidifier.vapoair_opal_smart"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

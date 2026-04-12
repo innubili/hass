@@ -1,0 +1,13 @@
+# --- garage ---
+pulse_garage_relay:
+  alias: "Pulse Garage Door"
+  sequence:
+    - action: lcn.relays # "service" is now called "action" in 2026
+      data:
+        device_id: 512cde014ad45bec068250716b181419
+        state: "1-------" # Turn Relay 1 ON
+    - delay: "00:00:01"
+    - action: lcn.relays
+      data:
+        device_id: 512cde014ad45bec068250716b181419
+        state: "0-------" # Turn Relay 1 OFF
