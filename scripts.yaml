@@ -9,4 +9,4 @@ pulse_garage_relay:
     - delay: "00:00:01"
     - action: switch.turn_off
       target:
-        entity_id: switch.garagentor
+        entity_id: switch.pool_u_aussenbekl_garage_door
