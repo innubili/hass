@@ -67,7 +67,7 @@ switch:
         turn_on:
           action: switch.turn_off
           target:
-            entity_id: switch.YOUR_ORIGINAL_GARDEN_SPOTS
+            entity_id: switch.pool_u_aussenbekl_garden_spots
         # Pressing "Turn Off" in HA actually turns the physical relay ON
         turn_off:
           action: switch.turn_on
