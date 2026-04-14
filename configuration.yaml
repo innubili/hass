@@ -41,16 +41,16 @@ aarlo:
 
 # === garage cover ===
 template:
-- cover:
-  - device_class: garage
-    open_cover:
-    - action: script.pulse_garage_door
-    close_cover:
-    - action: script.pulse_garage_door
-    stop_cover:
-    - action: script.pulse_garage_door
-    default_entity_id: cover.garage_door
-    name: Garage Door
+  - cover:
+      - device_class: garage
+        open_cover:
+          - action: script.pulse_garage_door
+        close_cover:
+          - action: script.pulse_garage_door
+        stop_cover:
+          - action: script.pulse_garage_door
+        default_entity_id: cover.garage_door
+        name: Garage Door
 
 # === CORRECTED GARDEN SPOTS ===
 switch:
