@@ -50,46 +50,6 @@
       message: Mary & Rudy left home but garage is NOT closed
     action: notify.notify
   mode: single
-- id: '1653639138002'
-  alias: Cambiatoio Toggle
-  description: ''
-  trigger: []
-  condition: []
-  action:
-  - if:
-    - condition: device
-      device_id: a8bfbb58c69480ba17f25a3fdc6f168b
-      domain: cover
-      entity_id: cover.pergola_tenda_sud
-      type: is_position
-      above: 95
-    then:
-    - service: cover.set_cover_position
-      data:
-        position: 0
-      target:
-        entity_id: cover.pergola_tenda_sud
-    - service: cover.set_cover_position
-      data:
-        position: 0
-      target:
-        entity_id:
-        - cover.pergola_tenda_nord
-        - cover.pergola_tenda_west
-    else:
-    - service: cover.set_cover_position
-      data:
-        position: 100
-      target:
-        entity_id: cover.pergola_tenda_sud
-    - service: cover.set_cover_position
-      data:
-        position: 75
-      target:
-        entity_id:
-        - cover.pergola_tenda_nord
-        - cover.pergola_tenda_west
-  mode: queued
 - id: '1670965598190'
   alias: garage open at 22:00
   description: post alarm
