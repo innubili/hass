@@ -50,7 +50,8 @@ aarlo:
     - action: script.pulse_garage_door
     default_entity_id: cover.garage_door
     name: Garage Door
-cover:
+template:
+-cover:
   - platform: template
     covers:
       garage_door:
