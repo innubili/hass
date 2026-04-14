@@ -12,26 +12,6 @@
       - cover.pergola_tenda_nord
       - cover.tenda_gartenhusl
   mode: single
-- id: '1650273458934'
-  alias: garage
-  description: ''
-  trigger: []
-  condition: []
-  action:
-  - service: lcn.relays
-    data:
-      address: home.s0.m101
-      state: 1-------
-  - delay:
-      hours: 0
-      minutes: 0
-      seconds: 1
-      milliseconds: 0
-  - service: lcn.relays
-    data:
-      address: home.s0.m101
-      state: 0-------
-  mode: single
 - id: '1650735139689'
   alias: Alarm when GARAGE-door left open
   description: ''
@@ -110,17 +90,6 @@
         - cover.pergola_tenda_nord
         - cover.pergola_tenda_west
   mode: queued
-- id: '1655246053500'
-  alias: Clean DB
-  description: ''
-  trigger: []
-  condition: []
-  action:
-  - service: recorder.purge
-    data:
-      keep_days: 10
-      repack: true
-  mode: single
 - id: '1670965598190'
   alias: garage open at 22:00
   description: post alarm
