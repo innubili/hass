@@ -306,8 +306,7 @@
               },
               "icon": "mdi:lightbulb-auto",
               "show_state": true,
-              "name": "SPOTS entry",
-              "entity": "switch.pool_u_aussenbekl_led_strip_entrance"
+              "name": "SPOTS garden (entry)"
             },
             {
               "type": "entities",
