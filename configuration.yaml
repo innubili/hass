@@ -40,5 +40,18 @@ aarlo:
   tfa_password: !secret gmx_pwd
 
 
-  # === garage cover ===
-  
+# === garage cover ===
+  # === GARAGE DOOR COVER ===
+cover:
+  - platform: template
+    covers:
+      garage_door:
+        device_class: garage
+        friendly_name: "Garage Door"
+        # This calls your script whenever you press Open, Close, or Stop
+        open_cover:
+          action: script.pulse_garage_door
+        close_cover:
+          action: script.pulse_garage_door
+        stop_cover:
+          action: script.pulse_garage_door
