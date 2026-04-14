@@ -1,13 +1,14 @@
-# --- garage ---
+
+
+ # --- garage ---
 pulse_garage_relay:
   alias: "Pulse Garage Door"
+  icon: mdi:garage
   sequence:
-    - action: lcn.relays # "service" is now called "action" in 2026
-      data:
-        device_id: 512cde014ad45bec068250716b181419
-        state: "1-------" # Turn Relay 1 ON
+    - action: switch.turn_on
+      target:
+        entity_id: switch.garagentor
     - delay: "00:00:01"
-    - action: lcn.relays
-      data:
-        device_id: 512cde014ad45bec068250716b181419
-        state: "0-------" # Turn Relay 1 OFF
+    - action: switch.turn_off
+      target:
+        entity_id: switch.garagentor
