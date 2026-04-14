@@ -58,7 +58,7 @@ cover:
 switch:
   - platform: template
     switches:
-      garden_garage_spots_fixed:
+      garden_entry_spots_fixed:
         friendly_name: "Entry Spots"
         icon_template: mdi:outdoor-lamp
         # This tells HA to show "On" when the physical relay is "Off"
