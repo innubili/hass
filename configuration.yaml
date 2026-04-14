@@ -53,6 +53,7 @@ cover:
           action: script.pulse_garage_door
         stop_cover:
           action: script.pulse_garage_door
+
 # === CORRECTED GARDEN SPOTS ===
 switch:
   - platform: template
