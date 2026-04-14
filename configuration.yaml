@@ -40,9 +40,10 @@ aarlo:
   tfa_password: !secret gmx_pwd
 
 # === garage cover ===
-- cover:
-  - device_class: garage
-    open_cover:
+template:
+  - cover:
+    - device_class: garage
+      open_cover:
     - action: script.pulse_garage_door
     close_cover:
     - action: script.pulse_garage_door
