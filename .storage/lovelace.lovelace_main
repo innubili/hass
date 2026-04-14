@@ -311,6 +311,18 @@
                 }
               ],
               "title": "Garden"
+            },
+            {
+              "show_name": true,
+              "show_icon": true,
+              "type": "button",
+              "tap_action": {
+                "action": "toggle"
+              },
+              "icon": "mdi:lightbulb-auto",
+              "show_state": true,
+              "name": "SPOTS entry",
+              "entity": "switch.pool_u_aussenbekl_led_strip_entrance"
             }
           ]
         },
