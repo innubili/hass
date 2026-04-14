@@ -40,7 +40,6 @@ aarlo:
   tfa_password: !secret gmx_pwd
 
 # === garage cover ===
-  # === GARAGE DOOR COVER ===
 cover:
   - platform: template
     covers:
