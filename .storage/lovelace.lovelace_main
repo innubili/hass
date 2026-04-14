@@ -294,8 +294,8 @@
               },
               "icon": "mdi:lightbulb-auto",
               "show_state": true,
-              "name": "SPOTS garden",
-              "entity": "switch.garden_spots_fixed"
+              "name": "SPOTS garden (garage)",
+              "entity": "switch.garden_garage_spots_fixed"
             },
             {
               "show_name": true,
