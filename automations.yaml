@@ -12,20 +12,6 @@
       - cover.pergola_tenda_nord
       - cover.tenda_gartenhusl
   mode: single
-- id: '1640850560236'
-  alias: BBQ close
-  description: ''
-  trigger: []
-  condition: []
-  action:
-  - service: cover.set_cover_position
-    data:
-      position: 100
-    target:
-      entity_id:
-      - cover.pergola_tenda_nord
-      - cover.tenda_gartenhusl
-  mode: single
 - id: '1648143059141'
   alias: Pergola close roof
   description: ''
