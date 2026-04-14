@@ -283,7 +283,7 @@
               "icon": "mdi:lightbulb-auto",
               "show_state": true,
               "name": "SPOTS garden",
-              "entity": "switch.pool_u_aussenbekl_garden_spots"
+              "entity": "switch.garden_spots_fixed"
             },
             {
               "show_name": true,
