@@ -40,4 +40,5 @@ aarlo:
   tfa_password: !secret gmx_pwd
 
 
+  # === garage cover ===
   
