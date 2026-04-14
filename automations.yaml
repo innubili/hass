@@ -1,17 +1,3 @@
-- id: '1640849979199'
-  alias: BBQ open
-  description: ''
-  trigger: []
-  condition: []
-  action:
-  - service: cover.set_cover_position
-    data:
-      position: 0
-    target:
-      entity_id:
-      - cover.pergola_tenda_nord
-      - cover.tenda_gartenhusl
-  mode: single
 - id: '1650735139689'
   alias: Alarm when GARAGE-door left open
   description: ''
