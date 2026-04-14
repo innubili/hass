@@ -49,7 +49,7 @@ template:
           - action: script.pulse_garage_door
         stop_cover:
           - action: script.pulse_garage_door
-        default_entity_id: cover.garage_door_
+        default_entity_id: cover.garage_door_cover
         name: Garage Door Cover
 
 # === CORRECTED GARDEN SPOTS ===
