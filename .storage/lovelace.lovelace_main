@@ -306,7 +306,8 @@
               },
               "icon": "mdi:lightbulb-auto",
               "show_state": true,
-              "name": "SPOTS garden (entry)"
+              "name": "SPOTS garden (entry)",
+              "entity": "switch.garden_entry_spots_fixed"
             },
             {
               "type": "entities",
