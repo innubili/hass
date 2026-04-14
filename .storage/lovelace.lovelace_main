@@ -282,8 +282,8 @@
               },
               "icon": "mdi:lightbulb-auto",
               "show_state": true,
-              "entity": "light.pool_u_aussenbekl_gardenspots",
-              "name": "SPOTS garden"
+              "name": "SPOTS garden",
+              "entity": "switch.pool_u_aussenbekl_garden_spots"
             },
             {
               "show_name": true,
