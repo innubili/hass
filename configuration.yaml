@@ -73,3 +73,22 @@ switch:
           action: switch.turn_on
           target:
             entity_id: switch.pool_u_aussenbekl_garden_spots
+
+switch:
+  - platform: template
+    switches:
+      garden_spots_fixed:
+        friendly_name: "Garden Spots"
+        icon_template: mdi:outdoor-lamp
+        # This tells HA to show "On" when the physical relay is "Off"
+        value_template: "{{ is_state('switch.YOUR_ORIGINAL_GARDEN_SPOTS', 'off') }}"
+        # Pressing "Turn On" in HA actually turns the physical relay OFF
+        turn_on:
+          action: switch.turn_off
+          target:
+            entity_id: switch.pool_u_aussenbekl_garden_spots
+        # Pressing "Turn Off" in HA actually turns the physical relay ON
+        turn_off:
+          action: switch.turn_on
+          target:
+            entity_id: switch.pool_u_aussenbekl_garden_spots
