@@ -12,18 +12,6 @@
       - cover.pergola_tenda_nord
       - cover.tenda_gartenhusl
   mode: single
-- id: '1648143059141'
-  alias: Pergola close roof
-  description: ''
-  trigger: []
-  condition: []
-  action:
-  - service: cover.set_cover_position
-    data:
-      position: 100
-    target:
-      entity_id: cover.pergola_tetto
-  mode: single
 - id: '1650273458934'
   alias: garage
   description: ''
