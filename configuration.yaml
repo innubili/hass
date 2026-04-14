@@ -81,7 +81,7 @@ switch:
         friendly_name: "Garden Garage Spots"
         icon_template: mdi:outdoor-lamp
         # This tells HA to show "On" when the physical relay is "Off"
-        value_template: "{{ is_state('switch.YOUR_ORIGINAL_GARDEN_SPOTS', 'off') }}"
+        value_template: "{{ is_state('switch.pool_u_aussenbekl_led_strip_entranceYOUR_ORIGINAL_GARDEN_SPOTS', 'off') }}"
         # Pressing "Turn On" in HA actually turns the physical relay OFF
         turn_on:
           action: switch.turn_off
