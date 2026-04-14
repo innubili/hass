@@ -50,7 +50,7 @@ template:
         stop_cover:
           - action: script.pulse_garage_door
         default_entity_id: cover.garage_door
-        name: Garage Door
+        name: Garage Door Cover
 
 # === CORRECTED GARDEN SPOTS ===
 switch:
