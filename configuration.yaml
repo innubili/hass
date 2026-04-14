@@ -39,7 +39,6 @@ aarlo:
   tfa_username: !secret gmx_email
   tfa_password: !secret gmx_pwd
 
-
 # === garage cover ===
   # === GARAGE DOOR COVER ===
 cover:
