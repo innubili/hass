@@ -74,7 +74,6 @@ switch:
           target:
             entity_id: switch.pool_u_aussenbekl_garden_spots
 
-switch:
   - platform: template
     switches:
       garden_garage_spots_fixed:
