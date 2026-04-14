@@ -295,7 +295,7 @@
               "icon": "mdi:lightbulb-auto",
               "show_state": true,
               "name": "SPOTS columns",
-              "entity": "light.pool_u_aussenbekl_columnspots"
+              "entity": "switch.pool_u_aussenbekl_column_spots"
             },
             {
               "type": "entities",
