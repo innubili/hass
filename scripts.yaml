@@ -1,4 +1,4 @@
- # --- garage ---
+# --- garage ---
 pulse_garage_relay:
   alias: "Pulse Garage Door"
   icon: mdi:garage
