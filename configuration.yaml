@@ -50,6 +50,7 @@ template:
         stop_cover:
           - action: script.pulse_garage_door
         default_entity_id: cover.garage_door_cover
+        unique_id: my_custom_garage_door_cover_101
         name: Garage Door Cover
 
 # === CORRECTED GARDEN SPOTS ===
