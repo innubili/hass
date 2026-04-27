@@ -9,3 +9,32 @@ pulse_garage_relay:
     - action: switch.turn_off
       target:
         entity_id: switch.pool_u_aussenbekl_garage_door
+
+garage_smart_recovery:
+  alias: "Garage Smart Recovery"
+  sequence:
+    # Double check it's still stuck before acting
+    - if:
+        - condition: state
+          entity_id: binary_sensor.garage_door_fully_closed
+          state: "off"
+        - condition: state
+          entity_id: binary_sensor.garage_door_fully_open
+          state: "off"
+      then:
+        # Step 1: Pulse to open (to reset the old motor's logic/obstacle)
+        - action: script.pulse_garage_relay
+        - delay: "00:00:03"
+        # Step 2: Pulse to close
+        - action: script.pulse_garage_relay
+        # Step 3: Wait for it to finish and notify you
+        - delay: "00:00:20"
+        - if:
+            - condition: state
+              entity_id: binary_sensor.garage_door_fully_closed
+              state: "off"
+          then:
+            - action: notify.notify
+              data:
+                title: "Garage Error"
+                message: "Recovery failed. Garage is still not closed!"
