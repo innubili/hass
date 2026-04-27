@@ -265,7 +265,7 @@
               "type": "glance",
               "entities": [
                 {
-                  "entity": "sensor.pergula_temperaturepergola",
+                  "entity": "sensor.pergula_pergola_temperature",
                   "name": "pergola"
                 }
               ]
