@@ -38,3 +38,47 @@ garage_smart_recovery:
               data:
                 title: "Garage Error"
                 message: "Recovery failed. Garage is still not closed!"
+
+# Add to scripts.yaml
+garage_multi_attempt_close:
+  alias: "Garage 5-Attempt Recovery"
+  sequence:
+    - repeat:
+        while:
+          # Keep going as long as it's NOT closed AND we've done < 5 tries
+          - condition: state
+            entity_id: binary_sensor.garage_door_fully_closed
+            state: "off"
+          - condition: template
+            value_template: "{{ repeat.index <= 5 }}"
+        sequence:
+          - action: notify.notify
+            data:
+              title: "Garage Recovery"
+              message: "Attempt {{ repeat.index }} of 5 to close the garage..."
+          
+          # The "Stuck in middle" logic
+          - if:
+              - condition: state
+                entity_id: binary_sensor.garage_door_fully_open
+                state: "off"
+            then:
+              - action: script.pulse_garage_relay
+              - delay: "00:00:03"
+          
+          # Pulse to close (or start closing from open)
+          - action: script.pulse_garage_relay
+          
+          # Wait for the door to travel (adjust 20s if your door is slower)
+          - delay: "00:00:20"
+
+    # Final Check after the loop finishes
+    - if:
+        - condition: state
+          entity_id: binary_sensor.garage_door_fully_closed
+          state: "off"
+      then:
+        - action: notify.notify
+          data:
+            title: "CRITICAL: Garage Failure"
+            message: "Failed to close after 5 attempts. Manual intervention required!"
