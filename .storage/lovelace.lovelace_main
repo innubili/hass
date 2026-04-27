@@ -43,9 +43,6 @@
                 "icon": [
                   {
                     "width": "80%"
-                  },
-                  {
-                    "color": "var(--primary-text-color)"
                   }
                 ],
                 "grid": [
@@ -64,12 +61,12 @@
                   "styles": {
                     "icon": [
                       {
-                        "color": "var(--primary-color,"
+                        "color": "#44739e"
                       }
                     ],
                     "name": [
                       {
-                        "color": "var(--primary-color,"
+                        "color": "#44739e"
                       }
                     ]
                   },
@@ -82,12 +79,12 @@
                   "styles": {
                     "icon": [
                       {
-                        "color": "var(--warning-color,"
+                        "color": "#fdd835"
                       }
                     ],
                     "name": [
                       {
-                        "color": "var(--warning-color,"
+                        "color": "#fdd835"
                       }
                     ]
                   },
@@ -100,12 +97,12 @@
                   "styles": {
                     "icon": [
                       {
-                        "color": "var(--error-color,"
+                        "color": "#e45649"
                       }
                     ],
                     "name": [
                       {
-                        "color": "var(--error-color,"
+                        "color": "#e45649"
                       }
                     ],
                     "card": [
