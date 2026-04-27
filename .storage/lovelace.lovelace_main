@@ -61,12 +61,12 @@
                   "styles": {
                     "icon": [
                       {
-                        "color": "#2196F3"
+                        "color": "var(--primary-color)"
                       }
                     ],
                     "name": [
                       {
-                        "color": "#2196F3"
+                        "color": "var(--primary-color)"
                       }
                     ]
                   },
@@ -79,12 +79,12 @@
                   "styles": {
                     "icon": [
                       {
-                        "color": "#FFEB3B"
+                        "color": "var(--warning-color)"
                       }
                     ],
                     "name": [
                       {
-                        "color": "#FFEB3B"
+                        "color": "var(--warning-color)"
                       }
                     ]
                   },
@@ -97,12 +97,12 @@
                   "styles": {
                     "icon": [
                       {
-                        "color": "#F44336"
+                        "color": "var(--error-color)"
                       }
                     ],
                     "name": [
                       {
-                        "color": "#F44336"
+                        "color": "var(--error-color)"
                       }
                     ],
                     "card": [
