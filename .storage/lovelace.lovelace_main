@@ -494,13 +494,13 @@
               "type": "entities",
               "entities": [
                 {
-                  "entity": "sensor.garage_door_battery"
-                },
-                {
-                  "entity": "sensor.sonoff_100149f0c6_battery_voltage"
-                },
-                {
                   "entity": "sensor.sonoff_100149f0b2_battery_voltage"
+                },
+                {
+                  "entity": "sensor.door_closed_battery"
+                },
+                {
+                  "entity": "sensor.door_open_battery"
                 }
               ],
               "title": "Sensor Batteries",
