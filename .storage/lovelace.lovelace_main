@@ -535,7 +535,10 @@
                   "entity": "sensor.rudys_ipad_battery_level"
                 },
                 {
-                  "entity": "sensor.rudy_s_pixel_6_pro_battery_level"
+                  "entity": "sensor.pixel_10_pro_battery_level"
+                },
+                {
+                  "entity": "sensor.rudys_ipadair_battery_level"
                 }
               ],
               "state_color": true,
