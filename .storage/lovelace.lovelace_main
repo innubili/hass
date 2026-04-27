@@ -61,12 +61,12 @@
                   "styles": {
                     "icon": [
                       {
-                        "color": "var(--primary-color)"
+                        "color": "var(--state-icon-active-color)"
                       }
                     ],
                     "name": [
                       {
-                        "color": "var(--primary-color)"
+                        "color": "var(--state-icon-active-color)"
                       }
                     ]
                   },
@@ -79,12 +79,12 @@
                   "styles": {
                     "icon": [
                       {
-                        "color": "var(--warning-color)"
+                        "color": "var(--state-binary_sensor-active-color, var(--warning-color))"
                       }
                     ],
                     "name": [
                       {
-                        "color": "var(--warning-color)"
+                        "color": "var(--state-binary_sensor-active-color, var(--warning-color))"
                       }
                     ]
                   },
