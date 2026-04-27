@@ -34,7 +34,7 @@
               "styles": {
                 "card": [
                   {
-                    "height": "120px"
+                    "height": "160px"
                   },
                   {
                     "border-radius": "15px"
@@ -42,7 +42,15 @@
                 ],
                 "icon": [
                   {
-                    "width": "50px"
+                    "width": "80%"
+                  }
+                ],
+                "grid": [
+                  {
+                    "grid-template-areas": "\"i\" \"n\""
+                  },
+                  {
+                    "grid-template-rows": "1fr min-content"
                   }
                 ]
               },
