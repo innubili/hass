@@ -510,13 +510,7 @@
               "type": "entities",
               "entities": [
                 {
-                  "entity": "sensor.braava_jet_battery_level"
-                },
-                {
                   "entity": "sensor.roomba_battery_level"
-                },
-                {
-                  "entity": "sensor.automower_battery"
                 }
               ],
               "state_color": true,
