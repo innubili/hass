@@ -29,7 +29,7 @@
               "show_state": false,
               "tap_action": {
                 "action": "perform-action",
-                "perform_action": "script.garage_multi_attempt_close"
+                "perform_action": "script.garage_master_toggle"
               },
               "styles": {
                 "card": [
