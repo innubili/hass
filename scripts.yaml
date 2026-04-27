@@ -81,3 +81,17 @@ garage_multi_attempt_close:
           data:
             title: "CRITICAL: Garage Failure"
             message: "Failed to close after 5 attempts. Manual intervention required!"
+
+garage_master_toggle:
+  alias: "Garage Master Toggle"
+  sequence:
+    - if:
+        # If the door is already FULLY CLOSED, just open it normally
+        - condition: state
+          entity_id: binary_sensor.garage_door_fully_closed
+          state: "on"
+      then:
+        - action: script.pulse_garage_relay
+      else:
+        # If it's OPEN or STUCK, use the 5-attempt closing logic
+        - action: script.garage_multi_attempt_close
