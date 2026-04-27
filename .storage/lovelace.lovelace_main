@@ -93,7 +93,7 @@
                 {
                   "operator": "template",
                   "value": "[[[ return states['binary_sensor.garage_door_fully_closed'].state === 'on' && \n           states['binary_sensor.garage_door_fully_open'].state === 'on' ]]]\n",
-                  "icon": "mdi:garage-alert-variant",
+                  "icon": "mdi:garage-open-variant",
                   "styles": {
                     "icon": [
                       {
