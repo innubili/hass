@@ -27,7 +27,7 @@
       action: notify.notify
   mode: single
 
-  - id: '1670965598190'
+- id: '1670965598190'
   alias: garage open at 22:00
   description: "Nightly check to ensure garage is secure"
   triggers:
