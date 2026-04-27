@@ -26,7 +26,6 @@
               "show_name": true,
               "show_icon": true,
               "type": "button",
-              "entity": "binary_sensor.sonoff_100149f0c6",
               "show_state": true,
               "hold_action": {
                 "action": "none"
@@ -36,7 +35,9 @@
                 "action": "perform-action",
                 "target": {},
                 "perform_action": "script.pulse_garage_relay"
-              }
+              },
+              "entity": "binary_sensor.garage_door_fully_closed",
+              "icon": "mdi:garage-variant"
             },
             {
               "type": "entities",
