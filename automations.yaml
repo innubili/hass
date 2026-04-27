@@ -62,3 +62,26 @@
       message: it's night and the garage dppr is still open
     action: notify.notify
   mode: single
+
+
+- id: 'garage_closure_watchdog'
+  alias: "Garage Closure Watchdog"
+  description: "Ensures door closes even if triggered by car remote"
+  triggers:
+    # Triggered when the door starts moving away from fully open
+    - trigger: state
+      entity_id: binary_sensor.garage_door_fully_open
+      from: "on"
+      to: "off"
+  actions:
+    # Wait for the typical duration it takes to close (e.g., 20 seconds)
+    - delay: "00:00:20"
+    # Check: Is it actually closed now?
+    - if:
+        - condition: state
+          entity_id: binary_sensor.garage_door_fully_closed
+          state: "off"
+      then:
+        # It's stuck! Run the recovery script
+        - action: script.garage_smart_recovery
+  mode: restart # Restart the timer if the door is toggled again quickly
