@@ -39,7 +39,6 @@ garage_smart_recovery:
                 title: "Garage Error"
                 message: "Recovery failed. Garage is still not closed!"
 
-# Add to scripts.yaml
 garage_multi_attempt_close:
   alias: "Garage 5-Attempt Recovery"
   sequence:
