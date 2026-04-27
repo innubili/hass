@@ -322,7 +322,8 @@
             {
               "type": "thermostat",
               "entity": "climate.cosmicbeam_smart",
-              "name": "Riscaldamento (Pergola)"
+              "name": "Riscaldamento (Pergola)",
+              "show_current_as_primary": true
             },
             {
               "type": "button",
