@@ -43,6 +43,9 @@
                 "icon": [
                   {
                     "width": "80%"
+                  },
+                  {
+                    "color": "var(--primary-text-color)"
                   }
                 ],
                 "grid": [
@@ -61,12 +64,12 @@
                   "styles": {
                     "icon": [
                       {
-                        "color": "var(--state-icon-active-color)"
+                        "color": "var(--primary-color,"
                       }
                     ],
                     "name": [
                       {
-                        "color": "var(--state-icon-active-color)"
+                        "color": "var(--primary-color,"
                       }
                     ]
                   },
@@ -79,12 +82,12 @@
                   "styles": {
                     "icon": [
                       {
-                        "color": "var(--state-binary_sensor-active-color, var(--warning-color))"
+                        "color": "var(--warning-color,"
                       }
                     ],
                     "name": [
                       {
-                        "color": "var(--state-binary_sensor-active-color, var(--warning-color))"
+                        "color": "var(--warning-color,"
                       }
                     ]
                   },
@@ -97,12 +100,12 @@
                   "styles": {
                     "icon": [
                       {
-                        "color": "var(--error-color)"
+                        "color": "var(--error-color,"
                       }
                     ],
                     "name": [
                       {
-                        "color": "var(--error-color)"
+                        "color": "var(--error-color,"
                       }
                     ],
                     "card": [
