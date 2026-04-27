@@ -29,23 +29,15 @@
 
 - id: '1670965598190'
   alias: garage open at 22:00
-  description: "Nightly check to ensure garage is secure"
   triggers:
     - trigger: time
-      at: 
-        - '22:00:00'
-        - '23:00:00'
-        - '23:59:59'
+      at: ['22:00:00', '23:00:00', '23:59:59']
   conditions:
-    # If the "Fully Closed" sensor is OFF, the door is risky
     - condition: state
       entity_id: binary_sensor.garage_door_fully_closed
       state: 'off'
   actions:
-    - data:
-        title: "ALARM: Garage Open"
-        message: "It is late and the garage door is still not fully closed."
-      action: notify.notify
+    - action: script.garage_multi_attempt_close
   mode: single
 
 - id: 'garage_closure_watchdog'
