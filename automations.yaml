@@ -1,25 +1,25 @@
-- id: '1650735139689'
+- id: "1650735139689"
   alias: Alarm when GARAGE-door left open
-  description: 'Triggers if Rudy & Mary leave and door is not fully closed'
+  description: "Triggers if Rudy & Mary leave and door is not fully closed"
   triggers:
     - trigger: state
-      entity_id: 
+      entity_id:
         - person.rudy_federici
         - device_tracker.mary_s_iphonex
-      to: 'not_home'
+      to: "not_home"
       for:
         minutes: 5
   conditions:
     - condition: state
       entity_id: person.rudy_federici
-      state: 'not_home'
+      state: "not_home"
     - condition: state
       entity_id: device_tracker.mary_s_iphonex
-      state: 'not_home'
+      state: "not_home"
     # Condition: The door is NOT fully closed
     - condition: state
       entity_id: binary_sensor.garage_door_fully_closed
-      state: 'off'
+      state: "off"
   actions:
     - data:
         title: "ALARM: Garage Not Closed"
@@ -27,20 +27,20 @@
       action: notify.notify
   mode: single
 
-- id: '1670965598190'
+- id: "1670965598190"
   alias: garage open at 22:00
   triggers:
     - trigger: time
-      at: ['22:00:00', '23:00:00', '23:59:59']
+      at: ["22:00:00", "23:00:00", "23:59:59"]
   conditions:
     - condition: state
       entity_id: binary_sensor.garage_door_fully_closed
-      state: 'off'
+      state: "off"
   actions:
     - action: script.garage_multi_attempt_close
   mode: single
 
-- id: 'garage_closure_watchdog'
+- id: "garage_closure_watchdog"
   alias: "Garage Closure Watchdog"
   description: "Ensures door closes even if triggered by car remote"
   triggers:
