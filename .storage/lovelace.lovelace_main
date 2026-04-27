@@ -7,172 +7,6 @@
       "title": "Main",
       "views": [
         {
-          "path": "default_view",
-          "title": "Main",
-          "badges": [],
-          "cards": [
-            {
-              "type": "entities",
-              "entities": [
-                {
-                  "entity": "person.mary"
-                },
-                {
-                  "entity": "person.rudy_federici"
-                }
-              ]
-            },
-            {
-              "type": "custom:button-card",
-              "name": "Garage Door",
-              "entity": "binary_sensor.garage_door_fully_closed",
-              "show_state": false,
-              "tap_action": {
-                "action": "perform-action",
-                "perform_action": "script.garage_master_toggle"
-              },
-              "styles": {
-                "card": [
-                  {
-                    "height": "200px"
-                  },
-                  {
-                    "border-radius": "15px"
-                  }
-                ],
-                "icon": [
-                  {
-                    "height": "100%"
-                  }
-                ],
-                "grid": [
-                  {
-                    "grid-template-areas": "\"i\" \"n\""
-                  },
-                  {
-                    "grid-template-rows": "1fr min-content"
-                  }
-                ]
-              },
-              "state": [
-                {
-                  "value": "off",
-                  "icon": "mdi:garage-variant",
-                  "styles": {
-                    "icon": [
-                      {
-                        "color": "#44739e"
-                      }
-                    ],
-                    "name": [
-                      {
-                        "color": "#44739e"
-                      }
-                    ]
-                  },
-                  "name": "Garage Closed"
-                },
-                {
-                  "operator": "template",
-                  "value": "[[[ return states['binary_sensor.garage_door_fully_open'].state === 'off' ]]]\n",
-                  "icon": "mdi:garage-open-variant",
-                  "styles": {
-                    "icon": [
-                      {
-                        "color": "#fdd835"
-                      }
-                    ],
-                    "name": [
-                      {
-                        "color": "#44739e"
-                      }
-                    ]
-                  },
-                  "name": "Garage Open"
-                },
-                {
-                  "operator": "template",
-                  "value": "[[[ return states['binary_sensor.garage_door_fully_closed'].state === 'on' && \n           states['binary_sensor.garage_door_fully_open'].state === 'on' ]]]\n",
-                  "icon": "mdi:garage-open-variant",
-                  "styles": {
-                    "icon": [
-                      {
-                        "color": "#e45649"
-                      }
-                    ],
-                    "name": [
-                      {
-                        "color": "#44739e"
-                      }
-                    ],
-                    "card": [
-                      {
-                        "animation": "blink 1s ease-in-out infinite"
-                      }
-                    ]
-                  },
-                  "name": "Moving"
-                }
-              ]
-            },
-            {
-              "type": "entities",
-              "entities": [
-                "binary_sensor.sonoff_100149f0b2"
-              ],
-              "title": "DW2 Door Main"
-            },
-            {
-              "type": "entities",
-              "entities": [
-                {
-                  "entity": "vacuum.roomba"
-                }
-              ],
-              "title": "Clean"
-            },
-            {
-              "type": "button",
-              "tap_action": {
-                "action": "call-service",
-                "service": "automation.trigger",
-                "service_data": {},
-                "target": {
-                  "entity_id": "automation.going_to_bed"
-                }
-              },
-              "name": "Going To Bed",
-              "icon": "mdi:lightbulb-auto-outline"
-            },
-            {
-              "type": "grid",
-              "square": false,
-              "columns": 1,
-              "cards": [
-                {
-                  "type": "entities",
-                  "entities": [
-                    "remote.family_room_tv"
-                  ],
-                  "title": "Family room TV"
-                },
-                {
-                  "type": "media-control",
-                  "entity": "media_player.family_room_tv_2"
-                }
-              ]
-            },
-            {
-              "show_current": false,
-              "show_forecast": true,
-              "type": "weather-forecast",
-              "entity": "weather.home",
-              "forecast_type": "daily",
-              "forecast_slots": 10
-            }
-          ]
-        },
-        {
           "theme": "Backend-selected",
           "title": "Pool",
           "path": "pool",
@@ -344,6 +178,172 @@
                 "service_data": {},
                 "target": {}
               }
+            }
+          ]
+        },
+        {
+          "path": "default_view",
+          "title": "Main",
+          "badges": [],
+          "cards": [
+            {
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "person.mary"
+                },
+                {
+                  "entity": "person.rudy_federici"
+                }
+              ]
+            },
+            {
+              "type": "custom:button-card",
+              "name": "Garage Door",
+              "entity": "binary_sensor.garage_door_fully_closed",
+              "show_state": false,
+              "tap_action": {
+                "action": "perform-action",
+                "perform_action": "script.garage_master_toggle"
+              },
+              "styles": {
+                "card": [
+                  {
+                    "height": "200px"
+                  },
+                  {
+                    "border-radius": "15px"
+                  }
+                ],
+                "icon": [
+                  {
+                    "height": "100%"
+                  }
+                ],
+                "grid": [
+                  {
+                    "grid-template-areas": "\"i\" \"n\""
+                  },
+                  {
+                    "grid-template-rows": "1fr min-content"
+                  }
+                ]
+              },
+              "state": [
+                {
+                  "value": "off",
+                  "icon": "mdi:garage-variant",
+                  "styles": {
+                    "icon": [
+                      {
+                        "color": "#44739e"
+                      }
+                    ],
+                    "name": [
+                      {
+                        "color": "#44739e"
+                      }
+                    ]
+                  },
+                  "name": "Garage Closed"
+                },
+                {
+                  "operator": "template",
+                  "value": "[[[ return states['binary_sensor.garage_door_fully_open'].state === 'off' ]]]\n",
+                  "icon": "mdi:garage-open-variant",
+                  "styles": {
+                    "icon": [
+                      {
+                        "color": "#fdd835"
+                      }
+                    ],
+                    "name": [
+                      {
+                        "color": "#44739e"
+                      }
+                    ]
+                  },
+                  "name": "Garage Open"
+                },
+                {
+                  "operator": "template",
+                  "value": "[[[ return states['binary_sensor.garage_door_fully_closed'].state === 'on' && \n           states['binary_sensor.garage_door_fully_open'].state === 'on' ]]]\n",
+                  "icon": "mdi:garage-open-variant",
+                  "styles": {
+                    "icon": [
+                      {
+                        "color": "#e45649"
+                      }
+                    ],
+                    "name": [
+                      {
+                        "color": "#44739e"
+                      }
+                    ],
+                    "card": [
+                      {
+                        "animation": "blink 1s ease-in-out infinite"
+                      }
+                    ]
+                  },
+                  "name": "Moving"
+                }
+              ]
+            },
+            {
+              "type": "entities",
+              "entities": [
+                "binary_sensor.sonoff_100149f0b2"
+              ],
+              "title": "DW2 Door Main"
+            },
+            {
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "vacuum.roomba"
+                }
+              ],
+              "title": "Clean"
+            },
+            {
+              "type": "button",
+              "tap_action": {
+                "action": "call-service",
+                "service": "automation.trigger",
+                "service_data": {},
+                "target": {
+                  "entity_id": "automation.going_to_bed"
+                }
+              },
+              "name": "Going To Bed",
+              "icon": "mdi:lightbulb-auto-outline"
+            },
+            {
+              "type": "grid",
+              "square": false,
+              "columns": 1,
+              "cards": [
+                {
+                  "type": "entities",
+                  "entities": [
+                    "remote.family_room_tv"
+                  ],
+                  "title": "Family room TV"
+                },
+                {
+                  "type": "media-control",
+                  "entity": "media_player.family_room_tv_2"
+                }
+              ]
+            },
+            {
+              "show_current": false,
+              "show_forecast": true,
+              "type": "weather-forecast",
+              "entity": "weather.home",
+              "forecast_type": "daily",
+              "forecast_slots": 10
             }
           ]
         },
