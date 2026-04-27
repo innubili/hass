@@ -23,21 +23,89 @@
               ]
             },
             {
-              "show_name": true,
-              "show_icon": true,
-              "type": "button",
-              "show_state": true,
-              "hold_action": {
-                "action": "none"
-              },
+              "type": "custom:button-card",
               "name": "Garage Door",
+              "entity": "binary_sensor.garage_door_fully_closed",
+              "show_state": false,
               "tap_action": {
                 "action": "perform-action",
-                "target": {},
-                "perform_action": "script.pulse_garage_relay"
+                "perform_action": "script.garage_multi_attempt_close"
               },
-              "entity": "binary_sensor.garage_door_fully_closed",
-              "icon": "mdi:garage-variant"
+              "styles": {
+                "card": [
+                  {
+                    "height": "120px"
+                  },
+                  {
+                    "border-radius": "15px"
+                  }
+                ],
+                "icon": [
+                  {
+                    "width": "50px"
+                  }
+                ]
+              },
+              "state": [
+                {
+                  "value": "on",
+                  "icon": "mdi:garage-variant",
+                  "styles": {
+                    "icon": [
+                      {
+                        "color": "#2196F3"
+                      }
+                    ],
+                    "name": [
+                      {
+                        "color": "#2196F3"
+                      }
+                    ]
+                  },
+                  "name": "Garage Closed"
+                },
+                {
+                  "operator": "template",
+                  "value": "[[[ return states['binary_sensor.garage_door_fully_open'].state === 'on' ]]]\n",
+                  "icon": "mdi:garage-open-variant",
+                  "styles": {
+                    "icon": [
+                      {
+                        "color": "#FFEB3B"
+                      }
+                    ],
+                    "name": [
+                      {
+                        "color": "#FFEB3B"
+                      }
+                    ]
+                  },
+                  "name": "Garage Open"
+                },
+                {
+                  "operator": "template",
+                  "value": "[[[ return states['binary_sensor.garage_door_fully_closed'].state === 'off' && \n           states['binary_sensor.garage_door_fully_open'].state === 'off' ]]]\n",
+                  "icon": "mdi:garage-alert-variant",
+                  "styles": {
+                    "icon": [
+                      {
+                        "color": "#F44336"
+                      }
+                    ],
+                    "name": [
+                      {
+                        "color": "#F44336"
+                      }
+                    ],
+                    "card": [
+                      {
+                        "animation": "blink 2s ease-in-out infinite"
+                      }
+                    ]
+                  },
+                  "name": "Obstacle / Moving"
+                }
+              ]
             },
             {
               "type": "entities",
