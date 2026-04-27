@@ -55,7 +55,7 @@ garage_multi_attempt_close:
             data:
               title: "Garage Recovery"
               message: "Attempt {{ repeat.index }} of 5 to close the garage..."
-          
+
           # The "Stuck in middle" logic
           - if:
               - condition: state
@@ -64,10 +64,10 @@ garage_multi_attempt_close:
             then:
               - action: script.pulse_garage_relay
               - delay: "00:00:03"
-          
+
           # Pulse to close (or start closing from open)
           - action: script.pulse_garage_relay
-          
+
           # Wait for the door to travel (adjust 20s if your door is slower)
           - delay: "00:00:20"
 
