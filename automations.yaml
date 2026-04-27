@@ -48,13 +48,6 @@
       action: notify.notify
   mode: single
 
-actions:
-    - data:
-        title: "Garage Security"
-        message: "Garage was open at 22:00. Attempting auto-close..."
-      action: notify.notify
-    - action: script.garage_smart_recovery
-
 - id: 'garage_closure_watchdog'
   alias: "Garage Closure Watchdog"
   description: "Ensures door closes even if triggered by car remote"
