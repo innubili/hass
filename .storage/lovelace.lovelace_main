@@ -42,7 +42,7 @@
                 ],
                 "icon": [
                   {
-                    "width": "100%"
+                    "width": "80%"
                   }
                 ],
                 "grid": [
@@ -56,7 +56,7 @@
               },
               "state": [
                 {
-                  "value": "on",
+                  "value": "off",
                   "icon": "mdi:garage-variant",
                   "styles": {
                     "icon": [
@@ -74,7 +74,7 @@
                 },
                 {
                   "operator": "template",
-                  "value": "[[[ return states['binary_sensor.garage_door_fully_open'].state === 'on' ]]]\n",
+                  "value": "[[[ return states['binary_sensor.garage_door_fully_open'].state === 'off' ]]]\n",
                   "icon": "mdi:garage-open-variant",
                   "styles": {
                     "icon": [
@@ -92,7 +92,7 @@
                 },
                 {
                   "operator": "template",
-                  "value": "[[[ return states['binary_sensor.garage_door_fully_closed'].state === 'off' && \n           states['binary_sensor.garage_door_fully_open'].state === 'off' ]]]\n",
+                  "value": "[[[ return states['binary_sensor.garage_door_fully_closed'].state === 'on' && \n           states['binary_sensor.garage_door_fully_open'].state === 'on' ]]]\n",
                   "icon": "mdi:garage-alert-variant",
                   "styles": {
                     "icon": [
@@ -111,7 +111,7 @@
                       }
                     ]
                   },
-                  "name": "Obstacle / Moving"
+                  "name": "Stuck / Moving"
                 }
               ]
             },
