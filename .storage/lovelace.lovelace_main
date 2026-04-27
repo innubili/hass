@@ -107,11 +107,11 @@
                     ],
                     "card": [
                       {
-                        "animation": "blink 2s ease-in-out infinite"
+                        "animation": "blink 1s ease-in-out infinite"
                       }
                     ]
                   },
-                  "name": "Stuck / Moving"
+                  "name": "Moving"
                 }
               ]
             },
