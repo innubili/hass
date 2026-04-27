@@ -92,13 +92,6 @@
               "entity": "weather.home",
               "forecast_type": "daily",
               "forecast_slots": 10
-            },
-            {
-              "type": "entities",
-              "entities": [
-                "binary_sensor.door_closed"
-              ],
-              "title": "Garage Door Fully Closed"
             }
           ]
         },
