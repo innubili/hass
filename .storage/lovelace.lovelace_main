@@ -664,7 +664,12 @@
               "type": "grid",
               "cards": []
             }
-          ]
+          ],
+          "header": {
+            "layout": "responsive",
+            "badges_position": "bottom",
+            "badges_wrap": "wrap"
+          }
         }
       ]
     }
