@@ -177,35 +177,6 @@
               "type": "glance",
               "entities": [
                 {
-                  "entity": "sensor.outside_temperature",
-                  "name": "Outside"
-                },
-                {
-                  "entity": "sensor.snzb_02p_temperature_2",
-                  "name": "Pergola"
-                },
-                {
-                  "entity": "sensor.snzb_02p_temperature_4",
-                  "name": "Sala"
-                },
-                {
-                  "entity": "sensor.snzb_02p_temperature_1",
-                  "name": "Hobby Room"
-                },
-                {
-                  "entity": "sensor.snzb_02p_temperature_3",
-                  "name": "Camera"
-                }
-              ],
-              "title": "Temperatures"
-            },
-            {
-              "show_name": true,
-              "show_icon": true,
-              "show_state": true,
-              "type": "glance",
-              "entities": [
-                {
                   "entity": "weather.home",
                   "name": "Outside"
                 },
@@ -231,6 +202,14 @@
             {
               "type": "vertical-stack",
               "cards": [
+                {
+                  "show_current": false,
+                  "show_forecast": true,
+                  "type": "weather-forecast",
+                  "entity": "weather.home",
+                  "forecast_type": "daily",
+                  "forecast_slots": 10
+                },
                 {
                   "show_name": true,
                   "show_icon": true,
@@ -261,12 +240,33 @@
                   "title": "Temperatures"
                 },
                 {
-                  "show_current": false,
-                  "show_forecast": true,
-                  "type": "weather-forecast",
-                  "entity": "weather.home",
-                  "forecast_type": "daily",
-                  "forecast_slots": 10
+                  "show_name": true,
+                  "show_icon": true,
+                  "show_state": true,
+                  "type": "glance",
+                  "entities": [
+                    {
+                      "entity": "weather.home",
+                      "name": "Outside"
+                    },
+                    {
+                      "entity": "sensor.snzb_02p_humidity_2",
+                      "name": "Pergola"
+                    },
+                    {
+                      "entity": "sensor.snzb02p_humidity_4",
+                      "name": "Sala"
+                    },
+                    {
+                      "entity": "sensor.snzb_02p_humidity_1",
+                      "name": "Hobby Room"
+                    },
+                    {
+                      "entity": "sensor.snzb_02p_humidity_3",
+                      "name": "Camera"
+                    }
+                  ],
+                  "title": "Humidity"
                 }
               ]
             }
