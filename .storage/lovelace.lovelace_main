@@ -446,6 +446,18 @@
                 }
               ],
               "title": "Garden"
+            },
+            {
+              "graph": "line",
+              "type": "sensor",
+              "detail": 2,
+              "entity": "sensor.sgs01z_taxus_soil_moisture",
+              "name": "Siepe (davanti)",
+              "limits": {
+                "min": 5,
+                "max": 70
+              },
+              "hours_to_show": 240
             }
           ]
         },
