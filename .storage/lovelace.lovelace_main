@@ -265,10 +265,6 @@
               "type": "glance",
               "entities": [
                 {
-                  "entity": "sensor.pergula_pergola_temperature",
-                  "name": "pergola"
-                },
-                {
                   "entity": "sensor.outside_temperature",
                   "name": "Outside"
                 },
@@ -279,6 +275,14 @@
                 {
                   "entity": "sensor.snzb_02p_temperature_2",
                   "name": "Pergola"
+                },
+                {
+                  "entity": "sensor.snzb_02p_temperature_4",
+                  "name": "Camera"
+                },
+                {
+                  "entity": "sensor.snzb_02p_temperature_3",
+                  "name": "Sala"
                 }
               ]
             },
