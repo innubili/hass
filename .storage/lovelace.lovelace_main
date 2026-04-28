@@ -259,6 +259,14 @@
                     }
                   ],
                   "title": "Temperatures"
+                },
+                {
+                  "show_current": false,
+                  "show_forecast": true,
+                  "type": "weather-forecast",
+                  "entity": "weather.home",
+                  "forecast_type": "daily",
+                  "forecast_slots": 10
                 }
               ]
             }
