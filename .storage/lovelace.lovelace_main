@@ -658,7 +658,37 @@
           "path": "clima",
           "title": "Clima",
           "icon": "mdi:home-thermometer",
-          "cards": []
+          "cards": [
+            {
+              "show_name": true,
+              "show_icon": true,
+              "show_state": true,
+              "type": "glance",
+              "entities": [
+                {
+                  "entity": "sensor.outside_temperature",
+                  "name": "Outside"
+                },
+                {
+                  "entity": "sensor.snzb_02p_temperature_1",
+                  "name": "Hobby Room"
+                },
+                {
+                  "entity": "sensor.snzb_02p_temperature_2",
+                  "name": "Pergola"
+                },
+                {
+                  "entity": "sensor.snzb_02p_temperature_4",
+                  "name": "Camera"
+                },
+                {
+                  "entity": "sensor.snzb_02p_temperature_3",
+                  "name": "Sala"
+                }
+              ],
+              "title": "Temperatures"
+            }
+          ]
         }
       ]
     }
