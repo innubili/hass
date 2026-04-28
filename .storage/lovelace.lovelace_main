@@ -181,16 +181,16 @@
                   "name": "Outside"
                 },
                 {
-                  "entity": "sensor.snzb_02p_temperature_1",
-                  "name": "Hobby Room"
-                },
-                {
                   "entity": "sensor.snzb_02p_temperature_2",
                   "name": "Pergola"
                 },
                 {
                   "entity": "sensor.snzb_02p_temperature_4",
                   "name": "Sala"
+                },
+                {
+                  "entity": "sensor.snzb_02p_temperature_1",
+                  "name": "Hobby Room"
                 },
                 {
                   "entity": "sensor.snzb_02p_temperature_3",
