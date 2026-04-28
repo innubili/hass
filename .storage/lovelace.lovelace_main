@@ -269,7 +269,8 @@
                   "name": "pergola"
                 },
                 {
-                  "entity": "sensor.outside_temperature"
+                  "entity": "sensor.outside_temperature",
+                  "name": "Outside"
                 },
                 {
                   "entity": "sensor.snzb_02p_temperature_1",
