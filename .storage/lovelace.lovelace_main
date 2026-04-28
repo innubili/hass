@@ -455,7 +455,7 @@
                   "type": "sensor",
                   "detail": 2,
                   "entity": "sensor.sgs01z_taxus_soil_moisture",
-                  "name": "Siepe (davanti)",
+                  "name": "Humiidity",
                   "limits": {
                     "min": 5,
                     "max": 70
@@ -466,7 +466,7 @@
                   "graph": "line",
                   "type": "sensor",
                   "detail": 2,
-                  "name": "Temp. Siepe (davanti)",
+                  "name": "Temperature",
                   "limits": {
                     "min": -15,
                     "max": 40
