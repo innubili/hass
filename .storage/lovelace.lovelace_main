@@ -461,6 +461,18 @@
                     "max": 70
                   },
                   "hours_to_show": 240
+                },
+                {
+                  "graph": "line",
+                  "type": "sensor",
+                  "detail": 2,
+                  "name": "Temp. Siepe (davanti)",
+                  "limits": {
+                    "min": -15,
+                    "max": 40
+                  },
+                  "hours_to_show": 240,
+                  "entity": "sensor.sgs01z_taxus_temperature"
                 }
               ],
               "title": "Siepe (davanti)"
