@@ -1,3 +1,4 @@
+# --- GARAGE RELAY CONTROL ---
 pulse_garage_relay:
   alias: "Pulse Garage Door"
   icon: mdi:garage
@@ -10,44 +11,45 @@ pulse_garage_relay:
       target:
         entity_id: switch.pool_u_aussenbekl_garage_door
 
+# --- SMART RECOVERY (FOR STUCK DOOR) ---
 garage_smart_recovery:
   alias: "Garage Smart Recovery"
   sequence:
-    # Double check it's still stuck before acting
+    # Check if STUCK: Both sensors are 'on' (Magnets uncovered)
     - if:
         - condition: state
           entity_id: binary_sensor.garage_door_fully_closed
-          state: "off"
+          state: "on"
         - condition: state
           entity_id: binary_sensor.garage_door_fully_open
-          state: "off"
+          state: "on"
       then:
-        # Step 1: Pulse to open (to reset the old motor's logic/obstacle)
+        # Pulse to open (resets motor logic)
         - action: script.pulse_garage_relay
         - delay: "00:00:03"
-        # Step 2: Pulse to close
+        # Pulse to close
         - action: script.pulse_garage_relay
-        # Step 3: Wait for it to finish and notify you
         - delay: "00:00:20"
         - if:
             - condition: state
               entity_id: binary_sensor.garage_door_fully_closed
-              state: "off"
+              state: "on" # Still uncovered/not closed
           then:
             - action: notify.notify
               data:
                 title: "Garage Error"
-                message: "Recovery failed. Garage is still not closed!"
+                message: "Recovery failed. Door is still stuck between sensors!"
 
+# --- THE 5-ATTEMPT CLOSING BATTLE ---
 garage_multi_attempt_close:
   alias: "Garage 5-Attempt Recovery"
   sequence:
     - repeat:
         while:
-          # Keep going as long as it's NOT closed AND we've done < 5 tries
+          # Keep going as long as it's NOT closed ('on' = uncovered) AND < 5 tries
           - condition: state
             entity_id: binary_sensor.garage_door_fully_closed
-            state: "off"
+            state: "on"
           - condition: template
             value_template: "{{ repeat.index <= 5 }}"
         sequence:
@@ -56,44 +58,43 @@ garage_multi_attempt_close:
               title: "Garage Recovery"
               message: "Attempt {{ repeat.index }} of 5 to close the garage..."
 
-          # The "Stuck in middle" logic
-          - if:
-              - condition: state
-                entity_id: binary_sensor.garage_door_fully_open
-                state: "off"
-            then:
-              - action: script.pulse_garage_relay
-              - delay: "00:00:03"
-
-          # Pulse to close (or start closing from open)
+          # Pulse the relay to trigger movement
           - action: script.pulse_garage_relay
 
-          # Wait for the door to travel (adjust 20s if your door is slower)
+          # Wait for travel (adjust 20s if your door is slower)
           - delay: "00:00:20"
+
+          # Stop if we hit the 'off' state (Closed)
+          - if:
+              - condition: state
+                entity_id: binary_sensor.garage_door_fully_closed
+                state: "off"
+            then:
+              - stop: "Garage is successfully closed."
 
     # Final Check after the loop finishes
     - if:
         - condition: state
           entity_id: binary_sensor.garage_door_fully_closed
-          state: "off"
+          state: "on"
       then:
         - action: notify.notify
           data:
             title: "CRITICAL: Garage Failure"
-            message: "Failed to close after 5 attempts. Manual intervention required!"
+            message: "Failed to close after 5 attempts. Check for obstructions at Andhauserstr. 71!"
 
-# Update in scripts.yaml
+# --- THE MASTER BRAIN ---
 garage_master_toggle:
   alias: "Garage Master Toggle"
   sequence:
     - if:
-        # We now know 'off' means the magnet is TOUCHING (Fully Closed)
+        # If it's FULLY CLOSED ('off' = magnet touching)
         - condition: state
           entity_id: binary_sensor.garage_door_fully_closed
           state: "off"
       then:
-        # Door is closed, so just a simple pulse to open it
+        # Just open it normally
         - action: script.pulse_garage_relay
       else:
-        # Door is open or stuck, start the 5-attempt closing sequence
+        # It's either open or stuck - use the multi-attempt close
         - action: script.garage_multi_attempt_close
