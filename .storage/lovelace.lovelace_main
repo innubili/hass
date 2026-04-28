@@ -190,7 +190,7 @@
                 },
                 {
                   "entity": "sensor.snzb_02p_temperature_4",
-                  "name": "Camera"
+                  "name": "Sala"
                 },
                 {
                   "entity": "sensor.snzb_02p_temperature_3",
