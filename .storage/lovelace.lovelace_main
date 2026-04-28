@@ -270,6 +270,10 @@
                 },
                 {
                   "entity": "sensor.outside_temperature"
+                },
+                {
+                  "entity": "sensor.snzb_02p_temperature_1",
+                  "name": "Hobby Room"
                 }
               ]
             },
