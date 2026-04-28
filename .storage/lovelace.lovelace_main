@@ -194,7 +194,7 @@
                 },
                 {
                   "entity": "sensor.snzb_02p_temperature_3",
-                  "name": "Sala"
+                  "name": "Camera"
                 }
               ],
               "title": "Temperatures"
