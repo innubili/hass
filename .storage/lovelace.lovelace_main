@@ -214,19 +214,19 @@
                   "name": "Pergola"
                 },
                 {
-                  "entity": "sensor.snzb_02p_temperature_4",
+                  "entity": "sensor.snzb02p_humidity_4",
                   "name": "Sala"
                 },
                 {
-                  "entity": "sensor.snzb_02p_temperature_1",
+                  "entity": "sensor.snzb_02p_humidity_1",
                   "name": "Hobby Room"
                 },
                 {
-                  "entity": "sensor.snzb_02p_temperature_3",
+                  "entity": "sensor.snzb_02p_humidity_3",
                   "name": "Camera"
                 }
               ],
-              "title": "Temperatures"
+              "title": "Humidity"
             }
           ]
         },
