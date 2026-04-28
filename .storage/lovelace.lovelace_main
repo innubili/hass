@@ -652,19 +652,6 @@
               "entity": "humidifier.vapoair_opal_smart"
             }
           ]
-        },
-        {
-          "type": "sections",
-          "path": "clima",
-          "max_columns": 4,
-          "title": "Clima",
-          "icon": "mdi:home-thermometer-outline",
-          "sections": [],
-          "header": {
-            "layout": "responsive",
-            "badges_position": "bottom",
-            "badges_wrap": "wrap"
-          }
         }
       ]
     }
