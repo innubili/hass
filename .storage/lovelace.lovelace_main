@@ -659,12 +659,7 @@
           "max_columns": 4,
           "title": "Clima",
           "icon": "mdi:home-thermometer-outline",
-          "sections": [
-            {
-              "type": "grid",
-              "cards": []
-            }
-          ],
+          "sections": [],
           "header": {
             "layout": "responsive",
             "badges_position": "bottom",
