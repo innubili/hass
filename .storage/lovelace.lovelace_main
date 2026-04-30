@@ -218,7 +218,7 @@
                       "name": "Pergola"
                     },
                     {
-                      "entity": "sensor.th4_eg_temperature_4",
+                      "entity": "sensor.th4_eg_humidity_4",
                       "name": "EG"
                     },
                     {
