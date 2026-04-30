@@ -234,6 +234,15 @@
                 }
               ],
               "title": "Clima"
+            },
+            {
+              "show_current": true,
+              "show_forecast": true,
+              "type": "weather-forecast",
+              "entity": "weather.home",
+              "forecast_type": "hourly",
+              "secondary_info_attribute": "humidity",
+              "forecast_slots": 8
             }
           ]
         },
