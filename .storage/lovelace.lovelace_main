@@ -496,6 +496,17 @@
               "type": "vertical-stack",
               "cards": [
                 {
+                  "type": "entities",
+                  "entities": [
+                    {
+                      "entity": "switch.hydro1"
+                    }
+                  ],
+                  "title": "Irrigazion",
+                  "show_header_toggle": false,
+                  "state_color": true
+                },
+                {
                   "graph": "line",
                   "type": "sensor",
                   "detail": 2,
