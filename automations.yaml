@@ -99,3 +99,23 @@
     target:
       entity_id: switch.hydro1
   mode: single
+- id: '1777552180711'
+  alias: 'Watchdog: Auto-Off Irrigation Hedge South'
+  description: Spegne l'irrigazione della siepe se rimane accesa per più di 20 minuti.
+  triggers:
+  - entity_id: switch.hydro1
+    to: 'on'
+    for:
+      minutes: 20
+    trigger: state
+  conditions: []
+  actions:
+  - action: switch.turn_off
+    target:
+      entity_id: switch.hydro1
+  - action: notify.notify
+    data:
+      title: Allarme Irrigazione!
+      message: La valvola della siepe a sud è rimasta aperta troppo a lungo. Il Watchdog
+        l'ha spenta.
+  mode: single
