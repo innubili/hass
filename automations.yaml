@@ -58,7 +58,7 @@
     - action: script.garage_smart_recovery
   mode: restart
 - id: '1777551835396'
-  alias: Irrigazione siepe sud
+  alias: Irrigation Hedge South
   description: Irriga la siepe a sud al mattino. Controlla il sensore TS0601, le previsioni
     meteo  e usa la tecnica Soak & Cycle (2 min on, 10 min pausa, 15 min on).
   triggers:
