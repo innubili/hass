@@ -727,7 +727,8 @@
             },
             {
               "type": "humidifier",
-              "entity": "humidifier.vapoair_opal_smart"
+              "entity": "humidifier.vapoair_opal_smart",
+              "name": "Humidifier"
             }
           ]
         }
