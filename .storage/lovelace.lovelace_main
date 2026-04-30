@@ -502,7 +502,7 @@
                       "entity": "switch.hydro1"
                     }
                   ],
-                  "title": "Irrigazion",
+                  "title": "Irrigazione",
                   "show_header_toggle": false,
                   "state_color": true
                 },
