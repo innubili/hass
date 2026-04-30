@@ -482,12 +482,6 @@
               "entities": [
                 {
                   "entity": "cover.tenda_gartenhusl"
-                },
-                {
-                  "entity": "lawn_mower.automower"
-                },
-                {
-                  "entity": "sensor.automower_battery"
                 }
               ],
               "title": "Garden"
