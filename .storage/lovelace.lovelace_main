@@ -652,16 +652,10 @@
               "type": "entities",
               "entities": [
                 {
-                  "entity": "sensor.acqua_siepe_battery_level"
+                  "entity": "sensor.irrigate1_battery"
                 },
                 {
-                  "entity": "sensor.acqua_erba_battery_level"
-                },
-                {
-                  "entity": "sensor.sensor_erba_battery_level"
-                },
-                {
-                  "entity": "sensor.sensor_palme_battery_level"
+                  "entity": "sensor.sgs01z_taxus_battery"
                 }
               ],
               "title": "Garden Batteries",
