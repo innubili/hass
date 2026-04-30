@@ -184,20 +184,21 @@
                       "name": "Outside"
                     },
                     {
-                      "entity": "sensor.snzb_02p_temperature_2",
+                      "entity": "sensor.th2_pergola_temprature_2",
                       "name": "Pergola"
                     },
                     {
-                      "entity": "sensor.snzb_02p_temperature_4",
-                      "name": "Sala"
-                    },
-                    {
-                      "entity": "sensor.snzb_02p_temperature_1",
-                      "name": "Hobby Room"
+                      "entity": "sensor.th4_eg_temperature_4",
+                      "name": "EG",
+                      "show_last_changed": false
                     },
                     {
                       "entity": "sensor.snzb_02p_temperature_3",
                       "name": "Camera"
+                    },
+                    {
+                      "entity": "sensor.snzb_02p_temperature_1",
+                      "name": "Hobby Room"
                     }
                   ],
                   "title": "Temperatures"
@@ -213,25 +214,26 @@
                       "name": "Outside"
                     },
                     {
-                      "entity": "sensor.snzb_02p_humidity_2",
+                      "entity": "sensor.th2_pergola_humidity_2",
                       "name": "Pergola"
                     },
                     {
-                      "entity": "sensor.snzb02p_humidity_4",
-                      "name": "Sala"
-                    },
-                    {
-                      "entity": "sensor.snzb_02p_humidity_1",
-                      "name": "Hobby Room"
+                      "entity": "sensor.th4_eg_temperature_4",
+                      "name": "EG"
                     },
                     {
                       "entity": "sensor.snzb_02p_humidity_3",
                       "name": "Camera"
+                    },
+                    {
+                      "entity": "sensor.snzb_02p_humidity_1",
+                      "name": "Hobby Room"
                     }
                   ],
                   "title": "Humidity"
                 }
-              ]
+              ],
+              "title": "Clima"
             }
           ]
         },
