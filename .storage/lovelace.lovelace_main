@@ -532,13 +532,6 @@
                 }
               ],
               "title": "Siepe (davanti)"
-            },
-            {
-              "type": "entities",
-              "entities": [
-                "switch.hydro1"
-              ],
-              "title": "Hydro1"
             }
           ]
         },
