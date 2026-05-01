@@ -112,7 +112,7 @@ light:
       - light.spot1 # palme
       - light.spot2                # prunus in mezzo
       - light.spot3 # rododendro
-      # - light.spot4 ready to use 
+      # - light.spot4 ready to use as replacment
       - light.spot5 # pseudo acacia
       - light.spot6                # prunus strada
       - light.spot7 # ahorn
