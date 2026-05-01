@@ -113,7 +113,7 @@ light:
       - light.spot2 # ................prunus in mezzo
       - light.spot3 # rododendro
       # - light.spot4                               reserve ready to use as replacment
-      - light.spot5 # pseudo acacia
+      - light.spot5 # (LCN entry) pseudo acacia
       - light.spot6 # ................prunus strada
       - light.spot7 # ahorn
       - light.spot8 # ................prunus porta
