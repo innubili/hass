@@ -22,5 +22,5 @@ garden_spots_all:
   entities:
     - light.garden_spots_garage
     - light.garden_spots_entry
-    - light.spot1_gu10_ahorn_garden_spot_ahorn
+    - light.spot11
     - light.spot12
