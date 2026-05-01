@@ -4,7 +4,7 @@ garden_spots_garage:
   entities:
     - light.spot3
     - light.spot5
-    - light.spot5
+    - light.spot7
 
 garden_spots_entry:
   name: "Garden Spots Entry"
