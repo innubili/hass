@@ -437,17 +437,17 @@
               "entity": "light.garden_spots_all"
             },
             {
+              "type": "vertical-stack",
+              "cards": [],
+              "title": "Lights"
+            },
+            {
               "type": "light",
               "entity": "light.garden_spots_garage"
             },
             {
               "type": "light",
               "entity": "light.garden_spots_entry"
-            },
-            {
-              "type": "vertical-stack",
-              "cards": [],
-              "title": "Lights"
             },
             {
               "type": "entities",
