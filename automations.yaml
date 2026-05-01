@@ -5,8 +5,8 @@
   - trigger: state
     entity_id:
     - person.rudy_federici
-    - device_tracker.mary_s_iphonex
-    to: not_home
+    to:
+    - not_home
     for:
       minutes: 5
   conditions:
@@ -14,11 +14,9 @@
     entity_id: person.rudy_federici
     state: not_home
   - condition: state
-    entity_id: device_tracker.mary_s_iphonex
-    state: not_home
-  - condition: state
     entity_id: binary_sensor.garage_door_fully_closed
-    state: 'off'
+    state:
+    - 'on'
   actions:
   - data:
       title: 'ALARM: Garage Not Closed'
