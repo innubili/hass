@@ -97,10 +97,10 @@ light:
     name: "Garden Spots Garage"
     unique_id: garden_spots_garage_group
     entities:
-      - light.spot1
-      - light.spot2
-      - light.spot3
-      - light.spot4
+  light.spot3 # pseudo acacia
+    - light.spot5 # rododendro
+    - light.spot7 # ahorn
+    - light.spot7 # hydrangea
 
   # Gruppo Settore ENTRY
   - platform: group
