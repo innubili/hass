@@ -19,14 +19,6 @@ logger:
 frontend:
   themes: !include_dir_merge_named themes
 
-device_tracker:
-  - platform: iphonedetect
-    consider_home: 60
-    new_device_defaults:
-      track_new_devices: true
-    hosts:
-      MarysiPhoneX: 192.168.86.39
-
 # === aARLO ===
 aarlo:
   host: https://my.arlo.com
@@ -103,7 +95,6 @@ light:
       - light.spot7 # ahorn
       - light.spot9 # hydrangea
 
-
   # Gruppo Settore ENTRY
   - platform: group
     name: "Garden Spots Entry"
@@ -112,8 +103,7 @@ light:
       - light.spot2 # prunus in mezzo
       - light.spot8 # prunus porta
       - light.spot6 # prunus strada
-     # - light.spot4 # 
-      
+      # - light.spot4 #
 
   # Gruppo DI GRUPPI (Il "Master" per tutto il giardino)
   - platform: group
@@ -122,4 +112,3 @@ light:
     entities:
       - light.garden_spots_garage
       - light.garden_spots_entry
-   
