@@ -11,7 +11,7 @@ garden_spots_entry:
   name: "Garden Spots Entry"
   entities:
     - light.spot2 # prunus in mezzo
-    - light.spot4 
+    - light.spot4 # prunus porta
     - light.spot6
     - light.spot8
 
