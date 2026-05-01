@@ -100,7 +100,7 @@ light:
       - light.spot3 # rododendro
       - light.spot5 # pseudo acacia
       - light.spot7 # ahorn
-      - light.spot7 # hydrangea
+      - light.spot9 # hydrangea
 
   # Gruppo Settore ENTRY
   - platform: group
