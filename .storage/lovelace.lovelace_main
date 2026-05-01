@@ -698,7 +698,7 @@
                   "entity": "sensor.lenovo_tb_8505f_battery_level"
                 },
                 {
-                  "entity": "sensor.mary_s_iphonex_battery_level"
+                  "entity": "sensor.mary_s_ix_battery_level"
                 },
                 {
                   "entity": "sensor.rudys_ipad_battery_level"
