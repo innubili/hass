@@ -443,11 +443,11 @@
             },
             {
               "type": "light",
-              "entity": "light.garden_spots_garage"
+              "entity": "light.garden_spots_all"
             },
             {
               "type": "light",
-              "entity": "light.garden_spots_all"
+              "entity": "light.garden_spots_garage"
             },
             {
               "type": "light",
