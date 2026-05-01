@@ -493,6 +493,11 @@
                 }
               ],
               "title": "Siepe (davanti)"
+            },
+            {
+              "type": "vertical-stack",
+              "cards": [],
+              "title": "Lights"
             }
           ]
         },
