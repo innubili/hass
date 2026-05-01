@@ -433,18 +433,6 @@
               "entity": "switch.pool_u_aussenbekl_column_spots"
             },
             {
-              "show_name": true,
-              "show_icon": true,
-              "type": "button",
-              "tap_action": {
-                "action": "toggle"
-              },
-              "icon": "mdi:lightbulb-auto",
-              "show_state": true,
-              "name": "SPOTS garden (entry)",
-              "entity": "switch.garden_entry_spots_fixed"
-            },
-            {
               "type": "entities",
               "entities": [
                 {
@@ -452,6 +440,10 @@
                 }
               ],
               "title": "Garden"
+            },
+            {
+              "type": "light",
+              "entity": "light.garden_spots_garage"
             },
             {
               "type": "vertical-stack",
@@ -493,10 +485,6 @@
                 }
               ],
               "title": "Siepe (davanti)"
-            },
-            {
-              "type": "light",
-              "entity": "light.garden_spots_garage"
             },
             {
               "type": "light",
