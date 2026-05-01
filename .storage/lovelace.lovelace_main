@@ -445,6 +445,11 @@
               "entity": "light.garden_spots_entry"
             },
             {
+              "type": "vertical-stack",
+              "cards": [],
+              "title": "Lights"
+            },
+            {
               "type": "entities",
               "entities": [
                 {
@@ -493,11 +498,6 @@
                 }
               ],
               "title": "Siepe (davanti)"
-            },
-            {
-              "type": "vertical-stack",
-              "cards": [],
-              "title": "Lights"
             }
           ]
         },
