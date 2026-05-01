@@ -1,138 +1,140 @@
-- id: '1650735139689'
+- id: "1650735139689"
   alias: Alarm when GARAGE-door left open
   description: Triggers if Rudy & Mary leave and door is not fully closed
   triggers:
-  - trigger: state
-    entity_id:
-    - person.rudy_federici
-    - device_tracker.mary_s_iphonex
-    to: not_home
-    for:
-      minutes: 5
+    - trigger: state
+      entity_id:
+        - person.rudy_federici
+        - device_tracker.mary_s_iphonex
+      to: not_home
+      for:
+        minutes: 5
   conditions:
-  - condition: state
-    entity_id: person.rudy_federici
-    state: not_home
-  - condition: state
-    entity_id: device_tracker.mary_s_iphonex
-    state: not_home
-  - condition: state
-    entity_id: binary_sensor.garage_door_fully_closed
-    state: 'off'
+    - condition: state
+      entity_id: person.rudy_federici
+      state: not_home
+    - condition: state
+      entity_id: device_tracker.mary_s_iphonex
+      state: not_home
+    - condition: state
+      entity_id: binary_sensor.garage_door_fully_closed
+      state: "off"
   actions:
-  - data:
-      title: 'ALARM: Garage Not Closed'
-      message: You both left, but the garage is either open or stuck!
-    action: notify.notify
+    - data:
+        title: "ALARM: Garage Not Closed"
+        message: You both left, but the garage is either open or stuck!
+      action: notify.notify
   mode: single
-- id: '1670965598190'
+- id: "1670965598190"
   alias: garage open at 22:00
   triggers:
-  - trigger: time
-    at:
-    - '22:00:00'
-    - '23:00:00'
-    - '23:59:59'
+    - trigger: time
+      at:
+        - "22:00:00"
+        - "23:00:00"
+        - "23:59:59"
   conditions:
-  - condition: state
-    entity_id: binary_sensor.garage_door_fully_closed
-    state: 'off'
+    - condition: state
+      entity_id: binary_sensor.garage_door_fully_closed
+      state: "off"
   actions:
-  - action: script.garage_multi_attempt_close
+    - action: script.garage_multi_attempt_close
   mode: single
 - id: garage_closure_watchdog
   alias: Garage Closure Watchdog
   description: Ensures door closes even if triggered by car remote
   triggers:
-  - trigger: state
-    entity_id: binary_sensor.garage_door_fully_open
-    from: 'on'
-    to: 'off'
+    - trigger: state
+      entity_id: binary_sensor.garage_door_fully_open
+      from: "on"
+      to: "off"
   actions:
-  - delay: 00:00:20
-  - if:
-    - condition: state
-      entity_id: binary_sensor.garage_door_fully_closed
-      state: 'off'
-    then:
-    - action: script.garage_smart_recovery
+    - delay: 00:00:20
+    - if:
+        - condition: state
+          entity_id: binary_sensor.garage_door_fully_closed
+          state: "off"
+      then:
+        - action: script.garage_smart_recovery
   mode: restart
-- id: '1777551835396'
+- id: "1777551835396"
   alias: Irrigation Hedge South
-  description: Irriga la siepe a sud al mattino. Controlla il sensore TS0601, le previsioni
+  description:
+    Irriga la siepe a sud al mattino. Controlla il sensore TS0601, le previsioni
     meteo  e usa la tecnica Soak & Cycle (2 min on, 10 min pausa, 15 min on).
   triggers:
-  - at: 06:00:00
-    trigger: time
+    - at: 06:00:00
+      trigger: time
   conditions:
-  - condition: numeric_state
-    entity_id: sensor.sgs01z_taxus_soil_moisture
-    below: 40
-  - condition: not
-    conditions:
-    - condition: state
-      entity_id: weather.forecast_home
-      state: rainy
-    - condition: state
-      entity_id: weather.forecast_home
-      state: pouring
-    - condition: state
-      entity_id: weather.forecast_home
-      state: lightning_rainy
+    - condition: numeric_state
+      entity_id: sensor.sgs01z_taxus_soil_moisture
+      below: 40
+    - condition: not
+      conditions:
+        - condition: state
+          entity_id: weather.forecast_home
+          state: rainy
+        - condition: state
+          entity_id: weather.forecast_home
+          state: pouring
+        - condition: state
+          entity_id: weather.forecast_home
+          state: lightning_rainy
   actions:
-  - action: switch.turn_on
-    target:
-      entity_id: switch.hydro1
-  - delay:
-      minutes: 2
-  - action: switch.turn_off
-    target:
-      entity_id: switch.hydro1
-  - delay:
-      minutes: 10
-  - action: switch.turn_on
-    target:
-      entity_id: switch.hydro1
-  - delay:
-      minutes: 15
-  - action: switch.turn_off
-    target:
-      entity_id: switch.hydro1
+    - action: switch.turn_on
+      target:
+        entity_id: switch.hydro1
+    - delay:
+        minutes: 2
+    - action: switch.turn_off
+      target:
+        entity_id: switch.hydro1
+    - delay:
+        minutes: 10
+    - action: switch.turn_on
+      target:
+        entity_id: switch.hydro1
+    - delay:
+        minutes: 15
+    - action: switch.turn_off
+      target:
+        entity_id: switch.hydro1
   mode: single
-- id: '1777552180711'
-  alias: 'Watchdog: Auto-Off Irrigation Hedge South'
+- id: "1777552180711"
+  alias: "Watchdog: Auto-Off Irrigation Hedge South"
   description: Spegne l'irrigazione della siepe se rimane accesa per più di 20 minuti.
   triggers:
-  - entity_id: switch.hydro1
-    to: 'on'
-    for:
-      minutes: 20
-    trigger: state
+    - entity_id: switch.hydro1
+      to: "on"
+      for:
+        minutes: 20
+      trigger: state
   conditions: []
   actions:
-  - action: switch.turn_off
-    target:
-      entity_id: switch.hydro1
-  - action: notify.notify
-    data:
-      title: Allarme Irrigazione!
-      message: La valvola della siepe a sud è rimasta aperta troppo a lungo. Il Watchdog
-        l'ha spenta.
+    - action: switch.turn_off
+      target:
+        entity_id: switch.hydro1
+    - action: notify.notify
+      data:
+        title: Allarme Irrigazione!
+        message:
+          La valvola della siepe a sud è rimasta aperta troppo a lungo. Il Watchdog
+          l'ha spenta.
   mode: single
 
-- id: 'garden_entry_arlo_boost'
+- id: "garden_entry_arlo_boost"
   alias: "Garden Spots: Entry Person Boost"
   description: "Set to 100% when Arlo detects person, then return to 25%"
   mode: restart # Re-starts the 5 min countdown if motion is detected again
   trigger:
     - platform: state
       entity_id: binary_sensor.aarlo_motion_entry # Check exact Arlo entity name
-      from: 'off'
-      to: 'on'
+      from: "off"
+      to: "on"
   condition:
     - condition: state
       entity_id: light.garden_spots_entry
-      state: 'on' # Only runs if lights are already on (e.g., at 25%)
+      state: "on" # Only runs if lights are already on (e.g., at 25%)
   action:
     - action: light.turn_on
       target:
