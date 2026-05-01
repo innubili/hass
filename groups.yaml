@@ -13,7 +13,7 @@ garden_spots_entry:
     - light.spot2 # prunus in mezzo
     - light.spot4 # prunus porta
     - light.spot6 # prunus strada
-    - light.spot8. 
+    - light.spot8 # ledbar
 
 # Group of Groups (The whole garden)
 garden_spots_all:
