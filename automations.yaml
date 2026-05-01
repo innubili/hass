@@ -126,7 +126,7 @@
   mode: restart # Re-starts the 5 min countdown if motion is detected again
   trigger:
     - platform: state
-      entity_id: binary_sensor. .arlo_entry_camera_motion # Check exact Arlo entity name
+      entity_id: binary_sensor.aarlo_motion_entry .arlo_entry_camera_motion # Check exact Arlo entity name
       from: 'off'
       to: 'on'
   condition:
