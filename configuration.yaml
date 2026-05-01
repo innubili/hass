@@ -110,5 +110,4 @@ light:
     name: "Garden Spots All"
     unique_id: garden_spots_all_group
     entities:
-      - light.garden_spots_garage
-      - light.garden_spots_entry
+
