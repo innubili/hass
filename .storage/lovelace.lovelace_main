@@ -421,6 +421,11 @@
           "badges": [],
           "cards": [
             {
+              "type": "vertical-stack",
+              "cards": [],
+              "title": "Lights"
+            },
+            {
               "show_name": true,
               "show_icon": true,
               "type": "button",
@@ -435,11 +440,6 @@
             {
               "type": "light",
               "entity": "light.garden_spots_all"
-            },
-            {
-              "type": "vertical-stack",
-              "cards": [],
-              "title": "Lights"
             },
             {
               "type": "light",
