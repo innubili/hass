@@ -90,7 +90,7 @@ switch:
           target:
             entity_id: switch.pool_u_aussenbekl_led_strip_entrance
 
-#groups
+# light groups
 light:
   # Gruppo Settore GARAGE
   - platform: group
