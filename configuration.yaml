@@ -103,7 +103,6 @@ light:
       - light.spot2 # prunus in mezzo
       - light.spot8 # prunus porta
       - light.spot6 # prunus strada
-      # - light.spot4 #
 
   # Gruppo DI GRUPPI (Il "Master" per tutto il giardino)
   - platform: group
