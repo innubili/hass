@@ -489,7 +489,7 @@
                     "min": 5,
                     "max": 70
                   },
-                  "hours_to_show": 240
+                  "hours_to_show": 72
                 },
                 {
                   "graph": "line",
@@ -500,7 +500,7 @@
                     "min": -15,
                     "max": 40
                   },
-                  "hours_to_show": 240,
+                  "hours_to_show": 72,
                   "entity": "sensor.sgs01z_taxus_temperature"
                 }
               ],
