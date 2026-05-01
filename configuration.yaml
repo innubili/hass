@@ -115,7 +115,6 @@ light:
       - light.spot5 # pseudo acacia
       - light.spot7 # ahorn
       - light.spot9 # hydrangea
-      - light.spot2 # prunus in mezzo
       - light.spot8 # prunus porta
       - light.spot6 # prunus strada
       # - light.spot4 #
