@@ -509,6 +509,10 @@
             {
               "type": "light",
               "entity": "light.garden_spots_garage"
+            },
+            {
+              "type": "light",
+              "entity": "light.garden_spots_entry"
             }
           ]
         },
