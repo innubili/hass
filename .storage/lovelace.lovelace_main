@@ -433,6 +433,14 @@
               "entity": "switch.pool_u_aussenbekl_column_spots"
             },
             {
+              "type": "light",
+              "entity": "light.garden_spots_all"
+            },
+            {
+              "type": "light",
+              "entity": "light.garden_spots_garage"
+            },
+            {
               "type": "entities",
               "entities": [
                 {
@@ -440,14 +448,6 @@
                 }
               ],
               "title": "Garden"
-            },
-            {
-              "type": "light",
-              "entity": "light.garden_spots_all"
-            },
-            {
-              "type": "light",
-              "entity": "light.garden_spots_garage"
             },
             {
               "type": "light",
