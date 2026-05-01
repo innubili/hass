@@ -1,0 +1,27 @@
+# Garden Zones
+garden_spots_garage:
+  name: "Garden Spots Garage"
+  entities:
+    - light.spot1
+    - light.spot2
+    - light.spot3
+    - light.spot4
+
+garden_spots_entry:
+  name: "Garden Spots Entry"
+  entities:
+    - light.spot5
+    - light.spot6
+    - light.spot7
+    - light.spot8
+
+# Group of Groups (The whole garden)
+garden_spots_all:
+  name: "Garden Spots All"
+  entities:
+    - light.garden_spots_garage
+    - light.garden_spots_entry
+    - light.spot9
+    - light.spot10
+    - light.spot11
+    - light.spot12
