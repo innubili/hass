@@ -426,10 +426,6 @@
                 {
                   "type": "light",
                   "entity": "light.garden_spots_all"
-                },
-                {
-                  "type": "light",
-                  "entity": "light.garden_spots_all"
                 }
               ],
               "title": "Lights"
@@ -445,10 +441,6 @@
               "show_state": true,
               "name": "SPOTS columns",
               "entity": "switch.pool_u_aussenbekl_column_spots"
-            },
-            {
-              "type": "light",
-              "entity": "light.garden_spots_all"
             },
             {
               "type": "light",
