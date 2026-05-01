@@ -430,6 +430,10 @@
                 {
                   "type": "light",
                   "entity": "light.garden_spots_garage"
+                },
+                {
+                  "type": "light",
+                  "entity": "light.garden_spots_entry"
                 }
               ],
               "title": "Lights"
@@ -445,10 +449,6 @@
               "show_state": true,
               "name": "SPOTS columns",
               "entity": "switch.pool_u_aussenbekl_column_spots"
-            },
-            {
-              "type": "light",
-              "entity": "light.garden_spots_entry"
             },
             {
               "type": "entities",
