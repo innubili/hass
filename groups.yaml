@@ -2,8 +2,9 @@
 garden_spots_garage:
   name: "Garden Spots Garage"
   entities:
-    - light.spot3
+    - light.spot3 # ahorn
     - light.spot5 #
+    - light.spot7 #
     - light.spot7 #
 
 garden_spots_entry:
