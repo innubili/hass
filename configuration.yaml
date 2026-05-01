@@ -91,3 +91,35 @@ switch:
             entity_id: switch.pool_u_aussenbekl_led_strip_entrance
 
 #groups
+light:
+  # Gruppo Settore GARAGE
+  - platform: group
+    name: "Garden Spots Garage"
+    unique_id: garden_spots_garage_group
+    entities:
+      - light.spot1
+      - light.spot2
+      - light.spot3
+      - light.spot4
+
+  # Gruppo Settore ENTRY
+  - platform: group
+    name: "Garden Spots Entry"
+    unique_id: garden_spots_entry_group
+    entities:
+      - light.spot5
+      - light.spot6
+      - light.spot7
+      - light.spot8
+
+  # Gruppo DI GRUPPI (Il "Master" per tutto il giardino)
+  - platform: group
+    name: "Garden Spots All"
+    unique_id: garden_spots_all_group
+    entities:
+      - light.garden_spots_garage
+      - light.garden_spots_entry
+      - light.spot9
+      - light.spot10
+      - light.spot11
+      - light.spot12
