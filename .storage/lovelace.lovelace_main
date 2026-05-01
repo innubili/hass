@@ -426,6 +426,10 @@
                 {
                   "type": "light",
                   "entity": "light.garden_spots_all"
+                },
+                {
+                  "type": "light",
+                  "entity": "light.garden_spots_all"
                 }
               ],
               "title": "Lights"
