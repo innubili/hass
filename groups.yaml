@@ -24,5 +24,3 @@ garden_spots_all:
     - light.garden_spots_entry
     - light.spot1_gu10_ahorn_garden_spot_ahorn
     - light.spot12
-    - light.spot11
-    - light.spot12
