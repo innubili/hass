@@ -109,7 +109,7 @@ light:
     name: "Garden Spots All"
     unique_id: garden_spots_all_group
     entities:
-      - light.spot1 # (Lpalme
+      - light.spot1 # (LCN entry) palme
       - light.spot2 # ................prunus in mezzo
       - light.spot3 # rododendro
       # - light.spot4                               reserve ready to use as replacment
