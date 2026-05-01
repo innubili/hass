@@ -121,5 +121,4 @@ light:
     entities:
       - light.garden_spots_garage
       - light.garden_spots_entry
-      - light.spot11
-      - light.spot12
+   
