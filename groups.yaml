@@ -9,8 +9,8 @@ garden_spots_entry:
   name: "Garden Spots Entry"
   entities:
     - light.spot2
-    - light.spot3
     - light.spot4
+    - light.spot6
     - light.spot8
 
 # Group of Groups (The whole garden)
