@@ -441,6 +441,10 @@
               "entity": "light.garden_spots_garage"
             },
             {
+              "type": "light",
+              "entity": "light.garden_spots_entry"
+            },
+            {
               "type": "entities",
               "entities": [
                 {
@@ -448,10 +452,6 @@
                 }
               ],
               "title": "Garden"
-            },
-            {
-              "type": "light",
-              "entity": "light.garden_spots_entry"
             },
             {
               "type": "vertical-stack",
