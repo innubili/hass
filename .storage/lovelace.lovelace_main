@@ -747,6 +747,13 @@
               "name": "Humidifier"
             }
           ]
+        },
+        {
+          "type": "masonry",
+          "path": "others",
+          "title": "Others",
+          "icon": "mdi:home-lightning-bolt-outline",
+          "cards": []
         }
       ]
     }
