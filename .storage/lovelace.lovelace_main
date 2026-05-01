@@ -447,6 +447,10 @@
             },
             {
               "type": "light",
+              "entity": "light.garden_spots_all"
+            },
+            {
+              "type": "light",
               "entity": "light.garden_spots_entry"
             },
             {
@@ -489,10 +493,6 @@
                 }
               ],
               "title": "Siepe (davanti)"
-            },
-            {
-              "type": "light",
-              "entity": "light.garden_spots_all"
             }
           ]
         },
