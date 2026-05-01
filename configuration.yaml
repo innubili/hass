@@ -101,7 +101,7 @@ light:
       - light.spot5 # pseudo acacia
       - light.spot7 # ahorn
       - light.spot9 # hydrangea
-      - light.spot10 # palme
+      - light.spot1 # palme
 
   # Gruppo Settore ENTRY
   - platform: group
