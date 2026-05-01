@@ -12,7 +12,7 @@ garden_spots_entry:
   entities:
     - light.spot2 # prunus in mezzo
     - light.spot4 # prunus porta
-    - light.spot6 # prun
+    - light.spot6 # prunus strada
     - light.spot8. 
 
 # Group of Groups (The whole garden)
