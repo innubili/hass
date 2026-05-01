@@ -505,6 +505,10 @@
                 }
               ],
               "title": "Siepe (davanti)"
+            },
+            {
+              "type": "light",
+              "entity": "light.garden_spots_garage"
             }
           ]
         },
