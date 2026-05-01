@@ -110,7 +110,7 @@ light:
       - light.spot2 # prunus in mezzo
       - light.spot8 # prunus porta
       - light.spot6 # prunus strada
-      - light.spot # ledbar
+      - light.spot4 # ledbar
       - light.spot10 # palme
 
   # Gruppo DI GRUPPI (Il "Master" per tutto il giardino)
