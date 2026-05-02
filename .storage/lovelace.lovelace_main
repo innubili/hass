@@ -422,7 +422,8 @@
               "type": "entities",
               "entities": [
                 {
-                  "entity": "cover.tenda_grill"
+                  "entity": "cover.sunilus_io",
+                  "icon": "mdi:blinds-horizontal-closed"
                 }
               ],
               "title": "Grill"
