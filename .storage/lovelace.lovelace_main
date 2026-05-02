@@ -340,6 +340,13 @@
           "badges": [],
           "cards": [
             {
+              "type": "entities",
+              "entities": [
+                "sensor.outside_temperature",
+                "sensor.pergula_pergola_temperature"
+              ]
+            },
+            {
               "type": "light",
               "entity": "light.pergola_lights",
               "name": "Luci (Pergola)",
@@ -384,13 +391,6 @@
                 }
               ],
               "title": "Pergola"
-            },
-            {
-              "type": "entities",
-              "entities": [
-                "sensor.outside_temperature",
-                "sensor.pergula_pergola_temperature"
-              ]
             },
             {
               "type": "thermostat",
