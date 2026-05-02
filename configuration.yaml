@@ -127,7 +127,7 @@ template:
           target:
             entity_id: cover.pergola_tenda_sud
       # pool abdeckung
-      - name: "Pool Cover"
+      - name: "Pool Tetto"
         unique_id: pool_cover_unified
         device_class: shutter
         optimistic: true # Permette alle frecce di rimanere attive
