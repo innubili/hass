@@ -31,8 +31,9 @@ aarlo:
   tfa_username: !secret gmx_email
   tfa_password: !secret gmx_pwd
 
-# === garage cover ===
+
 template:
+  # --- garage cover ===
   - cover:
       - device_class: garage
         open_cover:
