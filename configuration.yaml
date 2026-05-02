@@ -131,7 +131,7 @@ template:
         unique_id: tenda_grill_corrected
         device_class: blind
         # Assicurati che 'cover.tenda_gartenhusl' sia l'ID esatto visto nei Developer Tools
-        state: blind. .te .gartenhaus_tenda.state
+        state: cover.gartenhaus_tenda.state
         position: cover.gartenhaus_tenda.position
         open_cover:
           action: cover.open_cover
