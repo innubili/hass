@@ -128,7 +128,7 @@ cover:
       # --- Pergola Roof ---
       pergola_tetto_corrected:
         device_class: blind
-        friendly_name: "Pergola Roof"
+        friendly_name: "Pergola Tetto"
         value_template: "{{ 'closed' if is_state('cover.pergola_tetto', 'open') else 'open' }}"
         position_template: "{{ 100 - (state_attr('cover.pergola_tetto', 'current_position') | int(0)) }}"
         open_cover:
