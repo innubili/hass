@@ -142,7 +142,7 @@
       data: {}
   mode: single
 
-- id: 'pergola_roof_safety_master'
+- id: "pergola_roof_safety_master"
   alias: "Pergola: Chiusura Sicurezza Tetto"
   description: "Chiude il tetto se piove, dopo le 23:00 o se è inverno"
   mode: restart
@@ -151,11 +151,11 @@
     - trigger: state
       entity_id: weather.home # Verifica l'ID esatto in Developer Tools > States
       to: "rainy"
-    
+
     # 2. NOTTE: Controllo alle 23:00
     - trigger: time
       at: "23:00:00"
-    
+
     # 3. STAGIONE: Trigger quando inizia l'inverno
     - trigger: state
       entity_id: sensor.season
