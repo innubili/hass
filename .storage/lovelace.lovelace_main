@@ -18,10 +18,6 @@
                   "entity": "person.mary"
                 },
                 {
-                  "entity": "device_tracker.mary_s_ix",
-                  "icon": "mdi:phone"
-                },
-                {
                   "entity": "person.rudy_federici"
                 }
               ]
