@@ -409,6 +409,17 @@
                 }
               ],
               "title": "Grill"
+            },
+            {
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "cover.pergola_tende"
+                }
+              ],
+              "title": "Grill",
+              "state_color": true,
+              "show_header_toggle": false
             }
           ]
         },
