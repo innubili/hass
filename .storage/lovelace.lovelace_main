@@ -417,6 +417,16 @@
               "entity": "climate.cosmicbeam_smart",
               "name": "Riscaldamento (Pergola)",
               "show_current_as_primary": true
+            },
+            {
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "cover.gartenhaus_tenda",
+                  "name": "Gartenhaus / Grill"
+                }
+              ],
+              "title": "Grill"
             }
           ]
         },
