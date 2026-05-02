@@ -360,9 +360,6 @@
                 },
                 {
                   "entity": "cover.pergola_tetto_2"
-                },
-                {
-                  "entity": "cover.gartenhaus_tenda"
                 }
               ],
               "title": "Pergola"
