@@ -104,12 +104,8 @@ pool_open_sequence:
   alias: "Sequence: Open Pool"
   icon: mdi:pool
   sequence:
-    # --- 1. Pulse STOP ---
+    # --- 1. Enable Motor (Freigabe = ON) ---
     - action: switch.turn_on
-      target:
-        entity_id: switch.pool_u_aussenbekl_pool_stop
-    - delay: "00:00:01"
-    - action: switch.turn_off
       target:
         entity_id: switch.pool_u_aussenbekl_pool_stop
     - delay: "00:00:01"
@@ -122,18 +118,12 @@ pool_open_sequence:
       target:
         entity_id: switch.pool_u_aussenbekl_pool_open
 
-# --- pool close ---
-
 pool_close_sequence:
   alias: "Sequence: Close Pool"
   icon: mdi:pool
   sequence:
-    # --- 1. Pulse STOP ---
+    # --- 1. Enable Motor (Freigabe = ON) ---
     - action: switch.turn_on
-      target:
-        entity_id: switch.pool_u_aussenbekl_pool_stop
-    - delay: "00:00:01"
-    - action: switch.turn_off
       target:
         entity_id: switch.pool_u_aussenbekl_pool_stop
     - delay: "00:00:01"
@@ -146,16 +136,11 @@ pool_close_sequence:
       target:
         entity_id: switch.pool_u_aussenbekl_pool_close
 
-# --- pool stop ---
 pool_stop_sequence:
   alias: "Sequence: Stop Pool"
   icon: mdi:stop
   sequence:
-    # --- Pulse STOP ---
-    - action: switch.turn_on
-      target:
-        entity_id: switch.pool_u_aussenbekl_pool_stop
-    - delay: "00:00:01"
+    # --- Disable Motor (Stop = OFF) ---
     - action: switch.turn_off
       target:
         entity_id: switch.pool_u_aussenbekl_pool_stop

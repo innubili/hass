@@ -257,7 +257,7 @@
               "type": "entities",
               "entities": [
                 {
-                  "entity": "cover.copertura_piscina"
+                  "entity": "cover.pool_tetto"
                 }
               ],
               "title": "Piscina Tetto",

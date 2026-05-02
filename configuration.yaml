@@ -126,7 +126,8 @@ template:
           action: cover.stop_cover
           target:
             entity_id: cover.pergola_tenda_sud
-      # pool abdeckung
+
+      # ---- pool abdeckung ---
       - name: "Pool Tetto"
         unique_id: pool_cover_unified_shutter
         device_class: shutter
