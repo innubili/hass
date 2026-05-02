@@ -347,17 +347,6 @@
               ]
             },
             {
-              "type": "light",
-              "entity": "light.pergola_lights",
-              "name": "Luci (Pergola)",
-              "hold_action": {
-                "action": "none"
-              },
-              "double_tap_action": {
-                "action": "toggle"
-              }
-            },
-            {
               "show_name": true,
               "show_icon": true,
               "type": "button",
@@ -391,6 +380,17 @@
                 }
               ],
               "title": "Pergola"
+            },
+            {
+              "type": "light",
+              "entity": "light.pergola_lights",
+              "name": "Luci (Pergola)",
+              "hold_action": {
+                "action": "none"
+              },
+              "double_tap_action": {
+                "action": "toggle"
+              }
             },
             {
               "type": "thermostat",
