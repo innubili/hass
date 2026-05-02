@@ -270,23 +270,6 @@
               "entity": "switch.pergula_pool_lights"
             },
             {
-              "show_name": true,
-              "show_icon": true,
-              "type": "button",
-              "tap_action": {
-                "action": "call-service",
-                "service": "automation.trigger",
-                "service_data": {},
-                "target": {
-                  "entity_id": "automation.pool_auto_open_duplicate_1_2"
-                }
-              },
-              "entity": "switch.pool_u_aussenbekl_poolclose",
-              "name": "Pool Close",
-              "icon": "mdi:lock-outline",
-              "show_state": true
-            },
-            {
               "type": "entities",
               "entities": [
                 {
