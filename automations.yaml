@@ -139,3 +139,74 @@
       entity_id: light.garden_spots_all
     data: {}
   mode: single
+
+  - id: 'pergola_safety_logic_somfy'
+  alias: "Pergola Safety: Night, Rain, Winter"
+  description: "Chiude il tetto Somfy alle 23:00, se piove o durante l'inverno"
+  mode: restart
+  triggers:
+    # 1. NIGHT: Check at 23:00 and every hour during the night in case it's manually opened
+    - trigger: time
+      at: "23:00:00"
+    - trigger: time_pattern
+      hours: "/1"
+    
+    # 2. RAIN: Immediate trigger if weather changes
+    - trigger: state
+      entity_id: weather.home # Check your exact entity ID in Developer Tools
+      to: "rainy"
+    
+    # 3. WINTER: Trigger when the season starts
+    - trigger: state
+      entity_id: sensor.season
+      to: "winter"
+
+  conditions:
+    # Only proceed if the roof is NOT closed
+    - condition: state
+      entity_id: cover.pergola_tetto
+      state: "open"
+
+  actions:
+    - choose:
+        # Condition A: It is Night (between 23:00 and 07:00)
+        - conditions:
+            - condition: time
+              after: "23:00:00"
+              before: "07:00:00"
+          sequence:
+            - action: cover.close_cover
+              target:
+                entity_id: cover.pergola_tetto
+            - action: notify.notify
+              data:
+                title: "Pergola: Night Closure"
+                message: "Roof closed for the night."
+
+        # Condition B: It is Raining (or about to rain)
+        - conditions:
+            - condition: state
+              entity_id: weather.home
+              state: "rainy"
+          sequence:
+            - action: cover.close_cover
+              target:
+                entity_id: cover.pergola_tetto
+            - action: notify.notify
+              data:
+                title: "Pergola: Rain Alert"
+                message: "Roof closed due to rain detection."
+
+        # Condition C: It is Winter
+        - conditions:
+            - condition: state
+              entity_id: sensor.season
+              state: "winter"
+          sequence:
+            - action: cover.close_cover
+              target:
+                entity_id: cover.pergola_tetto
+            - action: notify.notify
+              data:
+                title: "Pergola: Winter Season"
+                message: "Roof closed because it is Winter."
