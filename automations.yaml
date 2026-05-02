@@ -140,7 +140,7 @@
     data: {}
   mode: single
 
-  - id: 'pergola_safety_logic_somfy'
+- id: 'pergola_safety_logic_somfy'
   alias: "Pergola Safety: Night, Rain, Winter"
   description: "Chiude il tetto Somfy alle 23:00, se piove o durante l'inverno"
   mode: restart
