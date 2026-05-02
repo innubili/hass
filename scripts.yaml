@@ -103,22 +103,55 @@ pool_open_sequence:
   alias: "Sequence: Open Pool"
   icon: mdi:pool
   sequence:
+    # --- 1. Pulse STOP ---
     - action: switch.turn_on
       target:
-        entity_id: switch.pool_u_aussenbekl_pool_stop # Relay 6
+        entity_id: switch.pool_u_aussenbekl_pool_stop
     - delay: "00:00:01"
+    - action: switch.turn_off
+      target:
+        entity_id: switch.pool_u_aussenbekl_pool_stop
+    - delay: "00:00:01"
+    # --- 2. Pulse OPEN ---
     - action: switch.turn_on
       target:
-        entity_id: switch.pool_u_aussenbekl_pool_open # Relay 7[cite: 3]
+        entity_id: switch.pool_u_aussenbekl_pool_auf
+    - delay: "00:00:01"
+    - action: switch.turn_off
+      target:
+        entity_id: switch.pool_u_aussenbekl_pool_auf
 
 pool_close_sequence:
   alias: "Sequence: Close Pool"
   icon: mdi:pool
   sequence:
+    # --- 1. Pulse STOP ---
     - action: switch.turn_on
       target:
-        entity_id: switch.pool_u_aussenbekl_pool_stop # Relay 6[cite: 3]
+        entity_id: switch.pool_u_aussenbekl_pool_stop
     - delay: "00:00:01"
+    - action: switch.turn_off
+      target:
+        entity_id: switch.pool_u_aussenbekl_pool_stop
+    - delay: "00:00:01"
+    # --- 2. Pulse CLOSE ---
     - action: switch.turn_on
       target:
-        entity_id: switch.pool_u_aussenbekl_pool_close # Relay 8[cite: 3]
+        entity_id: switch.pool_u_aussenbekl_pool_close
+    - delay: "00:00:01"
+    - action: switch.turn_off
+      target:
+        entity_id: switch.pool_u_aussenbekl_pool_close
+
+pool_stop_sequence:
+  alias: "Sequence: Stop Pool"
+  icon: mdi:stop
+  sequence:
+    # --- Pulse STOP ---
+    - action: switch.turn_on
+      target:
+        entity_id: switch.pool_u_aussenbekl_pool_stop
+    - delay: "00:00:01"
+    - action: switch.turn_off
+      target:
+        entity_id: switch.pool_u_aussenbekl_pool_stop
