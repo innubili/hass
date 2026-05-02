@@ -176,7 +176,7 @@
         # CONDIZIONE A: È inverno?
         - conditions:
             - condition: state
-              entity_id: 
+              entity_id: seas
               state: "winter"
           sequence:
             - action: cover.close_cover
