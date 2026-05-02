@@ -98,6 +98,7 @@ garage_master_toggle:
       else:
         # It's either open or stuck - use the multi-attempt close
         - action: script.garage_multi_attempt_close
+        
 pool_open_sequence:
   alias: "Sequence: Open Pool"
   icon: mdi:pool
