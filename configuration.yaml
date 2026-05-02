@@ -131,7 +131,7 @@ template:
         unique_id: tenda_grill_corrected
         device_class: blind
         # Assicurati che 'cover.tenda_gartenhusl' sia l'ID esatto visto nei Developer Tools
-        state: "{{ 'closed' if is_state('cover.pergola_tenda_sud', 'open') else 'open' }}"
+        state: "{{ 'closed' if is_state('cover.gartenhaus_tenda', 'closed') else 'open' }}"
         position: cover.gartenhaus_tenda.position
         open_cover:
           action: cover.open_cover
