@@ -100,7 +100,7 @@ garage_master_toggle:
         - action: script.garage_multi_attempt_close
 
 
-# --- pool op THE MASTER BRAIN ---
+# --- pool open ---
 pool_open_sequence:
   alias: "Sequence: Open Pool"
   icon: mdi:pool
