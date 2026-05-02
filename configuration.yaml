@@ -126,7 +126,19 @@ template:
           action: cover.stop_cover
           target:
             entity_id: cover.pergola_tenda_sud
-        
+      - cover:
+      - name: "Copertura Piscina"
+        unique_id: pool_cover_unified
+        device_class: shutter
+        optimistic: true  # Permette alle frecce di rimanere attive
+        open_cover:
+          action: script.pool_open_sequence
+        close_cover:
+          action: script.pool_close_sequence
+        stop_cover:
+          action: switch.turn_on
+          target:
+            entity_id: switch.pool_u_aussenbekl_pool_stop[cite: 3]
 
 # === CORRECTED GARDEN SPOTS ===
 switch:
