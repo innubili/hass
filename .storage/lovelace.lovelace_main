@@ -376,26 +376,6 @@
               }
             },
             {
-              "type": "button",
-              "tap_action": {
-                "action": "call-service",
-                "service": "automation.trigger",
-                "service_data": {},
-                "target": {
-                  "entity_id": "automation.bbq_open"
-                }
-              },
-              "name": "open BBQ & Pergola NORD",
-              "icon": "mdi:garage-open-variant",
-              "show_state": true,
-              "hold_action": {
-                "action": "call-service",
-                "service": "",
-                "service_data": {},
-                "target": {}
-              }
-            },
-            {
               "type": "entities",
               "entities": [
                 {
