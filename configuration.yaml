@@ -33,7 +33,7 @@ aarlo:
 
 
 template:
-  # --- garage cover ===
+  # --- garage cover ---
   - cover:
       - device_class: garage
         open_cover:
