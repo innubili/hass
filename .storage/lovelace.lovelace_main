@@ -350,16 +350,16 @@
               "type": "entities",
               "entities": [
                 {
-                  "entity": "cover.pergola_tenda_sud"
+                  "entity": "cover.pergola_tenda_sud_corrected"
                 },
                 {
-                  "entity": "cover.pergola_tenda_nord"
+                  "entity": "cover.pergola_tenda_nord_corrected"
                 },
                 {
-                  "entity": "cover.pergola_tenda_west"
+                  "entity": "cover.pergola_tenda_west_corrected"
                 },
                 {
-                  "entity": "cover.pergola_tetto"
+                  "entity": "cover.pergola_tetto_corrected"
                 }
               ],
               "title": "Pergola"
