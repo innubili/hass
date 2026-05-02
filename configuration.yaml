@@ -47,8 +47,7 @@ template:
         default_entity_id: cover.garage_door_cover
         unique_id: my_custom_garage_door_cover_101
         name: Garage Door Cover
-template:
-  - cover:
+
       # --- Pergola Roof ---
       - name: "Pergola Tetto"
         unique_id: pergola_tetto_corrected
