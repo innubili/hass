@@ -47,6 +47,108 @@ template:
         default_entity_id: cover.garage_door_cover
         unique_id: my_custom_garage_door_cover_101
         name: Garage Door Cover
+template:
+  - cover:
+      # --- Pergola Roof ---
+      - name: "Pergola Tetto"
+        unique_id: pergola_tetto_corrected
+        device_class: blind
+        state: "{{ 'closed' if is_state('cover.pergola_tetto', 'open') else 'open' }}"
+        position: "{{ 100 - (state_attr('cover.pergola_tetto', 'current_position') | int(0)) }}"
+        open_cover:
+          action: cover.close_cover
+          target:
+            entity_id: cover.pergola_tetto
+        close_cover:
+          action: cover.open_cover
+          target:
+            entity_id: cover.pergola_tetto
+        stop_cover:
+          action: cover.stop_cover
+          target:
+            entity_id: cover.pergola_tetto
+        set_cover_position:
+          action: cover.set_cover_position
+          target:
+            entity_id: cover.pergola_tetto
+          data:
+            position: "{{ 100 - position }}"
+
+      # --- Pergola North (Dietro) ---
+      - name: "Pergola Tenda Dietro"
+        unique_id: pergola_tenda_nord_corrected
+        device_class: shade
+        state: "{{ 'closed' if is_state('cover.pergola_tenda_nord', 'open') else 'open' }}"
+        position: "{{ 100 - (state_attr('cover.pergola_tenda_nord', 'current_position') | int(0)) }}"
+        open_cover:
+          action: cover.close_cover
+          target:
+            entity_id: cover.pergola_tenda_nord
+        close_cover:
+          action: cover.open_cover
+          target:
+            entity_id: cover.pergola_tenda_nord
+        stop_cover:
+          action: cover.stop_cover
+          target:
+            entity_id: cover.pergola_tenda_nord
+
+      # --- Pergola West (Siepe) ---
+      - name: "Pergola Tenda Siepe"
+        unique_id: pergola_tenda_west_corrected
+        device_class: shade
+        state: "{{ 'closed' if is_state('cover.pergola_tenda_west', 'open') else 'open' }}"
+        position: "{{ 100 - (state_attr('cover.pergola_tenda_west', 'current_position') | int(0)) }}"
+        open_cover:
+          action: cover.close_cover
+          target:
+            entity_id: cover.pergola_tenda_west
+        close_cover:
+          action: cover.open_cover
+          target:
+            entity_id: cover.pergola_tenda_west
+        stop_cover:
+          action: cover.stop_cover
+          target:
+            entity_id: cover.pergola_tenda_west
+
+      # --- Pergola South (Strada) ---
+      - name: "Pergola Tenda Strada"
+        unique_id: pergola_tenda_sud_corrected
+        device_class: shade
+        state: "{{ 'closed' if is_state('cover.pergola_tenda_sud', 'open') else 'open' }}"
+        position: "{{ 100 - (state_attr('cover.pergola_tenda_sud', 'current_position') | int(0)) }}"
+        open_cover:
+          action: cover.close_cover
+          target:
+            entity_id: cover.pergola_tenda_sud
+        close_cover:
+          action: cover.open_cover
+          target:
+            entity_id: cover.pergola_tenda_sud
+        stop_cover:
+          action: cover.stop_cover
+          target:
+            entity_id: cover.pergola_tenda_sud
+
+      # --- Garden House ---
+      - name: "Gartenhaus Tenda"
+        unique_id: tenda_gartenhusl_corrected
+        device_class: awning
+        state: "{{ 'closed' if is_state('cover.tenda_gartenhusl', 'open') else 'open' }}"
+        position: "{{ 100 - (state_attr('cover.tenda_gartenhusl', 'current_position') | int(0)) }}"
+        open_cover:
+          action: cover.close_cover
+          target:
+            entity_id: cover.tenda_gartenhusl
+        close_cover:
+          action: cover.open_cover
+          target:
+            entity_id: cover.tenda_gartenhusl
+        stop_cover:
+          action: cover.stop_cover
+          target:
+            entity_id: cover.tenda_gartenhusl
 
 # === CORRECTED GARDEN SPOTS ===
 switch:
