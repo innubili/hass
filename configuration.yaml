@@ -138,7 +138,7 @@ template:
           target:
             entity_id: cover.gartenhaus_tenda
         close_cover:
-          action: cover.open_cover
+          action: cover.close_cover
           target:
             entity_id: cover.gartenhaus_tenda
         stop_cover:
