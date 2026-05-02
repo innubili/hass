@@ -386,6 +386,13 @@
               "title": "Pergola"
             },
             {
+              "type": "entities",
+              "entities": [
+                "sensor.outside_temperature",
+                "sensor.pergula_pergola_temperature"
+              ]
+            },
+            {
               "type": "thermostat",
               "entity": "climate.cosmicbeam_smart",
               "name": "Riscaldamento (Pergola)",
