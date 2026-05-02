@@ -140,11 +140,11 @@ template:
         close_cover:
           action: cover.open_cover
           target:
-            entity_id: cover.tenda_grilltenhusl
+            entity_id: cover.tenda_grill
         stop_cover:
           action: cover.stop_cover
           target:
-            entity_id: cover.tenda_gartenhusl
+            entity_id: cover.tenda_grtenhusl
 
 # === CORRECTED GARDEN SPOTS ===
 switch:
