@@ -347,23 +347,6 @@
               ]
             },
             {
-              "show_name": true,
-              "show_icon": true,
-              "type": "button",
-              "tap_action": {
-                "action": "call-service",
-                "service": "automation.trigger",
-                "service_data": {},
-                "target": {
-                  "entity_id": "automation.cambiatoio_toggle"
-                }
-              },
-              "entity": "",
-              "name": "Cambiatoio",
-              "icon": "mdi:curtains-closed",
-              "show_state": true
-            },
-            {
               "type": "entities",
               "entities": [
                 {
@@ -391,6 +374,23 @@
               "double_tap_action": {
                 "action": "toggle"
               }
+            },
+            {
+              "show_name": true,
+              "show_icon": true,
+              "type": "button",
+              "tap_action": {
+                "action": "call-service",
+                "service": "automation.trigger",
+                "service_data": {},
+                "target": {
+                  "entity_id": "automation.cambiatoio_toggle"
+                }
+              },
+              "entity": "",
+              "name": "Cambiatoio",
+              "icon": "mdi:curtains-closed",
+              "show_state": true
             },
             {
               "type": "thermostat",
