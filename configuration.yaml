@@ -191,7 +191,7 @@ cover:
       # --- Pergola South ---
       pergola_tenda_sud_corrected:
         device_class: shade
-        friendly_name: "Pergola Senda Strada"
+        friendly_name: "Pergola Tenda Strada"
         value_template: "{{ 'closed' if is_state('cover.pergola_tenda_sud', 'open') else 'open' }}"
         position_template: "{{ 100 - (state_attr('cover.pergola_tenda_sud', 'current_position') | int(0)) }}"
         open_cover:
