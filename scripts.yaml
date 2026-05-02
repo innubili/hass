@@ -119,7 +119,7 @@ pool_open_sequence:
     - delay: "00:00:01"
     - action: switch.turn_off
       target:
-        entity_id: switch.pool_u_aussenbekl_pool_auf
+        entity_id: switch.pool_u_aussenbekl_pool_opne
 
 pool_close_sequence:
   alias: "Sequence: Close Pool"
