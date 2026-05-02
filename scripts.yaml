@@ -83,7 +83,7 @@ garage_multi_attempt_close:
             title: "CRITICAL: Garage Failure"
             message: "Failed to close after 5 attempts. Check for obstructions at Andhauserstr. 71!"
 
-# --- THE MASTER BRAIN ---
+# --- garage THE MASTER BRAIN ---
 garage_master_toggle:
   alias: "Garage Master Toggle"
   sequence:
@@ -99,6 +99,7 @@ garage_master_toggle:
         # It's either open or stuck - use the multi-attempt close
         - action: script.garage_multi_attempt_close
 
+        
 pool_open_sequence:
   alias: "Sequence: Open Pool"
   icon: mdi:pool
