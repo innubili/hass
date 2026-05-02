@@ -132,7 +132,7 @@ template:
         device_class: blind
         # Assicurati che 'cover.tenda_gartenhusl' sia l'ID esatto visto nei Developer Tools
         state: "{{ 'closed' if is_state('cover.gartenhaus_tenda', 'closed') else 'open' }}"
-        position: "{{ 100 - (state_attr('cover.pergola_tenda_sud', 'current_position') | int(0)) }}"        open_cover:
+        position: "{{ 100 - (state_attr('cover.ga .pergola_tenda_sud', 'current_position') | int(0)) }}"        open_cover:
           action: cover.open_cover
           target:
             entity_id: cover.gartenhaus_tenda
