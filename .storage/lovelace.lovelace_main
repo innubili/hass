@@ -264,8 +264,8 @@
               "tap_action": {
                 "action": "toggle"
               },
-              "name": "Pool LIGHT",
-              "icon": "mdi:lightbulb-auto",
+              "name": "Licht+Gegenstrom",
+              "icon": "mdi:swim",
               "show_state": true,
               "entity": "switch.pergula_pool_lights"
             },
