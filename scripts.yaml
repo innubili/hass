@@ -115,7 +115,7 @@ pool_open_sequence:
     # --- 2. Pulse OPEN ---
     - action: switch.turn_on
       target:
-        entity_id: switch.pool_u_aussenbekl_pool_auf
+        entity_id: switch.pool_u_aussenbekl_pool_
     - delay: "00:00:01"
     - action: switch.turn_off
       target:
