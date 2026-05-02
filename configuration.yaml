@@ -204,7 +204,7 @@ light:
 cover:
   - platform: group
     name: "Tende Pergola (tutte)"
-    unique_id: pergola_tende
+    unique_id: pergola_tende_tutte
     entities:
       - cover.pergola_tenda_strada
       - cover.pergola_tenda_dietro
