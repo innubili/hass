@@ -396,12 +396,6 @@
               }
             },
             {
-              "type": "thermostat",
-              "entity": "climate.cosmicbeam_smart",
-              "name": "Riscaldamento (Pergola)",
-              "show_current_as_primary": true
-            },
-            {
               "type": "entities",
               "entities": [
                 {
@@ -409,6 +403,12 @@
                 }
               ],
               "title": "Grill"
+            },
+            {
+              "type": "thermostat",
+              "entity": "climate.cosmicbeam_smart",
+              "name": "Riscaldamento (Pergola)",
+              "show_current_as_primary": true
             },
             {
               "type": "entities",
