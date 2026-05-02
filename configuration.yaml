@@ -132,7 +132,7 @@ template:
         device_class: blind
         # Assicurati che 'cover.tenda_gartenhusl' sia l'ID esatto visto nei Developer Tools
         state: cover.gartenhaus_tenda.state
-        position: "{{ 100 - (state_attr('cover.gartenhaus_tenda', 'current_position') | int(0)) }}"
+        position: cover.gartenhaus_tenda', 'current_position') | int(0)) }}"
         open_cover:
           action: cover.close_cover
           target:
