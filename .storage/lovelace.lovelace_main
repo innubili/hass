@@ -286,32 +286,6 @@
                 }
               ],
               "state_color": true
-            },
-            {
-              "type": "gauge",
-              "entity": "sensor.asin_aqua_home_water_temperature",
-              "name": "Acqua",
-              "unit": "°C",
-              "min": 20,
-              "max": 30,
-              "needle": true
-            },
-            {
-              "show_name": true,
-              "show_icon": true,
-              "type": "button",
-              "tap_action": {
-                "action": "call-service",
-                "service": "automation.trigger",
-                "service_data": {},
-                "target": {
-                  "entity_id": "automation.new_automation"
-                }
-              },
-              "entity": "switch.pool_u_aussenbekl_poolopen",
-              "name": "Pool Open",
-              "icon": "mdi:pool",
-              "show_state": false
             }
           ]
         },
