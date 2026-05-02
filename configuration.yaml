@@ -128,7 +128,7 @@ template:
             entity_id: cover.pergola_tenda_sud
 
       # --- Garden House ---
-      - name: "Gartenhaus Tenda"
+      - name: "Gartenhaus Tenda Grill"
         unique_id: tenda_gartenhusl_corrected
         device_class: awning
         state: "{{ 'closed' if is_state('cover.tenda_gartenhusl', 'open') else 'open' }}"
