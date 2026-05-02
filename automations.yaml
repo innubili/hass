@@ -176,7 +176,7 @@
         # CONDIZIONE A: È inverno?
         - conditions:
             - condition: state
-              entity_id: sensor.season
+              entity_id: 
               state: "winter"
           sequence:
             - action: cover.close_cover
