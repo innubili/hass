@@ -203,7 +203,7 @@ light:
 
 cover:
   - platform: group
-    name: "Tende Pergola9tutte)"
+    name: "Tende Pergola (tutte)"
     entities:
       - cover.pergola_tenda_strada
       - cover.pergola_tenda_dietro
