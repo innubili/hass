@@ -166,14 +166,6 @@
               "type": "vertical-stack",
               "cards": [
                 {
-                  "show_current": false,
-                  "show_forecast": true,
-                  "type": "weather-forecast",
-                  "entity": "weather.home",
-                  "forecast_type": "daily",
-                  "forecast_slots": 10
-                },
-                {
                   "show_current": true,
                   "show_forecast": true,
                   "type": "weather-forecast",
@@ -240,6 +232,14 @@
                     }
                   ],
                   "title": "Humidity"
+                },
+                {
+                  "show_current": false,
+                  "show_forecast": true,
+                  "type": "weather-forecast",
+                  "entity": "weather.home",
+                  "forecast_type": "daily",
+                  "forecast_slots": 10
                 }
               ],
               "title": "Clima"
