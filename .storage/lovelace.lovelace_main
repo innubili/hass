@@ -506,6 +506,15 @@
                 }
               ],
               "title": "Siepe (davanti)"
+            },
+            {
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "cover.tenda_grill"
+                }
+              ],
+              "title": "Grill"
             }
           ]
         },
