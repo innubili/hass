@@ -147,6 +147,8 @@ pool_close_sequence:
       target:
         entity_id: switch.pool_u_aussenbekl_pool_close
 
+# --- pool close ---
+
 pool_stop_sequence:
   alias: "Sequence: Stop Pool"
   icon: mdi:stop
