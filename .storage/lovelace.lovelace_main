@@ -254,6 +254,17 @@
           "badges": [],
           "cards": [
             {
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "cover.copertura_piscina"
+                }
+              ],
+              "title": "Piscina Tetto",
+              "state_color": true,
+              "show_header_toggle": false
+            },
+            {
               "show_name": true,
               "show_icon": true,
               "type": "button",
@@ -264,17 +275,6 @@
               "icon": "mdi:swim",
               "show_state": true,
               "entity": "switch.pergula_pool_lights"
-            },
-            {
-              "type": "entities",
-              "entities": [
-                {
-                  "entity": "cover.copertura_piscina"
-                }
-              ],
-              "title": "Piscina Tetto",
-              "state_color": true,
-              "show_header_toggle": false
             },
             {
               "type": "entities",
