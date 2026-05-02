@@ -200,10 +200,10 @@ light:
       - light.spot7 # ahorn
       - light.spot8 # ................prunus porta
       - light.spot9 # hydrangea
-      
+
 cover:
   - platform: group
-    name: "Tende Pergola Gruppo"
+    name: "Tende Pergola9tuttE"
     entities:
       - cover.pergola_tenda_strada
       - cover.pergola_tenda_dietro
