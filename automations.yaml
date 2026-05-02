@@ -168,7 +168,7 @@
   conditions:
     # Esegui solo se il tetto è attualmente APERTO
     - condition: state
-      entity_id: cover.pergola_tetto_corrected
+      entity_id: cover.tett .pergola_tetto_corrected
       state: "open"
 
   actions:
