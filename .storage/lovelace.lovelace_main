@@ -458,15 +458,6 @@
               "title": "Lights"
             },
             {
-              "type": "entities",
-              "entities": [
-                {
-                  "entity": "cover.tenda_gartenhusl"
-                }
-              ],
-              "title": "Garden"
-            },
-            {
               "type": "vertical-stack",
               "cards": [
                 {
