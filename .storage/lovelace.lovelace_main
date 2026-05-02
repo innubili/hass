@@ -350,19 +350,22 @@
               "type": "entities",
               "entities": [
                 {
-                  "entity": "cover.pergola_tenda_sud_corrected"
+                  "entity": "cover.pergola_tenda_strada"
                 },
                 {
-                  "entity": "cover.pergola_tenda_nord_corrected"
+                  "entity": "cover.pergola_tenda_dietro"
                 },
                 {
-                  "entity": "cover.pergola_tenda_west_corrected"
+                  "entity": "cover.pergola_tenda_siepe"
                 },
                 {
-                  "entity": "cover.pergola_tetto_corrected"
+                  "entity": "cover.pergola_tetto_2"
+                },
+                {
+                  "entity": "cover.gartenhaus_tenda"
                 }
               ],
-              "title": "Pergola"
+              "title": "Marquisen"
             },
             {
               "type": "light",
