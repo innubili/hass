@@ -437,6 +437,15 @@
           "badges": [],
           "cards": [
             {
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "cover.tenda_grill"
+                }
+              ],
+              "title": "Grill"
+            },
+            {
               "type": "vertical-stack",
               "cards": [
                 {
@@ -506,15 +515,6 @@
                 }
               ],
               "title": "Siepe (davanti)"
-            },
-            {
-              "type": "entities",
-              "entities": [
-                {
-                  "entity": "cover.tenda_grill"
-                }
-              ],
-              "title": "Grill"
             }
           ]
         },
