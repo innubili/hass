@@ -267,7 +267,7 @@
               "name": "Pool LIGHT",
               "icon": "mdi:lightbulb-auto",
               "show_state": true,
-              "entity": "light.pergula_poollight"
+              "entity": "switch.pergula_pool_lights"
             },
             {
               "show_name": true,
