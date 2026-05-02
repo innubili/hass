@@ -210,7 +210,7 @@ cover:
       # --- Garden House (Gartenhusl) ---
       tenda_gartenhusl_corrected:
         device_class: awning
-        friendly_name: "Garden House Awning"
+        friendly_name: "Garden"
         value_template: "{{ 'closed' if is_state('cover.tenda_gartenhusl', 'open') else 'open' }}"
         position_template: "{{ 100 - (state_attr('cover.tenda_gartenhusl', 'current_position') | int(0)) }}"
         open_cover:
