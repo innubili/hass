@@ -387,9 +387,9 @@
                   "entity_id": "automation.cambiatoio_toggle"
                 }
               },
-              "entity": "",
+              "entity": "cover.pergola_tende",
               "name": "Cambiatoio",
-              "icon": "mdi:curtains-closed",
+              "icon": "",
               "show_state": true
             },
             {
