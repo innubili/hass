@@ -172,7 +172,7 @@ cover:
       # --- Pergola West ---
       pergola_tenda_west_corrected:
         device_class: shade
-        friendly_name: "Pergola Ternda OWest Shade"
+        friendly_name: "Pergola Ternda Ovest"
         value_template: "{{ 'closed' if is_state('cover.pergola_tenda_west', 'open') else 'open' }}"
         position_template: "{{ 100 - (state_attr('cover.pergola_tenda_west', 'current_position') | int(0)) }}"
         open_cover:
