@@ -123,6 +123,8 @@ pool_open_sequence:
       target:
         entity_id: switch.pool_u_aussenbekl_pool_open
 
+# --- pool open ---
+
 pool_close_sequence:
   alias: "Sequence: Close Pool"
   icon: mdi:pool
