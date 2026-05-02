@@ -126,6 +126,25 @@ template:
           action: cover.stop_cover
           target:
             entity_id: cover.pergola_tenda_sud
+      # --- gardenhause ----
+      - name: "Tenda Grill"
+        unique_id: tenda_grill_corrected
+        device_class: awning
+        # Assicurati che 'cover.tenda_gartenhusl' sia l'ID esatto visto nei Developer Tools
+        state: "{{ 'closed' if is_state('cover.gartenhaus_tenda', 'open') else 'open' }}"
+        position: "{{ 100 - (state_attr('cover..gartenhaus_tenda', 'current_position') | int(0)) }}"
+        open_cover:
+          action: cover.close_cover
+          target:
+            entity_id: cover.gartenhaus_tenda
+        close_cover:
+          action: cover.open_cover
+          target:
+            entity_id: cover..gartenhaus_tenda
+        stop_cover:
+          action: cover.stop_cover
+          target:
+            entity_id: cover.gartenhaus_tenda
 
 # === CORRECTED GARDEN SPOTS ===
 switch:

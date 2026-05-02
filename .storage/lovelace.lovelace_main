@@ -422,8 +422,7 @@
               "type": "entities",
               "entities": [
                 {
-                  "entity": "cover.gartenhaus_tenda",
-                  "name": "Gartenhaus / Grill"
+                  "entity": "cover.sunilus_io"
                 }
               ],
               "title": "Grill"
