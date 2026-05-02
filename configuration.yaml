@@ -136,7 +136,7 @@ template:
         open_cover:
           action: cover.close_cover
           target:
-            entity_id: cover.tenda_gill
+            entity_id: cover.tenda_grill
         close_cover:
           action: cover.open_cover
           target:
