@@ -141,9 +141,8 @@
     data: {}
   mode: single
 - id: pergola_roof_safety_master
-  alias: 'Pergola: Chiusura Sicurezza Tetto'
+  alias: 'Pergola: Security Roof Closing'
   description: Chiude il tetto se piove, dopo le 23:00 o se è inverno
-  mode: restart
   triggers:
   - trigger: state
     entity_id: weather.home
@@ -189,6 +188,7 @@
         data:
           title: 'Pergola: Sicurezza'
           message: Tetto chiuso per pioggia o orario notturno.
+  mode: restart
 - id: '1777875422247'
   alias: Temp. Garden (LCN) ON at sunset + 30min
   description: ''
