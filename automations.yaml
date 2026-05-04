@@ -196,5 +196,12 @@
     event: sunset
     offset: 00:30:00
   conditions: []
-  actions: []
+  actions:
+  - action: switch.turn_on
+    metadata: {}
+    target:
+      entity_id:
+      - switch.garden_entry_spots_fixed
+      - switch.garden_garage_spots_fixed
+    data: {}
   mode: single
