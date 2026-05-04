@@ -205,3 +205,19 @@
       - switch.garden_garage_spots_fixed
     data: {}
   mode: single
+- id: '1777875630147'
+  alias: Onn o clock (LCN) spots off
+  description: ''
+  triggers:
+  - trigger: time
+    at: 01:00:00
+  conditions: []
+  actions:
+  - action: switch.turn_off
+    metadata: {}
+    target:
+      entity_id:
+      - switch.garden_entry_spots_fixed
+      - switch.garden_garage_spots_fixed
+    data: {}
+  mode: single
