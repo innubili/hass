@@ -1,206 +1,200 @@
-- id: "1670965598190"
+- id: '1670965598190'
   alias: garage open at 22:00
   triggers:
-    - trigger: time
-      at:
-        - "22:00:00"
-        - "23:00:00"
-        - "23:59:59"
+  - trigger: time
+    at:
+    - '22:00:00'
+    - '23:00:00'
+    - '23:59:59'
   conditions:
-    - condition: state
-      entity_id: binary_sensor.garage_door_fully_closed
-      state: "off"
+  - condition: state
+    entity_id: binary_sensor.garage_door_fully_closed
+    state: 'off'
   actions:
-    - action: script.garage_multi_attempt_close
+  - action: script.garage_multi_attempt_close
   mode: single
 - id: garage_closure_watchdog
   alias: Garage Closure Watchdog
   description: Ensures door closes even if triggered by car remote
   triggers:
-    - trigger: state
-      entity_id: binary_sensor.garage_door_fully_open
-      from: "on"
-      to: "off"
+  - trigger: state
+    entity_id: binary_sensor.garage_door_fully_open
+    from: 'on'
+    to: 'off'
   actions:
-    - delay: 00:00:20
-    - if:
-        - condition: state
-          entity_id: binary_sensor.garage_door_fully_closed
-          state: "off"
-      then:
-        - action: script.garage_smart_recovery
+  - delay: 00:00:20
+  - if:
+    - condition: state
+      entity_id: binary_sensor.garage_door_fully_closed
+      state: 'off'
+    then:
+    - action: script.garage_smart_recovery
   mode: restart
-- id: "1777551835396"
+- id: '1777551835396'
   alias: Irrigation Hedge South
-  description:
-    Irriga la siepe a sud al mattino. Controlla il sensore TS0601, le previsioni
+  description: Irriga la siepe a sud al mattino. Controlla il sensore TS0601, le previsioni
     meteo  e usa la tecnica Soak & Cycle (2 min on, 10 min pausa, 15 min on).
   triggers:
-    - at: 06:00:00
-      trigger: time
+  - at: 06:00:00
+    trigger: time
   conditions:
-    - condition: numeric_state
-      entity_id: sensor.sgs01z_taxus_soil_moisture
-      below: 40
-    - condition: not
-      conditions:
-        - condition: state
-          entity_id: weather.forecast_home
-          state: rainy
-        - condition: state
-          entity_id: weather.forecast_home
-          state: pouring
-        - condition: state
-          entity_id: weather.forecast_home
-          state: lightning_rainy
+  - condition: numeric_state
+    entity_id: sensor.sgs01z_taxus_soil_moisture
+    below: 40
+  - condition: not
+    conditions:
+    - condition: state
+      entity_id: weather.forecast_home
+      state: rainy
+    - condition: state
+      entity_id: weather.forecast_home
+      state: pouring
+    - condition: state
+      entity_id: weather.forecast_home
+      state: lightning_rainy
   actions:
-    - action: switch.turn_on
-      target:
-        entity_id: switch.hydro1
-    - delay:
-        minutes: 2
-    - action: switch.turn_off
-      target:
-        entity_id: switch.hydro1
-    - delay:
-        minutes: 10
-    - action: switch.turn_on
-      target:
-        entity_id: switch.hydro1
-    - delay:
-        minutes: 15
-    - action: switch.turn_off
-      target:
-        entity_id: switch.hydro1
+  - action: switch.turn_on
+    target:
+      entity_id: switch.hydro1
+  - delay:
+      minutes: 2
+  - action: switch.turn_off
+    target:
+      entity_id: switch.hydro1
+  - delay:
+      minutes: 10
+  - action: switch.turn_on
+    target:
+      entity_id: switch.hydro1
+  - delay:
+      minutes: 15
+  - action: switch.turn_off
+    target:
+      entity_id: switch.hydro1
   mode: single
-- id: "1777552180711"
-  alias: "Watchdog: Auto-Off Irrigation Hedge South"
+- id: '1777552180711'
+  alias: 'Watchdog: Auto-Off Irrigation Hedge South'
   description: Spegne l'irrigazione della siepe se rimane accesa per più di 20 minuti.
   triggers:
-    - entity_id: switch.hydro1
-      to: "on"
-      for:
-        minutes: 20
-      trigger: state
+  - entity_id: switch.hydro1
+    to: 'on'
+    for:
+      minutes: 20
+    trigger: state
   conditions: []
   actions:
-    - action: switch.turn_off
-      target:
-        entity_id: switch.hydro1
-    - action: notify.notify
-      data:
-        title: Allarme Irrigazione!
-        message:
-          La valvola della siepe a sud è rimasta aperta troppo a lungo. Il Watchdog
-          l'ha spenta.
+  - action: switch.turn_off
+    target:
+      entity_id: switch.hydro1
+  - action: notify.notify
+    data:
+      title: Allarme Irrigazione!
+      message: La valvola della siepe a sud è rimasta aperta troppo a lungo. Il Watchdog
+        l'ha spenta.
   mode: single
 - id: garden_entry_arlo_boost
-  alias: "Garden Spots: Entry Person Boost"
+  alias: 'Garden Spots: Entry Person Boost'
   description: Set to 100% when Arlo detects person, then return to 25%
   mode: restart
   trigger:
-    - platform: state
-      entity_id: binary_sensor.aarlo_motion_entry
-      from: "off"
-      to: "on"
+  - platform: state
+    entity_id: binary_sensor.aarlo_motion_entry
+    from: 'off'
+    to: 'on'
   condition:
-    - condition: state
-      entity_id: light.garden_spots_entry
-      state: "on"
+  - condition: state
+    entity_id: light.garden_spots_entry
+    state: 'on'
   action:
-    - action: light.turn_on
-      target:
-        entity_id: light.garden_spots_entry
-      data:
-        brightness_pct: 100
-    - delay: 00:05:00
-    - action: light.turn_on
-      target:
-        entity_id: light.garden_spots_entry
-      data:
-        brightness_pct: 25
-- id: "1777629137660"
+  - action: light.turn_on
+    target:
+      entity_id: light.garden_spots_entry
+    data:
+      brightness_pct: 100
+  - delay: 00:05:00
+  - action: light.turn_on
+    target:
+      entity_id: light.garden_spots_entry
+    data:
+      brightness_pct: 25
+- id: '1777629137660'
   alias: turn off garden light at 1AM
-  description: ""
+  description: ''
   triggers:
-    - trigger: time
-      at: 01:00:00
-      weekday:
-        - sun
-        - mon
-        - tue
-        - wed
-        - thu
-        - fri
-        - sat
+  - trigger: time
+    at: 01:00:00
+    weekday:
+    - sun
+    - mon
+    - tue
+    - wed
+    - thu
+    - fri
+    - sat
   conditions: []
   actions:
-    - action: light.turn_off
-      metadata: {}
-      target:
-        entity_id: light.garden_spots_all
-      data: {}
+  - action: light.turn_off
+    metadata: {}
+    target:
+      entity_id: light.garden_spots_all
+    data: {}
   mode: single
-
-- id: "pergola_roof_safety_master"
-  alias: "Pergola: Chiusura Sicurezza Tetto"
-  description: "Chiude il tetto se piove, dopo le 23:00 o se è inverno"
+- id: pergola_roof_safety_master
+  alias: 'Pergola: Chiusura Sicurezza Tetto'
+  description: Chiude il tetto se piove, dopo le 23:00 o se è inverno
   mode: restart
   triggers:
-    # 1. PIOGGIA: Trigger immediato se il meteo cambia in pioggia
-    - trigger: state
-      entity_id: weather.home # Verifica l'ID esatto in Developer Tools > States
-      to: "rainy"
-
-    # 2. NOTTE: Controllo alle 23:00
-    - trigger: time
-      at: "23:00:00"
-
-    # 3. STAGIONE: Trigger quando inizia l'inverno
-    - trigger: state
-      entity_id: sensor.season
-      to: "winter"
-
-    # 4. MONITORAGGIO CONTINUO: Ogni ora ricontrolla (utile se qualcuno lo apre per errore)
-    - trigger: time_pattern
-      hours: "/1"
-
+  - trigger: state
+    entity_id: weather.home
+    to: rainy
+  - trigger: time
+    at: '23:00:00'
+  - trigger: state
+    entity_id: sensor.season
+    to: winter
+  - trigger: time_pattern
+    hours: /1
   conditions:
-    # Esegui solo se il tetto è attualmente APERTO
-    - condition: state
-      entity_id: cover.pergola_tetto_corrected
-      state: "open"
-
+  - condition: state
+    entity_id: cover.pergola_tetto_corrected
+    state: open
   actions:
-    - choose:
-        # CONDIZIONE A: È inverno?
-        - conditions:
-            - condition: state
-              entity_id: sensor.season
-              state: "winter"
-          sequence:
-            - action: cover.close_cover
-              target:
-                entity_id: cover.pergola_tetto_corrected
-            - action: notify.notify
-              data:
-                title: "Pergola: Chiusura Invernale"
-                message: "Tetto chiuso automaticamente perché è inverno."
-
-        # CONDIZIONE B: Piove o è notte?
-        - conditions:
-            - or:
-                - condition: state
-                  entity_id: weather.home
-                  state: "rainy"
-                - condition: time
-                  after: "23:00:00"
-                  before: "06:00:00"
-          sequence:
-            - action: cover.close_cover
-              target:
-                entity_id: cover.pergola_tetto_corrected
-            - action: notify.notify
-              data:
-                title: "Pergola: Sicurezza"
-                message: "Tetto chiuso per pioggia o orario notturno."
+  - choose:
+    - conditions:
+      - condition: state
+        entity_id: sensor.season
+        state: winter
+      sequence:
+      - action: cover.close_cover
+        target:
+          entity_id: cover.pergola_tetto_corrected
+      - action: notify.notify
+        data:
+          title: 'Pergola: Chiusura Invernale'
+          message: Tetto chiuso automaticamente perché è inverno.
+    - conditions:
+      - or:
+        - condition: state
+          entity_id: weather.home
+          state: rainy
+        - condition: time
+          after: '23:00:00'
+          before: 06:00:00
+      sequence:
+      - action: cover.close_cover
+        target:
+          entity_id: cover.pergola_tetto_corrected
+      - action: notify.notify
+        data:
+          title: 'Pergola: Sicurezza'
+          message: Tetto chiuso per pioggia o orario notturno.
+- id: '1777875422247'
+  alias: Sunset LCN garden on
+  description: ''
+  triggers:
+  - trigger: sun
+    event: sunset
+    offset: 00:30:00
+  conditions: []
+  actions: []
+  mode: single
