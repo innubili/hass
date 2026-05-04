@@ -189,7 +189,7 @@
           title: 'Pergola: Sicurezza'
           message: Tetto chiuso per pioggia o orario notturno.
 - id: '1777875422247'
-  alias: Sunset LCN garden on
+  alias: Temp. Garden (LCN) ON at sunset + 30min
   description: ''
   triggers:
   - trigger: sun
