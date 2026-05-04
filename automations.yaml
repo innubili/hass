@@ -1,5 +1,6 @@
 - id: '1670965598190'
-  alias: garage open at 22:00
+  alias: Close Garage if open at night
+  description: ''
   triggers:
   - trigger: time
     at:
