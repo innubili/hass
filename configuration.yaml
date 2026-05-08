@@ -124,7 +124,7 @@ template:
         stop_cover:
           action: cover.stop_cover
           target:
-            entity_id: cover.pergola_tenda_west
+            entity_id: cover.tenda_grill
 
       # --- Pergola South (Strada) ---
       - name: "Pergola Tenda Strada"
