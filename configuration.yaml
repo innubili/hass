@@ -112,7 +112,7 @@ template:
         unique_id: tenda_grill_corrected
         device_class: shade
         state: "{{ 'closed' if is_state('cover.tenda_grill', 'open') else 'open' }}"
-        position: "{{ 100 - (state_attr('cover.tenda_west', 'current_position') | int(0)) }}"
+        position: "{{ 100 - (state_attr('cover.tenda_grill', 'current_position') | int(0)) }}"
         open_cover:
           action: cover.close_cover
           target:
