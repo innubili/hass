@@ -109,7 +109,7 @@ template:
             entity_id: cover.pergola_tenda_west
        # --- Tenda Grill ---
       - name: "Gril Tenda"
-        unique_id: tenda_west_corrected
+        unique_id: tenda_grill_corrected
         device_class: shade
         state: "{{ 'closed' if is_state('cover.pergola_tenda_west', 'open') else 'open' }}"
         position: "{{ 100 - (state_attr('cover.pergola_tenda_west', 'current_position') | int(0)) }}"
