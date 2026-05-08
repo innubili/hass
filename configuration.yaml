@@ -107,7 +107,7 @@ template:
           action: cover.stop_cover
           target:
             entity_id: cover.pergola_tenda_west
-       # --- Grill ---
+       # --- Tenda Grill ---
       - name: "Grill Cover"
         unique_id: pergola_tenda_west_corrected
         device_class: shade
