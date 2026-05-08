@@ -107,6 +107,24 @@ template:
           action: cover.stop_cover
           target:
             entity_id: cover.pergola_tenda_west
+       # --- Pergola West (Siepe) ---
+      - name: "Pergola Tenda Siepe"
+        unique_id: pergola_tenda_west_corrected
+        device_class: shade
+        state: "{{ 'closed' if is_state('cover.pergola_tenda_west', 'open') else 'open' }}"
+        position: "{{ 100 - (state_attr('cover.pergola_tenda_west', 'current_position') | int(0)) }}"
+        open_cover:
+          action: cover.close_cover
+          target:
+            entity_id: cover.pergola_tenda_west
+        close_cover:
+          action: cover.open_cover
+          target:
+            entity_id: cover.pergola_tenda_west
+        stop_cover:
+          action: cover.stop_cover
+          target:
+            entity_id: cover.pergola_tenda_west
 
       # --- Pergola South (Strada) ---
       - name: "Pergola Tenda Strada"
