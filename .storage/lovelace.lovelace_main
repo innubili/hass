@@ -340,6 +340,17 @@
               }
             },
             {
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "cover.tende_pergola_tutte"
+                }
+              ],
+              "title": "Pegoia Tende (cambiatoio)",
+              "state_color": true,
+              "show_header_toggle": false
+            },
+            {
               "type": "thermostat",
               "entity": "climate.cosmicbeam_smart",
               "name": "Riscaldamento (Pergola)",
@@ -353,17 +364,6 @@
                 }
               ],
               "title": "Grill"
-            },
-            {
-              "type": "entities",
-              "entities": [
-                {
-                  "entity": "cover.tende_pergola_tutte"
-                }
-              ],
-              "title": "Pegoia Tende (cambiatoio)",
-              "state_color": true,
-              "show_header_toggle": false
             }
           ]
         },
