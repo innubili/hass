@@ -111,7 +111,7 @@ template:
       - name: "Gril Tenda"
         unique_id: tenda_grill_corrected
         device_class: shade
-        state: "{{ 'closed' if is_state('cover.pergola_tenda_west', 'open') else 'open' }}"
+        state: "{{ 'closed' if is_state('cover.tenda_gtill', 'open') else 'open' }}"
         position: "{{ 100 - (state_attr('cover.pergola_tenda_west', 'current_position') | int(0)) }}"
         open_cover:
           action: cover.close_cover
