@@ -93,53 +93,6 @@
       message: La valvola della siepe a sud è rimasta aperta troppo a lungo. Il Watchdog
         l'ha spenta.
   mode: single
-- id: garden_entry_arlo_boost
-  alias: 'Garden Spots: Entry Person Boost'
-  description: Set to 100% when Arlo detects person, then return to 25%
-  mode: restart
-  trigger:
-  - platform: state
-    entity_id: binary_sensor.aarlo_motion_entry
-    from: 'off'
-    to: 'on'
-  condition:
-  - condition: state
-    entity_id: light.garden_spots_entry
-    state: 'on'
-  action:
-  - action: light.turn_on
-    target:
-      entity_id: light.garden_spots_entry
-    data:
-      brightness_pct: 100
-  - delay: 00:05:00
-  - action: light.turn_on
-    target:
-      entity_id: light.garden_spots_entry
-    data:
-      brightness_pct: 25
-- id: '1777629137660'
-  alias: Temp. Garden (LCN) OFF at 1AM
-  description: ''
-  triggers:
-  - trigger: time
-    at: 01:00:00
-    weekday:
-    - sun
-    - mon
-    - tue
-    - wed
-    - thu
-    - fri
-    - sat
-  conditions: []
-  actions:
-  - action: light.turn_off
-    metadata: {}
-    target:
-      entity_id: light.garden_spots_all
-    data: {}
-  mode: single
 - id: pergola_roof_safety_master
   alias: 'Pergola: Security Roof Closing'
   description: Chiude il tetto se piove, dopo le 23:00 o se è inverno
