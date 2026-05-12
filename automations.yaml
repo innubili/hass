@@ -207,7 +207,7 @@
     data: {}
   mode: single
 
-reset_innr_garden_spots:
+- id: reset_innr_garden_spots:
   alias: "System: Put Garden Spots in Pairing Mode"
   icon: mdi:lightbulb-sync
   mode: single
