@@ -209,7 +209,6 @@
 
 - id: reset_innr_garden_spots
   alias: "System: Put Garden Spots in Pairing Mode"
-  icon: 
   mode: single
   sequence:
     # Step 1: Make sure they are currently ON before starting the sequence
