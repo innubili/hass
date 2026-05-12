@@ -142,20 +142,3 @@
           title: 'Pergola: Sicurezza'
           message: Tetto chiuso per pioggia o orario notturno.
   mode: restart
-- id: '1777875422247'
-  alias: Temp. Garden (LCN) ON at sunset + 30min
-  description: ''
-  triggers:
-  - trigger: sun
-    event: sunset
-    offset: 00:30:00
-  conditions: []
-  actions:
-  - action: switch.turn_on
-    metadata: {}
-    target:
-      entity_id:
-      - switch.garden_entry_spots_fixed
-      - switch.garden_garage_spots_fixed
-    data: {}
-  mode: single
