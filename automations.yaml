@@ -206,3 +206,43 @@
       - switch.garden_garage_spots_fixed
     data: {}
   mode: single
+
+reset_innr_garden_spots:
+  alias: "System: Put Garden Spots in Pairing Mode"
+  icon: mdi:lightbulb-sync
+  mode: single
+  sequence:
+    # Step 1: Make sure they are currently ON before starting the sequence
+    - service: switch.turn_on
+      target:
+        entity_id: 
+          - switch.garden_garage_spots_fixed
+          - switch.garden_entry_spots_fixed
+    - delay:
+        seconds: 2
+
+    # Step 2: Cycle the power OFF and ON 6 times
+    - repeat:
+        count: 6
+        sequence:
+          - service: switch.turn_off
+            target:
+              entity_id: 
+                - switch.garden_garage_spots_fixed
+                - switch.garden_entry_spots_fixed
+          - delay:
+              milliseconds: 800  # INNR likes about a half-second to 1-second pause
+          - service: switch.turn_on
+            target:
+              entity_id: 
+                - switch.garden_garage_spots_fixed
+                - switch.garden_entry_spots_fixed
+          - delay:
+              milliseconds: 800
+              
+    # Step 3: Leave them ON at the end so they can connect
+    - service: switch.turn_on
+      target:
+        entity_id: 
+          - switch.garden_garage_spots_fixed
+          - switch.garden_entry_spots_fixed
