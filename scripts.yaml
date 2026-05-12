@@ -153,7 +153,7 @@ reset_innr_garden_spots:
     # Step 1: Make sure they are currently ON before starting the sequence
     - action: switch.turn_on
       target:
-        entity_id: 
+        entity_id:
           - switch.garden_garage_spots_fixed
           - switch.garden_entry_spots_fixed
     - delay:
@@ -165,22 +165,22 @@ reset_innr_garden_spots:
         sequence:
           - action: switch.turn_off
             target:
-              entity_id: 
+              entity_id:
                 - switch.garden_garage_spots_fixed
                 - switch.garden_entry_spots_fixed
           - delay:
               milliseconds: 800
           - action: switch.turn_on
             target:
-              entity_id: 
+              entity_id:
                 - switch.garden_garage_spots_fixed
                 - switch.garden_entry_spots_fixed
           - delay:
               milliseconds: 800
-              
+
     # Step 3: Leave them ON at the end so they can connect
     - action: switch.turn_on
       target:
-        entity_id: 
+        entity_id:
           - switch.garden_garage_spots_fixed
           - switch.garden_entry_spots_fixed
