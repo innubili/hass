@@ -38,14 +38,14 @@ template:
       unique_id: my_custom_garage_door_cover_101
       device_class: garage
       # If the fully_closed sensor is 'on', it is closed. Otherwise, HA considers it open/moving.
-        state: "{{ 'closed' if is_state('binary_sensor.garage_door_fully_closed', 'on') else 'open' }}"
-        open_cover:
+      state: "{{ 'closed' if is_state('binary_sensor.garage_door_fully_closed', 'on') else 'open' }}"
+      open_cover:
           action: script.garage_master_toggle
-        close_cover:
+      close_cover:
           action: script.garage_master_toggle
-        stop_cover:
+      stop_cover:
           action: script.garage_master_toggle
-        # Dynamically change the icon based on the exact state of both sensors
+      # Dynamically change the icon based on the exact state of both sensors
         icon: >
           {% if is_state('binary_sensor.garage_door_fully_closed', 'on') %}
             mdi:garage-variant
