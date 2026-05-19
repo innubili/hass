@@ -240,7 +240,6 @@ cover:
       - cover.pergola_tenda_dietro
       - cover.pergola_tenda_siepe
 
-cover:
   - platform: template
     name: "Smart garage door""
     unique_id: smart_garage_door:
