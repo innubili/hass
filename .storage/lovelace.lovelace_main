@@ -243,10 +243,6 @@
                 }
               ],
               "title": "Clima"
-            },
-            {
-              "type": "markdown",
-              "content": "type: markdown\ntitle: Garage Door\ncontent: >\n  <center>\n    {% if is_state('binary_sensor.garage_door_fully_closed', 'on') %}\n      <ha-icon icon=\"mdi:garage-variant\" style=\"color: #44739e; --mdc-icon-size: 100px;\"></ha-icon>\n      <p style=\"color: #44739e; font-size: 18px; font-weight: bold;\">Garage Closed</p>\n    {% elif is_state('binary_sensor.garage_door_fully_open', 'on') %}\n      <ha-icon icon=\"mdi:garage-open-variant\" style=\"color: #fdd835; --mdc-icon-size: 100px;\"></ha-icon>\n      <p style=\"color: #44739e; font-size: 18px; font-weight: bold;\">Garage Open</p>\n    {% else %}\n      <ha-icon icon=\"mdi:garage-open-variant\" style=\"color: #e45649; --mdc-icon-size: 100px; animation: blink 1s linear infinite;\"></ha-icon>\n      <p style=\"color: #e45649; font-size: 18px; font-weight: bold;\">Moving</p>\n    {% endif %}\n  </center>\ntap_action:\n  action: perform-action\n  perform_action: script.garage_master_toggle"
             }
           ]
         },
