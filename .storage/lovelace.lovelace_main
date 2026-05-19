@@ -150,12 +150,6 @@
                 }
               ],
               "title": "Clima"
-            },
-            {
-              "type": "entities",
-              "entities": [
-                "cover.smart_garage_door"
-              ]
             }
           ]
         },
