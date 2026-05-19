@@ -241,7 +241,7 @@ cover:
       - cover.pergola_tenda_siepe
 
   - platform: template
-    name: "Smart garage door""
+    name: "Smart garage door"
     unique_id: smart_garage_door:
         device_class: garage
         friendly_name: "Smart Garage Door"
