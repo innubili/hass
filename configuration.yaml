@@ -41,9 +41,9 @@ template:
         state: "{{ 'closed' if is_state('binary_sensor.garage_door_fully_closed', 'on') else 'open' }}"
         open_cover:
           action: script.garage_master_toggle
-       close_cover:
+        close_cover:
           action: script.garage_master_toggle
-       stop_cover:
+        stop_cover:
           action: script.garage_master_toggle
        # Dynamically change the icon based on the exact state of both sensors
        icon: >
