@@ -242,8 +242,7 @@ cover:
 
 cover:
   - platform: template
-    covers:
-      smart_garage_door:
+    name:smart_garage_door:
         device_class: garage
         friendly_name: "Smart Garage Door"
         # It is considered "open" if the fully_closed sensor is anything but 'on'
