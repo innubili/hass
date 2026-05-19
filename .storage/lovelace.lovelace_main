@@ -74,7 +74,7 @@
                 },
                 {
                   "operator": "template",
-                  "value": "[[[ return states['binary_sensor.garage_door_fully_open'].state === 'off' ]]]\n",
+                  "value": "[[[ \n  return hass.states['binary_sensor.garage_door_fully_open'] && \n         hass.states['binary_sensor.garage_door_fully_open'].state === 'off';\n]]]\n",
                   "icon": "mdi:garage-open-variant",
                   "styles": {
                     "icon": [
@@ -92,7 +92,7 @@
                 },
                 {
                   "operator": "template",
-                  "value": "[[[ return states['binary_sensor.garage_door_fully_closed'].state === 'on' && \n           states['binary_sensor.garage_door_fully_open'].state === 'on' ]]]\n",
+                  "value": "[[[ \n  return hass.states['binary_sensor.garage_door_fully_closed'] && \n         hass.states['binary_sensor.garage_door_fully_open'] && \n         hass.states['binary_sensor.garage_door_fully_closed'].state === 'on' && \n         hass.states['binary_sensor.garage_door_fully_open'].state === 'on';\n]]]\n",
                   "icon": "mdi:garage-open-variant",
                   "styles": {
                     "icon": [
