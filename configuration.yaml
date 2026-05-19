@@ -34,16 +34,26 @@ aarlo:
 template:
   # --- garage cover ---
   - cover:
-      - device_class: garage
-        open_cover:
-          - action: script.pulse_garage_door
-        close_cover:
-          - action: script.pulse_garage_door
-        stop_cover:
-          - action: script.pulse_garage_door
-        default_entity_id: cover.garage_door_cover
+     - name: "Smart Garage Door"
         unique_id: my_custom_garage_door_cover_101
-        name: Garage Door Cover
+        device_class: garage
+        # If the fully_closed sensor is 'on', it is closed. Otherwise, HA considers it open/moving.
+        state: "{{ 'closed' if is_state('binary_sensor.garage_door_fully_closed', 'on') else 'open' }}"
+        open_cover:
+          action: script.garage_master_toggle
+        close_cover:
+          action: script.garage_master_toggle
+        stop_cover:
+          action: script.garage_master_toggle
+        # Dynamically change the icon based on the exact state of both sensors
+        icon: >
+          {% if is_state('binary_sensor.garage_door_fully_closed', 'on') %}
+            mdi:garage-variant
+          {% elif is_state('binary_sensor.garage_door_fully_open', 'on') %}
+            mdi:garage-open-variant
+          {% else %}
+            mdi:swap-vertical-bold
+          {% endif %}
 
       # --- Pergola Roof ---
       - name: "Pergola Tetto"
