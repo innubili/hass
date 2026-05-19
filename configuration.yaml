@@ -35,8 +35,8 @@ template:
   # --- garage cover ---
   - cover:
       - name: "Smart Garage Door"
-       unique_id: my_custom_garage_door_cover_101
-       device_class: garage
+        unique_id: my_custom_garage_door_cover_101
+        device_class: garage
        # If the fully_closed sensor is 'on', it is closed. Otherwise, HA considers it open/moving.
        state: "{{ 'closed' if is_state('binary_sensor.garage_door_fully_closed', 'on') else 'open' }}"
       open_cover:
