@@ -183,3 +183,13 @@
         | upper }} === {% for entity in state.list %} - ID: {{ entity.entity_id }}\n
         \ Name: {{ entity.name }}\n{% endfor %} {% endfor %}\n"
   mode: single
+- id: '1779314975110'
+  alias: fle write test
+  description: Test di scrittura file
+  triggers: []
+  conditions: []
+  actions:
+  - action: notify.e_list_txt
+    data:
+      message: Questo è un test di scrittura
+  mode: single
