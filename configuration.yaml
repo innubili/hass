@@ -13,6 +13,12 @@ scene: !include scenes.yaml
 shell_command:
   delete_entity_list: "rm -f /config/e-list.txt"
 
+notify:
+  - platform: file
+    name: export_entity_list
+    filename: e-list.txt
+    timestamp: false
+
 logger:
   default: warn
   logs:
