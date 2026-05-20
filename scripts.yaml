@@ -1,21 +1,17 @@
-# --- GARAGE RELAY CONTROL ---
 pulse_garage_relay:
-  alias: "Pulse Garage Door"
+  alias: Pulse Garage Door
   icon: mdi:garage
   sequence:
     - action: switch.turn_on
       target:
         entity_id: switch.pool_u_aussenbekl_garage_door
-    - delay: "00:00:02"
+    - delay: 00:00:02
     - action: switch.turn_off
       target:
         entity_id: switch.pool_u_aussenbekl_garage_door
-
-# --- SMART RECOVERY (FOR STUCK DOOR) ---
 garage_smart_recovery:
-  alias: "Garage Smart Recovery"
+  alias: Garage Smart Recovery
   sequence:
-    # Check if STUCK: Both sensors are 'on' (Magnets uncovered)
     - if:
         - condition: state
           entity_id: binary_sensor.garage_door_fully_closed
@@ -24,29 +20,24 @@ garage_smart_recovery:
           entity_id: binary_sensor.garage_door_fully_open
           state: "on"
       then:
-        # Pulse to open (resets motor logic)
         - action: script.pulse_garage_relay
-        - delay: "00:00:03"
-        # Pulse to close
+        - delay: 00:00:03
         - action: script.pulse_garage_relay
-        - delay: "00:00:20"
+        - delay: 00:00:20
         - if:
             - condition: state
               entity_id: binary_sensor.garage_door_fully_closed
-              state: "on" # Still uncovered/not closed
+              state: "on"
           then:
             - action: notify.notify
               data:
-                title: "Garage Error"
-                message: "Recovery failed. Door is still stuck between sensors!"
-
-# --- THE 5-ATTEMPT CLOSING BATTLE ---
+                title: Garage Error
+                message: Recovery failed. Door is still stuck between sensors!
 garage_multi_attempt_close:
-  alias: "Garage 5-Attempt Recovery"
+  alias: Garage 5-Attempt Recovery
   sequence:
     - repeat:
         while:
-          # Keep going as long as it's NOT closed ('on' = uncovered) AND < 5 tries
           - condition: state
             entity_id: binary_sensor.garage_door_fully_closed
             state: "on"
@@ -55,24 +46,16 @@ garage_multi_attempt_close:
         sequence:
           - action: notify.notify
             data:
-              title: "Garage Recovery"
-              message: "Attempt {{ repeat.index }} of 5 to close the garage..."
-
-          # Pulse the relay to trigger movement
+              title: Garage Recovery
+              message: Attempt {{ repeat.index }} of 5 to close the garage...
           - action: script.pulse_garage_relay
-
-          # Wait for travel (adjust 20s if your door is slower)
-          - delay: "00:00:20"
-
-          # Stop if we hit the 'off' state (Closed)
+          - delay: 00:00:20
           - if:
               - condition: state
                 entity_id: binary_sensor.garage_door_fully_closed
                 state: "off"
             then:
-              - stop: "Garage is successfully closed."
-
-    # Final Check after the loop finishes
+              - stop: Garage is successfully closed.
     - if:
         - condition: state
           entity_id: binary_sensor.garage_door_fully_closed
@@ -81,76 +64,62 @@ garage_multi_attempt_close:
         - action: notify.notify
           data:
             title: "CRITICAL: Garage Failure"
-            message: "Failed to close after 5 attempts. Check for obstructions at Andhauserstr. 71!"
-
-# --- garage THE MASTER BRAIN ---
+            message:
+              Failed to close after 5 attempts. Check for obstructions at Andhauserstr.
+              71!
 garage_master_toggle:
-  alias: "Garage Master Toggle"
+  alias: Garage Master Toggle
   sequence:
     - if:
-        # If it's FULLY CLOSED ('off' = magnet touching)
         - condition: state
           entity_id: binary_sensor.garage_door_fully_closed
           state: "off"
       then:
-        # Just open it normally
         - action: script.pulse_garage_relay
       else:
-        # It's either open or stuck - use the multi-attempt close
         - action: script.garage_multi_attempt_close
-
-# --- pool open ---
 pool_open_sequence:
   alias: "Sequence: Open Pool"
   icon: mdi:pool
   sequence:
-    # --- 1. Enable Motor (Freigabe = ON) ---
     - action: switch.turn_on
       target:
         entity_id: switch.pool_u_aussenbekl_pool_stop
-    - delay: "00:00:01"
-    # --- 2. Pulse OPEN ---
+    - delay: 00:00:01
     - action: switch.turn_on
       target:
         entity_id: switch.pool_u_aussenbekl_pool_open
-    - delay: "00:00:01"
+    - delay: 00:00:01
     - action: switch.turn_off
       target:
         entity_id: switch.pool_u_aussenbekl_pool_open
-
 pool_close_sequence:
   alias: "Sequence: Close Pool"
   icon: mdi:pool
   sequence:
-    # --- 1. Enable Motor (Freigabe = ON) ---
     - action: switch.turn_on
       target:
         entity_id: switch.pool_u_aussenbekl_pool_stop
-    - delay: "00:00:01"
-    # --- 2. Pulse CLOSE ---
+    - delay: 00:00:01
     - action: switch.turn_on
       target:
         entity_id: switch.pool_u_aussenbekl_pool_close
-    - delay: "00:00:01"
+    - delay: 00:00:01
     - action: switch.turn_off
       target:
         entity_id: switch.pool_u_aussenbekl_pool_close
-
 pool_stop_sequence:
   alias: "Sequence: Stop Pool"
   icon: mdi:stop
   sequence:
-    # --- Disable Motor (Stop = OFF) ---
     - action: switch.turn_off
       target:
         entity_id: switch.pool_u_aussenbekl_pool_stop
-
 reset_innr_garden_spots:
-  alias: "System: Put Garden Spots in Pairing Mode (Alternative)"
+  alias: "System: Put Garden Spots in Pairing Mode (all)"
   icon: mdi:lightbulb-sync
   mode: single
   sequence:
-    # Step 1: Ensure they are ON for at least 5 seconds to set the baseline
     - action: switch.turn_on
       target:
         entity_id:
@@ -158,8 +127,6 @@ reset_innr_garden_spots:
           - switch.garden_entry_spots_fixed
     - delay:
         seconds: 6
-
-    # Step 2: Cycle 6 times (OFF for 5s, ON for less than 1s)
     - repeat:
         count: 6
         sequence:
@@ -169,18 +136,81 @@ reset_innr_garden_spots:
                 - switch.garden_garage_spots_fixed
                 - switch.garden_entry_spots_fixed
           - delay:
-              seconds: 5 # Must be off for a full 5 seconds
+              seconds: 1 # Corretto: da 5s a 1s
           - action: switch.turn_on
             target:
               entity_id:
                 - switch.garden_garage_spots_fixed
                 - switch.garden_entry_spots_fixed
           - delay:
-              milliseconds: 800 # Must be ON for less than 1 second
-
-    # Step 3: Final ON state to allow them to pair
+              milliseconds: 1000 # Corretto: da 800ms a 1s per stabilità su bus LCN
     - action: switch.turn_on
       target:
         entity_id:
           - switch.garden_garage_spots_fixed
+          - switch.garden_entry_spots_fixed
+  description: ""
+
+system_put_garden_spots_in_pairing_mode_garage_only:
+  alias: "System: Put Garden Spots in Pairing Mode (Garage only)"
+  icon: mdi:lightbulb-sync
+  mode: single
+  description: ""
+  sequence:
+    - action: switch.turn_on
+      target:
+        entity_id:
+          - switch.garden_garage_spots_fixed
+    - delay:
+        seconds: 6
+    - repeat:
+        count: 6
+        sequence:
+          - action: switch.turn_off
+            target:
+              entity_id:
+                - switch.garden_garage_spots_fixed
+          - delay:
+              seconds: 1 # Corretto: da 5s a 1s
+          - action: switch.turn_on
+            target:
+              entity_id:
+                - switch.garden_garage_spots_fixed
+          - delay:
+              seconds: 1 # Semplificato e corretto a 1s
+    - action: switch.turn_on
+      target:
+        entity_id:
+          - switch.garden_garage_spots_fixed
+
+system_put_garden_spots_in_pairing_mode_entry_only:
+  alias: "System: Put Garden Spots in Pairing Mode (Entry only)"
+  icon: mdi:lightbulb-sync
+  mode: single
+  description: ""
+  sequence:
+    - action: switch.turn_on
+      target:
+        entity_id:
+          - switch.garden_entry_spots_fixed
+    - delay:
+        seconds: 6
+    - repeat:
+        count: 6
+        sequence:
+          - action: switch.turn_off
+            target:
+              entity_id:
+                - switch.garden_entry_spots_fixed
+          - delay:
+              seconds: 1 # Corretto: da 5s a 1s
+          - action: switch.turn_on
+            target:
+              entity_id:
+                - switch.garden_entry_spots_fixed
+          - delay:
+              milliseconds: 1000 # Corretto: da 800ms a 1s
+    - action: switch.turn_on
+      target:
+        entity_id:
           - switch.garden_entry_spots_fixed
