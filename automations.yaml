@@ -187,7 +187,7 @@
   triggers: []
   conditions: []
   actions:
-  - action: notify.e_list_txt
+  - action: notify.file
     data:
       message: Questo è un test di scrittura
   mode: single
