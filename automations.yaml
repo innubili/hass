@@ -172,13 +172,3 @@
   actions:
   - action: rest_command.post_entities
   mode: single
-- id: '1779314975110'
-  alias: fle write test
-  description: Test di scrittura file
-  triggers: []
-  conditions: []
-  actions:
-  - action: notify.file
-    data:
-      message: Questo è un test di scrittura
-  mode: single
