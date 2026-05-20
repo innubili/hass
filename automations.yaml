@@ -175,9 +175,7 @@
   actions:
   - action: shell_command.delete_entity_list
   - delay: 00:00:02
-  - action: notify.send_message
-    target:
-      entity_id: notify.e_list_txt
+  - action: notify.file
     data:
       message: "{% for state in states | groupby('domain') %} === {{ state.grouper
         | upper }} === {% for entity in state.list %} - ID: {{ entity.entity_id }}\n
