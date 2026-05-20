@@ -10,6 +10,10 @@ automation: !include automations.yaml
 script: !include scripts.yaml
 scene: !include scenes.yaml
 
+homeassistant:
+  allowlist_external_dirs:
+    - "/config"
+
 shell_command:
   delete_entity_list: "rm -f /config/e-list.txt"
 
