@@ -11,7 +11,7 @@ script: !include scripts.yaml
 scene: !include scenes.yaml
 
 rest_command:
-  send_entities:
+  post_entities:
     url: "https://script.google.com/macros/s/AKfycbyEVof6mP4BA6Dxh-7ObItURw8N0M2O9VcaKbZtZPK3glNDGYwbnRdL6JT-lFP8x1iJ/exec"
     method: POST
     content_type: "application/json"
