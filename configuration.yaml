@@ -10,12 +10,15 @@ automation: !include automations.yaml
 script: !include scripts.yaml
 scene: !include scenes.yaml
 
-homeassistant:
-  allowlist_external_dirs:
-    - "/config"
-
-shell_command:
-  delete_entity_list: "rm -f /config/e-list.txt"
+rest_command:
+  invia_lista_entita:
+    url: "https://script.google.com/macros/s/AKfycbyEVof6mP4BA6Dxh-7ObItURw8N0M2O9VcaKbZtZPK3glNDGYwbnRdL6JT-lFP8x1iJ/exec"
+    method: POST
+    content_type: "application/json"
+    payload: >
+      {
+        "data": "Esportazione del {{ now().strftime('%d/%m/%Y %H:%M') }}\n{% for state in states | groupby('domain') %}\n=== {{ state.grouper | upper }} ===\n{% for entity in state.list %}- {{ entity.entity_id }} ({{ entity.name }})\n{% endfor %}\n{% endfor %}"
+      }
 
 logger:
   default: warn
