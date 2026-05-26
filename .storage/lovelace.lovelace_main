@@ -243,15 +243,6 @@
                 }
               ],
               "title": "Clima"
-            },
-            {
-              "type": "tile",
-              "entity": "cover.smart_garage_door",
-              "name": "Garage Door",
-              "tap_action": {
-                "action": "perform-action",
-                "perform_action": "script.garage_master_toggle"
-              }
             }
           ]
         },
