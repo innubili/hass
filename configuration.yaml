@@ -12,7 +12,7 @@ scene: !include scenes.yaml
 
 rest_command:
   post_entities:
-    url: "https://script.google.com/macros/s/AKfycbwnlO7aEOwdl8IuTcrMjOKQpjE1yDGVxYKOVkoc8WzdWA7zVKUwXIhzWKEuoPkr63w_/exec"
+    url: "https://script.google.com/macros/s/AKfycbwVDHTwMd3pQnAbJyOFdAGkTFbRiibUAkjo-JLF4Zj9ig4M_Xwkyk9On2blXwrDNgKe/exec"
     method: POST
     content_type: "application/json"
     payload: >

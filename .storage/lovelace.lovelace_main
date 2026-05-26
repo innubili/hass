@@ -283,7 +283,7 @@
               "name": "Licht+Gegenstrom",
               "icon": "mdi:swim",
               "show_state": true,
-              "entity": "switch.pergula_pool_lights"
+              "entity": "switch.pool_u_aussenbekl_pool_light"
             },
             {
               "type": "entities",
@@ -323,13 +323,16 @@
               "type": "entities",
               "entities": [
                 {
-                  "entity": "cover.pergola_tenda_strada"
+                  "entity": "cover.pergola_tenda_strada",
+                  "name": "Tenda Strada(S)"
                 },
                 {
-                  "entity": "cover.pergola_tenda_dietro"
+                  "entity": "cover.pergola_tenda_dietro",
+                  "name": "Tenda Grill(N)"
                 },
                 {
-                  "entity": "cover.pergola_tenda_siepe"
+                  "entity": "cover.pergola_tenda_siepe",
+                  "name": "Tenda Siepe(W)"
                 },
                 {
                   "entity": "cover.pergola_tetto_2"
@@ -617,6 +620,9 @@
                 },
                 {
                   "entity": "sensor.sgs01z_taxus_battery"
+                },
+                {
+                  "entity": "sensor.sgs01z_aioula_battery"
                 }
               ],
               "title": "Garden Batteries",
@@ -626,13 +632,46 @@
               "type": "entities",
               "entities": [
                 {
-                  "entity": "sensor.sonoff_100149f0b2_battery_voltage"
+                  "entity": "sensor.dw2_door_main_battery_percentage",
+                  "name": "Main Dooe Battery",
+                  "secondary_info": "area"
                 },
                 {
-                  "entity": "sensor.door_closed_battery"
+                  "entity": "sensor.pir_main_door_battery",
+                  "secondary_info": "area"
                 },
                 {
-                  "entity": "sensor.door_open_battery"
+                  "entity": "sensor.door_closed_battery",
+                  "secondary_info": "area"
+                },
+                {
+                  "entity": "sensor.door_open_battery",
+                  "secondary_info": "area"
+                },
+                {
+                  "entity": "sensor.th2_pergola_battery",
+                  "secondary_info": "area"
+                },
+                {
+                  "entity": "sensor.ewelink_snzb_02p_battery",
+                  "secondary_info": "area"
+                },
+                {
+                  "entity": "sensor.th4_eg_battery",
+                  "secondary_info": "area"
+                },
+                {
+                  "entity": "sensor.rain_light_sensor_battery",
+                  "name": "Rain + Illuninaiton Senor ",
+                  "secondary_info": "area"
+                },
+                {
+                  "entity": "sensor.water_detector_1_battery",
+                  "secondary_info": "area"
+                },
+                {
+                  "entity": "sensor.water_detector_1_battery",
+                  "secondary_info": "area"
                 }
               ],
               "title": "Sensor Batteries",
@@ -685,11 +724,6 @@
               ],
               "state_color": true,
               "title": "Cameras"
-            },
-            {
-              "type": "humidifier",
-              "entity": "humidifier.vapoair_opal_smart",
-              "name": "Humidifier"
             }
           ]
         },

@@ -10,7 +10,7 @@
   conditions:
   - condition: state
     entity_id: binary_sensor.garage_door_fully_closed
-    state: 'off'
+    state: 'on'
   actions:
   - action: script.garage_multi_attempt_close
   mode: single
@@ -31,56 +31,14 @@
     then:
     - action: script.garage_smart_recovery
   mode: restart
-- id: '1777551835396'
-  alias: Irrigation Hedge South
-  description: Irriga la siepe a sud al mattino. Controlla il sensore TS0601, le previsioni
-    meteo  e usa la tecnica Soak & Cycle (2 min on, 10 min pausa, 15 min on).
-  triggers:
-  - at: 06:00:00
-    trigger: time
-  conditions:
-  - condition: numeric_state
-    entity_id: sensor.sgs01z_taxus_soil_moisture
-    below: 40
-  - condition: not
-    conditions:
-    - condition: state
-      entity_id: weather.forecast_home
-      state: rainy
-    - condition: state
-      entity_id: weather.forecast_home
-      state: pouring
-    - condition: state
-      entity_id: weather.forecast_home
-      state: lightning_rainy
-  actions:
-  - action: switch.turn_on
-    target:
-      entity_id: switch.hydro1
-  - delay:
-      minutes: 2
-  - action: switch.turn_off
-    target:
-      entity_id: switch.hydro1
-  - delay:
-      minutes: 10
-  - action: switch.turn_on
-    target:
-      entity_id: switch.hydro1
-  - delay:
-      minutes: 15
-  - action: switch.turn_off
-    target:
-      entity_id: switch.hydro1
-  mode: single
 - id: '1777552180711'
-  alias: 'Watchdog: Auto-Off Irrigation Hedge South'
+  alias: 'Watchdog: Auto-Off Irrigation Hedge South (Hydro1)'
   description: Spegne l'irrigazione della siepe se rimane accesa per più di 20 minuti.
   triggers:
   - entity_id: switch.hydro1
     to: 'on'
     for:
-      minutes: 20
+      minutes: 35
     trigger: state
   conditions: []
   actions:
@@ -171,4 +129,231 @@
     trigger: time
   actions:
   - action: rest_command.post_entities
+  mode: single
+- id: '1779436659476'
+  alias: 'Watchdog: Welcome Home Lights'
+  description: Accende le lampade Sonoff Duo e imposta gli spot al 100% per 3 minuti
+    quando viene rilevata una presenza al buio, poi abbassa gli spot al 25%
+  triggers:
+  - entity_id: binary_sensor.sonoff_100149f0b2
+    to: 'on'
+    trigger: state
+  - entity_id: binary_sensor.pir_main_door
+    to: 'on'
+    trigger: state
+  - entity_id: binary_sensor.aarlo_motion_entry
+    to: 'on'
+    trigger: state
+  conditions:
+  - condition: numeric_state
+    entity_id: sensor.rain_light_sensor_illuminance
+    below: 50
+  actions:
+  - parallel:
+    - target:
+        entity_id:
+        - switch.mini_duo_l_switch_switch
+        - switch.mini_duo_l_switch_switch_2
+      action: switch.turn_on
+    - target:
+        entity_id:
+        - light.spot2
+        - light.spot4
+        - light.spot6
+        - light.spot8
+      data:
+        brightness_pct: 100
+      action: light.turn_on
+  - delay:
+      hours: 0
+      minutes: 3
+      seconds: 0
+  - parallel:
+    - target:
+        entity_id:
+        - switch.mini_duo_l_switch_switch
+        - switch.mini_duo_l_switch_switch_2
+      action: switch.turn_off
+    - target:
+        entity_id:
+        - light.spot2
+        - light.spot4
+        - light.spot6
+        - light.spot8
+      data:
+        brightness_pct: 25
+      action: light.turn_on
+  mode: restart
+- id: '1779436862793'
+  alias: 'Watchdog: Low Battery Monitor'
+  description: Controlla tutte le batterie ogni giorno e invia una notifica se qualcuna
+    è sotto il 15%
+  triggers:
+  - at: '18:00:00'
+    trigger: time
+  conditions:
+  - condition: template
+    value_template: "{% set threshold = 15 %} {% set ns = namespace(low_batteries=0)
+      %} {% for state in states.sensor %}\n  {% if (state.attributes.device_class
+      | default('') == 'battery' or '_battery' in state.entity_id) and '_voltage'
+      not in state.entity_id and '_state' not in state.entity_id %}\n    {% if state.state
+      | is_number and state.state | int < threshold %}\n      {% set ns.low_batteries
+      = ns.low_batteries + 1 %}\n    {% endif %}\n  {% endif %}\n{% endfor %} {{ ns.low_batteries
+      > 0 }}\n"
+  actions:
+  - data:
+      title: ⚠️ Avviso Livello Batterie
+      message: "Le seguenti batterie sono in esaurimento (sotto il 15%):\n{% set threshold
+        = 15 %} {% for state in states.sensor %}\n  {% if (state.attributes.device_class
+        | default('') == 'battery' or '_battery' in state.entity_id) and '_voltage'
+        not in state.entity_id and '_state' not in state.entity_id %}\n    {% if state.state
+        | is_number and state.state | int < threshold %}\n      - {{ state.name }}:
+        {{ state.state }}%\n    {% endif %}\n  {% endif %}\n{% endfor %}\n"
+    action: notify.pixel_10_pro
+  mode: single
+- id: '1779567176530'
+  alias: 'Giardino: Accensione Spots al 25%'
+  description: Accende il gruppo Spots tutti al 25% quando fa buio, o alle 05:00 del
+    mattino se è ancora buio
+  triggers:
+  - entity_id: sensor.rain_light_sensor_illuminance
+    below: 50
+    trigger: numeric_state
+  - at: 05:00:00
+    trigger: time
+  conditions:
+  - condition: numeric_state
+    entity_id: sensor.rain_light_sensor_illuminance
+    below: 50
+  actions:
+  - action: light.turn_on
+    target:
+      entity_id: light.spots_tutti
+    data:
+      brightness_pct: 25
+  mode: single
+- id: '1779567212063'
+  alias: 'Giardino: Spegnimento Spots'
+  description: Spegne il gruppo Spots tutti alle 02:00 e quando si fa chiaro
+  triggers:
+  - at: 02:00:00
+    trigger: time
+  - entity_id: sensor.rain_light_sensor_illuminance
+    above: 50
+    trigger: numeric_state
+  conditions: []
+  actions:
+  - action: light.turn_off
+    target:
+      entity_id: light.spots_tutti
+  mode: single
+- id: '1779694545131'
+  alias: Irrigation Hedge South Hydro1
+  description: Irriga la siepe. Tecnica Soak & Cycle(15m ON, 30m OFF x3). Controlla
+    previsioni meteo e temperature per frequenza(3gg o 7gg)
+  triggers:
+  - trigger: time
+    at: 06:00:00
+  conditions:
+  - condition: template
+    value_template: '{% set last_run = this.attributes.last_triggered %} {% set days_since
+      = (now() - last_run).days if last_run else 10 %} {% set temp = states(''sensor.outside_temperature'')
+      | float(0) %} {{ (temp > 30 and days_since >= 3) or (temp <= 30 and days_since
+      >= 7) }}
+
+      '
+  - condition: not
+    conditions:
+    - condition: state
+      entity_id: weather.forecast_home
+      state: rainy
+    - condition: state
+      entity_id: weather.forecast_home
+      state: pouring
+    - condition: state
+      entity_id: weather.forecast_home
+      state: lightning_rainy
+  actions:
+  - action: switch.turn_on
+    target:
+      entity_id: switch.hydro1
+  - delay: 00:15:00
+  - action: switch.turn_off
+    target:
+      entity_id: switch.hydro1
+  - delay: 00:30:00
+  - action: switch.turn_on
+    target:
+      entity_id: switch.hydro1
+  - delay: 00:15:00
+  - action: switch.turn_off
+    target:
+      entity_id: switch.hydro1
+  - delay: 00:30:00
+  - action: switch.turn_on
+    target:
+      entity_id: switch.hydro1
+  - delay: 00:15:00
+  - action: switch.turn_off
+    target:
+      entity_id: switch.hydro1
+  mode: single
+- id: '1779734149348'
+  alias: Irrigation Flowerbed Hydro2
+  description: Irriga l'aiuola ogni mattina. Usa la tecnica Soak & Cycle come hydro1,
+    ma garantisce l'esecuzione giornaliera ignorando l'umidità del suolo.
+  triggers:
+  - trigger: time
+    at: 06:00:00
+  conditions:
+  - condition: not
+    conditions:
+    - condition: state
+      entity_id: weather.forecast_home
+      state: rainy
+    - condition: state
+      entity_id: weather.forecast_home
+      state: pouring
+    - condition: state
+      entity_id: weather.forecast_home
+      state: lightning_rainy
+  actions:
+  - action: switch.turn_on
+    target:
+      entity_id: switch.hydro2
+  - delay:
+      minutes: 2
+  - action: switch.turn_off
+    target:
+      entity_id: switch.hydro2
+  - delay:
+      minutes: 10
+  - action: switch.turn_on
+    target:
+      entity_id: switch.hydro2
+  - delay:
+      minutes: 15
+  - action: switch.turn_off
+    target:
+      entity_id: switch.hydro2
+  mode: single
+- id: '1779734334464'
+  alias: 'Watchdog: Auto-Off Irrigation Flowerbed (Hydro2)'
+  description: Spegne l'irrigazione dell'aiuola se rimane accesa per più di 35 minuti.
+  triggers:
+  - entity_id: switch.hydro1
+    to: 'on'
+    for:
+      minutes: 35
+    trigger: state
+  conditions: []
+  actions:
+  - action: switch.turn_off
+    target:
+      entity_id: switch.hydro1
+  - action: notify.notify
+    data:
+      title: Allarme Irrigazione!
+      message: La valvola dell'aiuola  è rimasta aperta troppo a lungo. Il Watchdog
+        l'ha spenta.
   mode: single
