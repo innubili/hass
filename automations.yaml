@@ -356,3 +356,19 @@
       message: La valvola dell'aiuola  è rimasta aperta troppo a lungo. Il Watchdog
         l'ha spenta.
   mode: single
+- id: '1779824898369'
+  alias: 'Pool Cover Watchdog: Auto Light Off'
+  description: Automatically turns off the pool light when the pool is closed.
+  triggers:
+  - entity_id: cover.pool_cover
+    to: closed
+    trigger: state
+  conditions:
+  - condition: state
+    entity_id: light.pool_light
+    state: 'on'
+  actions:
+  - action: light.turn_off
+    target:
+      entity_id: light.pool_light
+  mode: single
