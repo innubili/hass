@@ -20,17 +20,16 @@
   triggers:
   - trigger: state
     entity_id: binary_sensor.garage_door_fully_open
-    from: 'on'
-    to: 'off'
+    from: 'off'
+    to: 'on'
   actions:
   - delay: 00:00:20
   - if:
     - condition: state
       entity_id: binary_sensor.garage_door_fully_closed
-      state: 'off'
+      state: 'on'
     then:
     - action: script.garage_smart_recovery
-  mode: restart
 - id: '1777552180711'
   alias: 'Watchdog: Auto-Off Irrigation Hedge South (Hydro1)'
   description: Spegne l'irrigazione della siepe se rimane accesa per più di 20 minuti.
