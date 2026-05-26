@@ -44,7 +44,6 @@ aarlo:
 template:
   # --- garage cover ---
   - cover:
-
       # --- Pergola Roof ---
       - name: "Pergola Tetto"
         unique_id: pergola_tetto_corrected
