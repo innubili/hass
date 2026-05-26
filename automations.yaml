@@ -357,7 +357,7 @@
         l'ha spenta.
   mode: single
 - id: '1779824898369'
-  alias: 'Watchdog: Pool Cover Close Auto Light Off'
+  alias: 'Pool Cover Watchdog: Auto Light Off'
   description: Automatically turns off the pool light when the pool is closed.
   triggers:
   - entity_id: cover.pool_cover
@@ -365,10 +365,10 @@
     trigger: state
   conditions:
   - condition: state
-    entity_id: light.pool_light
+    entity_id: switch.pool_light
     state: 'on'
   actions:
-  - action: light.turn_off
+  - action: switch.turn_off
     target:
-      entity_id: light.pool_light
+      entity_id: switch.pool_light
   mode: single
