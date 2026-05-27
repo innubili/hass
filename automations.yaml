@@ -321,7 +321,10 @@
     target:
       entity_id: switch.hydro2
   - delay:
-      minutes: 2
+      hours: 0
+      minutes: 5
+      seconds: 0
+      milliseconds: 0
   - action: switch.turn_off
     target:
       entity_id: switch.hydro2
@@ -331,10 +334,14 @@
     target:
       entity_id: switch.hydro2
   - delay:
-      minutes: 15
+      hours: 0
+      minutes: 30
+      seconds: 0
+      milliseconds: 0
   - action: switch.turn_off
     target:
       entity_id: switch.hydro2
+    data: {}
   mode: single
 - id: '1779734334464'
   alias: 'Watchdog: Auto-Off Irrigation Flowerbed (Hydro2)'
