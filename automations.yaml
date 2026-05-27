@@ -308,13 +308,13 @@
   - condition: not
     conditions:
     - condition: state
-      entity_id: weather.forecast_home
+      entity_id: weather.home
       state: rainy
     - condition: state
-      entity_id: weather.forecast_home
+      entity_id: weather.home
       state: pouring
     - condition: state
-      entity_id: weather.forecast_home
+      entity_id: weather.home
       state: lightning_rainy
   actions:
   - action: switch.turn_on
