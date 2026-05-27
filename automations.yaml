@@ -347,8 +347,10 @@
   alias: 'Watchdog: Auto-Off Irrigation Flowerbed (Hydro2)'
   description: Spegne l'irrigazione dell'aiuola se rimane accesa per più di 35 minuti.
   triggers:
-  - entity_id: switch.hydro1
-    to: 'on'
+  - entity_id:
+    - switch.hydro2
+    to:
+    - 'on'
     for:
       minutes: 35
     trigger: state
@@ -356,7 +358,8 @@
   actions:
   - action: switch.turn_off
     target:
-      entity_id: switch.hydro1
+      entity_id: switch.hydro2
+    data: {}
   - action: notify.notify
     data:
       title: Allarme Irrigazione!
