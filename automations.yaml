@@ -304,6 +304,14 @@
   triggers:
   - trigger: time
     at: 06:00:00
+    weekday:
+    - sun
+    - mon
+    - tue
+    - wed
+    - thu
+    - fri
+    - sat
   conditions:
   - condition: not
     conditions:
