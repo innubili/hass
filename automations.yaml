@@ -391,3 +391,29 @@
     target:
       entity_id: switch.pool_u_aussenbekl_pool_light
   mode: single
+- id: '1779982470755'
+  alias: 'Pergola: Close South Awning in Summer at Noon'
+  description: Closes the south awning (Tenda Strada) at 12:00 from April to October
+    if it's hot and sunny.
+  triggers:
+  - trigger: time
+    at: '12:00:00'
+  conditions:
+  - condition: template
+    value_template: '{{ now().month >= 4 and now().month <= 9 }}'
+    alias: Between April and October
+  - condition: numeric_state
+    entity_id: sensor.outside_temperature
+    above: 23
+    alias: Temperature is hot (above 23°C)
+  - condition: state
+    entity_id: weather.home
+    state:
+    - sunny
+    - partlycloudy
+    alias: Weather is nice
+  actions:
+  - action: cover.close_cover
+    target:
+      entity_id: cover.pergola_tenda_strada
+  mode: single
