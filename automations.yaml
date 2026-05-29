@@ -215,8 +215,9 @@
   description: Accende il gruppo Spots tutti al 25% quando fa buio, o alle 05:00 del
     mattino se è ancora buio
   triggers:
-  - entity_id: sensor.rain_light_sensor_illuminance
-    below: 50
+  - entity_id:
+    - sensor.rain_light_sensor_illuminance
+    below: 200
     trigger: numeric_state
   - at: 05:00:00
     trigger: time
