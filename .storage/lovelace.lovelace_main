@@ -610,6 +610,9 @@
                   "entity": "sensor.irrigate1_battery"
                 },
                 {
+                  "entity": "sensor.hydro2_battery"
+                },
+                {
                   "entity": "sensor.sgs01z_taxus_battery"
                 },
                 {
