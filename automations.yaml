@@ -414,3 +414,21 @@
     target:
       entity_id: cover.pergola_tenda_strada
   mode: single
+- id: '1780089464509'
+  alias: 'Pool Cover Watchdog: Auto Light Off'
+  description: Spegne la luce della piscina automaticamente quando il sensore di chiusura
+    si attiva.
+  triggers:
+  - entity_id:
+    - binary_sensor.pool_u_aussenbekl_pool_fully_closed
+    to: 'on'
+    trigger: state
+  conditions:
+  - condition: state
+    entity_id: switch.pool_u_aussenbekl_pool_light
+    state: 'on'
+  actions:
+  - action: switch.turn_off
+    target:
+      entity_id: switch.pool_u_aussenbekl_pool_light
+  mode: single
