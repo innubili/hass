@@ -251,31 +251,36 @@
   mode: single
 - id: '1779694545131'
   alias: Irrigation Hedge South Hydro1
-  description: Irriga la siepe. Tecnica Soak & Cycle(15m ON, 30m OFF x3). Controlla
-    previsioni meteo e temperature per frequenza(3gg o 7gg)
+  description: Irriga la siepe. Controlla umidità del suolo con soglie dinamiche basate
+    sulla temperatura massima (API weather.get_forecasts).
   triggers:
   - trigger: time
     at: 06:00:00
   conditions:
-  - condition: template
-    value_template: '{% set last_run = this.attributes.last_triggered %} {% set days_since
-      = (now() - last_run).days if last_run else 10 %} {% set temp = states(''sensor.outside_temperature'')
-      | float(0) %} {{ (temp > 30 and days_since >= 3) or (temp <= 30 and days_since
-      >= 7) }}
-
-      '
   - condition: not
     conditions:
     - condition: state
-      entity_id: weather.home
-      state: rainy
-    - condition: state
-      entity_id: weather.home
-      state: pouring
-    - condition: state
-      entity_id: weather.home
-      state: lightning_rainy
+      entity_id: weather.forecast_home
+      state:
+      - rainy
+      - pouring
+      - lightning_rainy
   actions:
+  - action: weather.get_forecasts
+    target:
+      entity_id: weather.forecast_home
+    data:
+      type: daily
+    response_variable: daily_forecast
+  - variables:
+      max_temp: '{{ daily_forecast[''weather.forecast_home''].forecast[0].temperature
+        | float(20) }}'
+      current_moisture: '{{ states(''sensor.sgs01z_taxus_soil_moisture'') | float(100)
+        }}'
+      moisture_threshold: "{% if max_temp >= 30 %}\n  50\n{% elif max_temp >= 25 %}\n
+        \ 45\n{% elif max_temp < 20 %}\n  35\n{% else %}\n  40\n{% endif %}\n"
+  - condition: template
+    value_template: '{{ current_moisture < (moisture_threshold | float) }}'
   - action: switch.turn_on
     target:
       entity_id: switch.hydro1
