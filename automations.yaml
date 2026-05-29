@@ -228,7 +228,7 @@
   actions:
   - action: light.turn_on
     target:
-      entity_id: light.spots_tutti
+      entity_id: light.slzu_06mu_zb_coordinator_ezsp_all_garden_lights
     data:
       brightness_pct: 25
   mode: single
