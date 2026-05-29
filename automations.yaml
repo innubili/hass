@@ -307,40 +307,41 @@
   mode: single
 - id: '1779734149348'
   alias: Irrigation Flowerbed Hydro2
-  description: Irriga l'aiuola ogni mattina. Usa la tecnica Soak & Cycle come hydro1,
-    ma garantisce l'esecuzione giornaliera ignorando l'umidità del suolo.
+  description: Irriga l'aiuola ogni mattina con soglie elevate specifiche per apparato
+    radicale superficiale.
   triggers:
   - trigger: time
     at: 06:00:00
-    weekday:
-    - sun
-    - mon
-    - tue
-    - wed
-    - thu
-    - fri
-    - sat
   conditions:
   - condition: not
     conditions:
     - condition: state
-      entity_id: weather.home
-      state: rainy
-    - condition: state
-      entity_id: weather.home
-      state: pouring
-    - condition: state
-      entity_id: weather.home
-      state: lightning_rainy
+      entity_id: weather.forecast_home
+      state:
+      - rainy
+      - pouring
+      - lightning_rainy
   actions:
+  - action: weather.get_forecasts
+    target:
+      entity_id: weather.forecast_home
+    data:
+      type: daily
+    response_variable: daily_forecast
+  - variables:
+      max_temp: '{{ daily_forecast[''weather.forecast_home''].forecast[0].temperature
+        | float(20) }}'
+      current_moisture: '{{ states(''sensor.sgs01z_aioula_soil_moisture'') | float(100)
+        }}'
+      moisture_threshold: "{% if max_temp >= 30 %}\n  65\n{% elif max_temp >= 25 %}\n
+        \ 55\n{% elif max_temp < 20 %}\n  45\n{% else %}\n  50\n{% endif %}\n"
+  - condition: template
+    value_template: '{{ current_moisture < (moisture_threshold | float) }}'
   - action: switch.turn_on
     target:
       entity_id: switch.hydro2
   - delay:
-      hours: 0
-      minutes: 5
-      seconds: 0
-      milliseconds: 0
+      minutes: 2
   - action: switch.turn_off
     target:
       entity_id: switch.hydro2
@@ -350,14 +351,10 @@
     target:
       entity_id: switch.hydro2
   - delay:
-      hours: 0
-      minutes: 30
-      seconds: 0
-      milliseconds: 0
+      minutes: 15
   - action: switch.turn_off
     target:
       entity_id: switch.hydro2
-    data: {}
   mode: single
 - id: '1779734334464'
   alias: 'Watchdog: Auto-Off Irrigation Flowerbed (Hydro2)'
