@@ -134,32 +134,26 @@
   description: Accende le lampade Sonoff Duo e imposta gli spot al 100% per 3 minuti
     quando viene rilevata una presenza al buio, poi abbassa gli spot al 25%
   triggers:
-  - entity_id: binary_sensor.sonoff_100149f0b2
+  - trigger: state
+    entity_id: binary_sensor.sonoff_100149f0b2
     to: 'on'
-    trigger: state
-  - entity_id: binary_sensor.pir_main_door
+  - trigger: state
+    entity_id: binary_sensor.pir_main_door
     to: 'on'
-    trigger: state
-  - entity_id: binary_sensor.aarlo_motion_entry
+  - trigger: state
+    entity_id: binary_sensor.aarlo_motion_entry
     to: 'on'
-    trigger: state
   conditions:
   - condition: numeric_state
     entity_id: sensor.rain_light_sensor_illuminance
-    below: 200
+    below: 50
   actions:
   - parallel:
     - target:
-        entity_id:
-        - switch.mini_duo_l_switch_switch
-        - switch.mini_duo_l_switch_switch_2
+        entity_id: switch.main_door_lights
       action: switch.turn_on
     - target:
-        entity_id:
-        - light.spot2
-        - light.spot4
-        - light.spot6
-        - light.spot8
+        entity_id: light.spots_entrata
       data:
         brightness_pct: 100
       action: light.turn_on
@@ -169,16 +163,10 @@
       seconds: 0
   - parallel:
     - target:
-        entity_id:
-        - switch.mini_duo_l_switch_switch
-        - switch.mini_duo_l_switch_switch_2
+        entity_id: switch.main_door_lights
       action: switch.turn_off
     - target:
-        entity_id:
-        - light.spot2
-        - light.spot4
-        - light.spot6
-        - light.spot8
+        entity_id: light.spots_entrata
       data:
         brightness_pct: 25
       action: light.turn_on
