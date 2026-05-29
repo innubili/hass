@@ -224,7 +224,7 @@
   conditions:
   - condition: numeric_state
     entity_id: sensor.rain_light_sensor_illuminance
-    below: 50
+    below: 200
   actions:
   - action: light.turn_on
     target:
