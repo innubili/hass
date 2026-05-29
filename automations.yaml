@@ -371,23 +371,6 @@
       message: La valvola dell'aiuola  è rimasta aperta troppo a lungo. Il Watchdog
         l'ha spenta.
   mode: single
-- id: '1779824898369'
-  alias: 'Pool Cover Watchdog: Auto Light Off'
-  description: Automatically turns off the pool light when the pool is closed.
-  triggers:
-  - entity_id: cover.pool_cover
-    to: closed
-    trigger: state
-  conditions:
-  - condition: state
-    entity_id: switch.pool_light
-    state: 'on'
-  actions:
-  - action: switch.turn_off
-    data: {}
-    target:
-      entity_id: switch.pool_u_aussenbekl_pool_light
-  mode: single
 - id: '1779982470755'
   alias: 'Pergola: Close South Awning in Summer at Noon'
   description: Closes the south awning (Tenda Strada) at 12:00 from April to October
