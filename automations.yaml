@@ -238,14 +238,16 @@
   triggers:
   - at: 02:00:00
     trigger: time
-  - entity_id: sensor.rain_light_sensor_illuminance
-    above: 50
+  - entity_id:
+    - sensor.rain_light_sensor_illuminance
+    above: 200
     trigger: numeric_state
   conditions: []
   actions:
   - action: light.turn_off
     target:
-      entity_id: light.spots_tutti
+      entity_id: light.slzu_06mu_zb_coordinator_ezsp_all_garden_lights
+    data: {}
   mode: single
 - id: '1779694545131'
   alias: Irrigation Hedge South Hydro1
