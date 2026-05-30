@@ -247,3 +247,14 @@ pool_start_swimming:
     - action: switch.turn_on
       target:
         entity_id: switch.pool_u_aussenbekl_pool_light
+pool_finished:
+  alias: pool_finished
+  icon: mdi:pool-off
+  description: Chiude piscina e spegne la luce
+  sequence:
+  - action: cover.close_cover
+    target:
+      entity_id: cover.pool_tetto
+  - action: switch.turn_off
+    target:
+      entity_id: switch.pool_u_aussenbekl_pool_light
