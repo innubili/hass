@@ -269,17 +269,6 @@
               "icon": "mdi:close-outline"
             },
             {
-              "type": "entities",
-              "entities": [
-                {
-                  "entity": "cover.pool_tetto"
-                }
-              ],
-              "title": "Piscina Tetto",
-              "state_color": true,
-              "show_header_toggle": false
-            },
-            {
               "show_name": true,
               "show_icon": true,
               "type": "button",
@@ -290,6 +279,17 @@
               "icon": "mdi:swim",
               "show_state": true,
               "entity": "switch.pool_u_aussenbekl_pool_light"
+            },
+            {
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "cover.pool_tetto"
+                }
+              ],
+              "title": "Piscina Tetto",
+              "state_color": true,
+              "show_header_toggle": false
             },
             {
               "type": "entities",
