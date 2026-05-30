@@ -258,7 +258,7 @@
               "show_icon": true,
               "type": "button",
               "entity": "script.pool_start_swimming",
-              "name": "Open"
+              "name": "Open pool"
             },
             {
               "show_name": true,
