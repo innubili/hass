@@ -372,26 +372,38 @@
         l'ha spenta.
   mode: single
 - id: '1779982470755'
-  alias: 'Pergola: Close South Awning in Summer at Noon'
-  description: Closes the south awning (Tenda Strada) at 12:00 from April to October
-    if it's hot and sunny.
+  alias: 'Pergola: Close South Awning in Summer Afternoon (Sensors)'
+  description: Closes the south awning (Tenda Strada) after 12:00 from April to October
+    if it's hot and sunny, using local pergola sensors.
   triggers:
   - trigger: time
     at: '12:00:00'
+  - trigger: numeric_state
+    entity_id: sensor.th2_pergola_temprature_2
+    above: 23
+  - trigger: numeric_state
+    entity_id: sensor.rain_light_sensor_illuminance
+    above: 3000
   conditions:
   - condition: template
     value_template: '{{ now().month >= 4 and now().month <= 9 }}'
-    alias: Between April and October
+    alias: Incluso tra Aprile e Settembre
+  - condition: time
+    after: '11:59:59'
+    before: '18:00:00'
+    alias: È pomeriggio (12:00 - 18:00)
   - condition: numeric_state
-    entity_id: sensor.outside_temperature
+    entity_id: sensor.th2_pergola_temprature_2
     above: 23
-    alias: Temperature is hot (above 23°C)
+    alias: Temperatura pergola elevata (sopra i 23°C)
+  - condition: numeric_state
+    entity_id: sensor.rain_light_sensor_illuminance
+    above: 3000
+    alias: C'è sole (luminosità sopra i 3000 lx)
   - condition: state
-    entity_id: weather.home
-    state:
-    - sunny
-    - partlycloudy
-    alias: Weather is nice
+    entity_id: cover.pergola_tenda_strada
+    state: open
+    alias: La tenda è attualmente aperta
   actions:
   - action: cover.close_cover
     target:
