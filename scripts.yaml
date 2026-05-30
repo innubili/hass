@@ -228,3 +228,22 @@ system_put_garden_spots_in_pairing_mode_entry_only:
     target:
       entity_id:
       - switch.garden_entry_spots_fixed
+pool_start_swimming:
+  alias: pool_start_swimming
+  icon: mdi:pool
+  description: Apre piscina, abbassa tenda strada e accende luce se è buio
+  sequence:
+  - action: cover.open_cover
+    target:
+      entity_id: cover.pool_tetto
+  - action: cover.close_cover
+    target:
+      entity_id: cover.pergola_tenda_strada
+  - if:
+    - condition: numeric_state
+      entity_id: sensor.rain_light_sensor_illuminance
+      below: 200
+    then:
+    - action: switch.turn_on
+      target:
+        entity_id: switch.pool_u_aussenbekl_pool_light
