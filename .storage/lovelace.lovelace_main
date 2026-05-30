@@ -254,6 +254,13 @@
           "badges": [],
           "cards": [
             {
+              "show_name": true,
+              "show_icon": true,
+              "type": "button",
+              "entity": "script.pool_start_swimming",
+              "name": "Open"
+            },
+            {
               "type": "entities",
               "entities": [
                 {
@@ -275,13 +282,6 @@
               "icon": "mdi:swim",
               "show_state": true,
               "entity": "switch.pool_u_aussenbekl_pool_light"
-            },
-            {
-              "show_name": true,
-              "show_icon": true,
-              "type": "button",
-              "entity": "script.pool_start_swimming",
-              "name": "Open"
             },
             {
               "type": "entities",
