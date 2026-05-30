@@ -284,6 +284,14 @@
               "entity": "switch.pool_u_aussenbekl_pool_light"
             },
             {
+              "show_name": true,
+              "show_icon": true,
+              "type": "button",
+              "entity": "script.pool_finished",
+              "name": "Close",
+              "icon": "mdi:close-outline"
+            },
+            {
               "type": "entities",
               "entities": [
                 {
