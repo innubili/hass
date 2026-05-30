@@ -475,7 +475,7 @@
                   "graph": "line",
                   "type": "sensor",
                   "detail": 2,
-                  "entity": "sensor.sgs01z_taxus_soil_moisture",
+                  "entity": "sensor.sgs01z_aioula_soil_moisture",
                   "name": "Humiidity",
                   "limits": {
                     "min": 5,
@@ -493,7 +493,7 @@
                     "max": 40
                   },
                   "hours_to_show": 72,
-                  "entity": "sensor.sgs01z_taxus_temperature"
+                  "entity": "sensor.sgs01z_aioula_temperature"
                 }
               ],
               "title": "Aiuola (entrata)"
