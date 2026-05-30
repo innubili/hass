@@ -265,7 +265,7 @@
               "show_icon": true,
               "type": "button",
               "entity": "script.pool_finished",
-              "name": "Close",
+              "name": "Close pool",
               "icon": "mdi:close-outline"
             },
             {
