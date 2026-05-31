@@ -494,7 +494,8 @@
                     }
                   }
                 }
-              ]
+              ],
+              "title": "Aiuola"
             },
             {
               "type": "horizontal-stack",
