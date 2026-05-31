@@ -514,6 +514,41 @@
                   }
                 }
               ]
+            },
+            {
+              "type": "vertical-stack",
+              "cards": [
+                {
+                  "graph": "line",
+                  "type": "sensor",
+                  "detail": 1,
+                  "entity": "sensor.sgs01z_aioula_soil_moisture",
+                  "limits": {
+                    "min": 20,
+                    "max": 80
+                  },
+                  "hours_to_show": 80,
+                  "name": "Siepe"
+                },
+                {
+                  "show_name": true,
+                  "show_icon": true,
+                  "type": "button",
+                  "entity": "automation.irrigation_flowerbed_aiuola_daily",
+                  "icon": "mdi:watering-can",
+                  "tap_action": {
+                    "action": "perform-action",
+                    "perform_action": "automation.trigger",
+                    "target": {
+                      "entity_id": "automation.irrigation_flowerbed_aiuola_daily"
+                    },
+                    "data": {
+                      "skip_condition": true
+                    }
+                  }
+                }
+              ],
+              "title": "Aiuola"
             }
           ]
         },
