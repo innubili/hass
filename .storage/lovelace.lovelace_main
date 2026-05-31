@@ -30,46 +30,6 @@
               "title": "DW2 Door Main"
             },
             {
-              "type": "entities",
-              "entities": [
-                {
-                  "entity": "vacuum.roomba"
-                }
-              ],
-              "title": "Clean"
-            },
-            {
-              "type": "button",
-              "tap_action": {
-                "action": "call-service",
-                "service": "automation.trigger",
-                "service_data": {},
-                "target": {
-                  "entity_id": "automation.going_to_bed"
-                }
-              },
-              "name": "Going To Bed",
-              "icon": "mdi:lightbulb-auto-outline"
-            },
-            {
-              "type": "grid",
-              "square": false,
-              "columns": 1,
-              "cards": [
-                {
-                  "type": "entities",
-                  "entities": [
-                    "remote.family_room_tv"
-                  ],
-                  "title": "Family room TV"
-                },
-                {
-                  "type": "media-control",
-                  "entity": "media_player.family_room_tv_2"
-                }
-              ]
-            },
-            {
               "type": "custom:button-card",
               "name": "Garage Door",
               "entity": "binary_sensor.garage_door_fully_closed",
@@ -159,6 +119,46 @@
                     ]
                   },
                   "name": "Moving"
+                }
+              ]
+            },
+            {
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "vacuum.roomba"
+                }
+              ],
+              "title": "Clean"
+            },
+            {
+              "type": "button",
+              "tap_action": {
+                "action": "call-service",
+                "service": "automation.trigger",
+                "service_data": {},
+                "target": {
+                  "entity_id": "automation.going_to_bed"
+                }
+              },
+              "name": "Going To Bed",
+              "icon": "mdi:lightbulb-auto-outline"
+            },
+            {
+              "type": "grid",
+              "square": false,
+              "columns": 1,
+              "cards": [
+                {
+                  "type": "entities",
+                  "entities": [
+                    "remote.family_room_tv"
+                  ],
+                  "title": "Family room TV"
+                },
+                {
+                  "type": "media-control",
+                  "entity": "media_player.family_room_tv_2"
                 }
               ]
             },
