@@ -393,15 +393,6 @@
           "badges": [],
           "cards": [
             {
-              "type": "entities",
-              "entities": [
-                {
-                  "entity": "cover.grill_tenda"
-                }
-              ],
-              "title": "Grill"
-            },
-            {
               "type": "vertical-stack",
               "cards": [
                 {
@@ -472,6 +463,15 @@
                 }
               ],
               "title": "Aiuola"
+            },
+            {
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "cover.grill_tenda"
+                }
+              ],
+              "title": "Grill"
             },
             {
               "type": "vertical-stack",
