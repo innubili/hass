@@ -509,16 +509,17 @@
                   "tap_action": {
                     "action": "perform-action",
                     "perform_action": "automation.trigger",
-                    "target": {},
+                    "target": {
+                      "entity_id": "automation.irrigation_hedge_south_hydro1"
+                    },
                     "data": {
                       "skip_condition": true
                     }
                   },
                   "entity": "sensor.sgs01z_taxus_soil_moisture",
                   "name": "Siepe (click per irrigare)",
-                  "double_tap_action": {
-                    "action": "perform-action",
-                    "perform_action": ""
+                  "hold_action": {
+                    "action": "none"
                   }
                 }
               ],
