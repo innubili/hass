@@ -105,24 +105,6 @@
               ]
             },
             {
-              "type": "entities",
-              "entities": [
-                {
-                  "entity": "person.mary"
-                },
-                {
-                  "entity": "person.rudy_federici"
-                }
-              ]
-            },
-            {
-              "type": "entities",
-              "entities": [
-                "binary_sensor.sonoff_100149f0b2"
-              ],
-              "title": "DW2 Door Main"
-            },
-            {
               "type": "vertical-stack",
               "cards": [
                 {
@@ -203,6 +185,24 @@
                 }
               ],
               "title": "Clima"
+            },
+            {
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "person.mary"
+                },
+                {
+                  "entity": "person.rudy_federici"
+                }
+              ]
+            },
+            {
+              "type": "entities",
+              "entities": [
+                "binary_sensor.sonoff_100149f0b2"
+              ],
+              "title": "DW2 Door Main"
             },
             {
               "type": "entities",
