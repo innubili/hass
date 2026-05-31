@@ -12,24 +12,6 @@
           "badges": [],
           "cards": [
             {
-              "type": "entities",
-              "entities": [
-                {
-                  "entity": "person.mary"
-                },
-                {
-                  "entity": "person.rudy_federici"
-                }
-              ]
-            },
-            {
-              "type": "entities",
-              "entities": [
-                "binary_sensor.sonoff_100149f0b2"
-              ],
-              "title": "DW2 Door Main"
-            },
-            {
               "type": "custom:button-card",
               "name": "Garage Door",
               "entity": "binary_sensor.garage_door_fully_closed",
@@ -121,6 +103,24 @@
                   "name": "Moving"
                 }
               ]
+            },
+            {
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "person.mary"
+                },
+                {
+                  "entity": "person.rudy_federici"
+                }
+              ]
+            },
+            {
+              "type": "entities",
+              "entities": [
+                "binary_sensor.sonoff_100149f0b2"
+              ],
+              "title": "DW2 Door Main"
             },
             {
               "type": "entities",
