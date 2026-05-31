@@ -504,19 +504,21 @@
                   "show_name": true,
                   "show_icon": true,
                   "type": "button",
-                  "entity": "sensor.sgs01z_aioula_soil_moisture",
-                  "name": "Aiuola",
                   "icon_height": "32px",
                   "show_state": true,
                   "tap_action": {
                     "action": "perform-action",
                     "perform_action": "automation.trigger",
-                    "target": {
-                      "entity_id": "automation.irrigation_hedge_south_hydro1"
-                    },
+                    "target": {},
                     "data": {
                       "skip_condition": true
                     }
+                  },
+                  "entity": "sensor.sgs01z_taxus_soil_moisture",
+                  "name": "Siepe (click per irrigare)",
+                  "double_tap_action": {
+                    "action": "perform-action",
+                    "perform_action": ""
                   }
                 }
               ],
