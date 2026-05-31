@@ -485,11 +485,23 @@
               "type": "vertical-stack",
               "cards": [
                 {
+                  "graph": "line",
+                  "type": "sensor",
+                  "detail": 1,
+                  "entity": "sensor.sgs01z_taxus_soil_moisture",
+                  "limits": {
+                    "min": 20,
+                    "max": 80
+                  },
+                  "hours_to_show": 80,
+                  "name": "Siepe"
+                },
+                {
                   "show_name": true,
                   "show_icon": true,
                   "type": "button",
-                  "icon_height": "32px",
-                  "show_state": true,
+                  "entity": "automation.irrigation_hedge_south_hydro1",
+                  "icon": "mdi:watering-can",
                   "tap_action": {
                     "action": "perform-action",
                     "perform_action": "automation.trigger",
@@ -499,23 +511,7 @@
                     "data": {
                       "skip_condition": true
                     }
-                  },
-                  "entity": "sensor.sgs01z_taxus_soil_moisture",
-                  "name": "Siepe (click per irrigare)",
-                  "hold_action": {
-                    "action": "none"
                   }
-                },
-                {
-                  "graph": "line",
-                  "type": "sensor",
-                  "detail": 1,
-                  "entity": "sensor.sgs01z_taxus_soil_moisture",
-                  "limits": {
-                    "min": 45,
-                    "max": 60
-                  },
-                  "hours_to_show": 80
                 }
               ]
             }
