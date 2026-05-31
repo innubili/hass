@@ -438,47 +438,6 @@
                   "type": "entities",
                   "entities": [
                     {
-                      "entity": "switch.hydro1"
-                    }
-                  ],
-                  "title": "Irrigazione",
-                  "show_header_toggle": false,
-                  "state_color": true
-                },
-                {
-                  "graph": "line",
-                  "type": "sensor",
-                  "detail": 2,
-                  "entity": "sensor.sgs01z_taxus_soil_moisture",
-                  "name": "Humiidity",
-                  "limits": {
-                    "min": 5,
-                    "max": 70
-                  },
-                  "hours_to_show": 72
-                },
-                {
-                  "graph": "line",
-                  "type": "sensor",
-                  "detail": 2,
-                  "name": "Temperature",
-                  "limits": {
-                    "min": -15,
-                    "max": 40
-                  },
-                  "hours_to_show": 72,
-                  "entity": "sensor.sgs01z_taxus_temperature"
-                }
-              ],
-              "title": "Siepe (davanti)"
-            },
-            {
-              "type": "vertical-stack",
-              "cards": [
-                {
-                  "type": "entities",
-                  "entities": [
-                    {
                       "entity": "switch.hydro2"
                     }
                   ],
