@@ -512,6 +512,23 @@
                 }
               ],
               "title": "Aiuola (entrata)"
+            },
+            {
+              "show_name": true,
+              "show_icon": false,
+              "type": "button",
+              "entity": "automation.irrigation_flowerbed_aiuola_daily",
+              "icon": "mdi:flower-outline",
+              "name": "Irrigazione Aiuola",
+              "show_state": false,
+              "tap_action": {
+                "action": "perform-action",
+                "perform_action": "automation.trigger",
+                "target": {},
+                "data": {
+                  "skip_condition": true
+                }
+              }
             }
           ]
         },
