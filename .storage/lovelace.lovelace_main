@@ -450,7 +450,7 @@
                     "max": 80
                   },
                   "hours_to_show": 80,
-                  "name": "Siepe"
+                  "name": "Umidità del terreno"
                 },
                 {
                   "show_name": true,
@@ -467,7 +467,8 @@
                     "data": {
                       "skip_condition": true
                     }
-                  }
+                  },
+                  "name": "Irrigazione"
                 }
               ],
               "title": "Aiuola"
