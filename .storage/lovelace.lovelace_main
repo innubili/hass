@@ -407,14 +407,14 @@
                 {
                   "graph": "line",
                   "type": "sensor",
-                  "detail": 1,
+                  "detail": 2,
                   "entity": "sensor.sgs01z_taxus_soil_moisture",
                   "limits": {
                     "min": 20,
                     "max": 80
                   },
                   "hours_to_show": 80,
-                  "name": "Siepe"
+                  "name": "Umidità del terremo"
                 },
                 {
                   "show_name": true,
@@ -431,9 +431,11 @@
                     "data": {
                       "skip_condition": true
                     }
-                  }
+                  },
+                  "name": "Irrigare"
                 }
-              ]
+              ],
+              "title": "Siepe (Sud)"
             },
             {
               "type": "vertical-stack",
