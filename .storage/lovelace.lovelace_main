@@ -479,31 +479,6 @@
                   "show_name": true,
                   "show_icon": true,
                   "type": "button",
-                  "entity": "sensor.sgs01z_aioula_soil_moisture",
-                  "name": "Aiuola",
-                  "icon_height": "32px",
-                  "show_state": true,
-                  "tap_action": {
-                    "action": "perform-action",
-                    "perform_action": "automation.trigger",
-                    "target": {
-                      "entity_id": "automation.irrigation_flowerbed_aiuola_daily"
-                    },
-                    "data": {
-                      "skip_condition": true
-                    }
-                  }
-                }
-              ],
-              "title": "Aiuola"
-            },
-            {
-              "type": "horizontal-stack",
-              "cards": [
-                {
-                  "show_name": true,
-                  "show_icon": true,
-                  "type": "button",
                   "icon_height": "32px",
                   "show_state": true,
                   "tap_action": {
@@ -521,9 +496,31 @@
                   "hold_action": {
                     "action": "none"
                   }
+                },
+                {
+                  "show_name": true,
+                  "show_icon": true,
+                  "type": "button",
+                  "icon_height": "32px",
+                  "show_state": true,
+                  "tap_action": {
+                    "action": "perform-action",
+                    "perform_action": "automation.trigger",
+                    "target": {
+                      "entity_id": "automation.irrigation_flowerbed_aiuola_daily"
+                    },
+                    "data": {
+                      "skip_condition": true
+                    }
+                  },
+                  "name": "Aiuola (click per irrigare)",
+                  "hold_action": {
+                    "action": "none"
+                  },
+                  "entity": "sensor.sgs01z_aioula_soil_moisture"
                 }
               ],
-              "title": "Siepe (Sud)"
+              "title": "Irrigazione"
             }
           ]
         },
