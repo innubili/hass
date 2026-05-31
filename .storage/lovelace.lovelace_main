@@ -393,86 +393,6 @@
           "badges": [],
           "cards": [
             {
-              "type": "entities",
-              "entities": [
-                {
-                  "entity": "cover.grill_tenda"
-                }
-              ],
-              "title": "Grill"
-            },
-            {
-              "type": "vertical-stack",
-              "cards": [
-                {
-                  "type": "light",
-                  "entity": "light.garden_spots_all"
-                },
-                {
-                  "type": "light",
-                  "entity": "light.garden_spots_garage"
-                },
-                {
-                  "type": "light",
-                  "entity": "light.garden_spots_entry"
-                },
-                {
-                  "show_name": true,
-                  "show_icon": true,
-                  "type": "button",
-                  "tap_action": {
-                    "action": "toggle"
-                  },
-                  "icon": "mdi:lightbulb-auto",
-                  "show_state": true,
-                  "name": "SPOTS columns",
-                  "entity": "switch.pool_u_aussenbekl_column_spots"
-                }
-              ],
-              "title": "Lights"
-            },
-            {
-              "type": "vertical-stack",
-              "cards": [
-                {
-                  "type": "entities",
-                  "entities": [
-                    {
-                      "entity": "switch.hydro2"
-                    }
-                  ],
-                  "title": "Irrigazione",
-                  "show_header_toggle": false,
-                  "state_color": true
-                },
-                {
-                  "graph": "line",
-                  "type": "sensor",
-                  "detail": 2,
-                  "entity": "sensor.sgs01z_aioula_soil_moisture",
-                  "name": "Humiidity",
-                  "limits": {
-                    "min": 5,
-                    "max": 70
-                  },
-                  "hours_to_show": 72
-                },
-                {
-                  "graph": "line",
-                  "type": "sensor",
-                  "detail": 2,
-                  "name": "Temperature",
-                  "limits": {
-                    "min": -15,
-                    "max": 40
-                  },
-                  "hours_to_show": 72,
-                  "entity": "sensor.sgs01z_aioula_temperature"
-                }
-              ],
-              "title": "Aiuola (entrata)"
-            },
-            {
               "type": "horizontal-stack",
               "cards": [
                 {
@@ -521,6 +441,45 @@
                 }
               ],
               "title": "Irrigazione"
+            },
+            {
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "cover.grill_tenda"
+                }
+              ],
+              "title": "Grill"
+            },
+            {
+              "type": "vertical-stack",
+              "cards": [
+                {
+                  "type": "light",
+                  "entity": "light.garden_spots_all"
+                },
+                {
+                  "type": "light",
+                  "entity": "light.garden_spots_garage"
+                },
+                {
+                  "type": "light",
+                  "entity": "light.garden_spots_entry"
+                },
+                {
+                  "show_name": true,
+                  "show_icon": true,
+                  "type": "button",
+                  "tap_action": {
+                    "action": "toggle"
+                  },
+                  "icon": "mdi:lightbulb-auto",
+                  "show_state": true,
+                  "name": "SPOTS columns",
+                  "entity": "switch.pool_u_aussenbekl_column_spots"
+                }
+              ],
+              "title": "Lights"
             }
           ]
         },
