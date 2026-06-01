@@ -35,7 +35,8 @@ garage_smart_recovery:
         data:
           title: Garage Error
           message: Recovery failed. Door is still stuck between sensors!
-# === SMART HOME AUTOMATION DOUBLE-CHECK MAPPING ===
+
+          # === SMART HOME AUTOMATION DOUBLE-CHECK MAPPING ===
 # Physical Door Status Reference for Rudy's Garage:
 # - Garage CLOSED: binary_sensor.garage_door_fully_closed = 'off'
 # - Garage OPEN:   binary_sensor.garage_door_fully_open = 'on' (and fully_closed = 'on')
