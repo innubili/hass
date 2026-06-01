@@ -2,39 +2,39 @@ pulse_garage_relay:
   alias: Pulse Garage Door
   icon: mdi:garage
   sequence:
-  - action: switch.turn_on
-    target:
-      entity_id: switch.pool_u_aussenbekl_garage_door
-  - delay: 00:00:02
-  - action: switch.turn_off
-    target:
-      entity_id: switch.pool_u_aussenbekl_garage_door
+    - action: switch.turn_on
+      target:
+        entity_id: switch.pool_u_aussenbekl_garage_door
+    - delay: 00:00:02
+    - action: switch.turn_off
+      target:
+        entity_id: switch.pool_u_aussenbekl_garage_door
 garage_smart_recovery:
   alias: Garage Smart Recovery
   sequence:
-  - if:
-    - condition: state
-      entity_id: binary_sensor.garage_door_fully_closed
-      state: 'on'
-    - condition: state
-      entity_id: binary_sensor.garage_door_fully_open
-      state: 'on'
-    then:
-    - action: script.pulse_garage_relay
-    - delay: 00:00:03
-    - action: script.pulse_garage_relay
-    - delay: 00:00:02
-    - action: script.pulse_garage_relay
-    - delay: 00:00:20
     - if:
-      - condition: state
-        entity_id: binary_sensor.garage_door_fully_closed
-        state: 'on'
+        - condition: state
+          entity_id: binary_sensor.garage_door_fully_closed
+          state: "on"
+        - condition: state
+          entity_id: binary_sensor.garage_door_fully_open
+          state: "on"
       then:
-      - action: notify.notify
-        data:
-          title: Garage Error
-          message: Recovery failed. Door is still stuck between sensors!
+        - action: script.pulse_garage_relay
+        - delay: 00:00:03
+        - action: script.pulse_garage_relay
+        - delay: 00:00:02
+        - action: script.pulse_garage_relay
+        - delay: 00:00:20
+        - if:
+            - condition: state
+              entity_id: binary_sensor.garage_door_fully_closed
+              state: "on"
+          then:
+            - action: notify.notify
+              data:
+                title: Garage Error
+                message: Recovery failed. Door is still stuck between sensors!
 
 # === SMART HOME AUTOMATION DOUBLE-CHECK MAPPING ===
 # Physical Door Status Reference for Rudy's Garage:
@@ -47,222 +47,223 @@ garage_multi_attempt_close:
   alias: Garage Multi Attempt Close
   mode: single
   sequence:
-  - if:
-    - condition: state
-      entity_id: binary_sensor.garage_door_fully_closed
-      state: 'off'
-    then:
-    - stop: Il garage è già chiuso, annullo l'esecuzione.
-  - repeat:
-      sequence:
-      - action: notify.notify
-        data:
-          title: Garage Recovery
-          message: Attempt {{ repeat.index }} of 5 to close the garage...
-      - if:
-        - condition: state
-          entity_id: binary_sensor.garage_door_fully_open
-          state: 'off'
-        then:
-        - action: script.garage_smart_recovery
-        else:
-        - action: script.pulse_garage_relay
-      - wait_for_trigger:
-        - platform: state
-          entity_id: binary_sensor.garage_door_fully_closed
-          to: 'off'
-        timeout:
-          seconds: 24
-      until:
-      - condition: or
-        conditions:
+    - if:
         - condition: state
           entity_id: binary_sensor.garage_door_fully_closed
-          state: 'off'
-        - condition: template
-          value_template: '{{ repeat.index >= 5 }}'
-  - if:
-    - condition: state
-      entity_id: binary_sensor.garage_door_fully_closed
-      state: 'on'
-    then:
-    - action: notify.notify
-      data:
-        title: 'CRITICAL: Garage Failure'
-        message: Failed to close after 5 attempts. Check for obstructions at Andhauserstr.
-          71!
+          state: "off"
+      then:
+        - stop: Il garage è già chiuso, annullo l'esecuzione.
+    - repeat:
+        sequence:
+          - action: notify.notify
+            data:
+              title: Garage Recovery
+              message: Attempt {{ repeat.index }} of 5 to close the garage...
+          - if:
+              - condition: state
+                entity_id: binary_sensor.garage_door_fully_open
+                state: "off"
+            then:
+              - action: script.garage_smart_recovery
+            else:
+              - action: script.pulse_garage_relay
+          - wait_for_trigger:
+              - platform: state
+                entity_id: binary_sensor.garage_door_fully_closed
+                to: "off"
+            timeout:
+              seconds: 24
+        until:
+          - condition: or
+            conditions:
+              - condition: state
+                entity_id: binary_sensor.garage_door_fully_closed
+                state: "off"
+              - condition: template
+                value_template: "{{ repeat.index >= 5 }}"
+    - if:
+        - condition: state
+          entity_id: binary_sensor.garage_door_fully_closed
+          state: "on"
+      then:
+        - action: notify.notify
+          data:
+            title: "CRITICAL: Garage Failure"
+            message:
+              Failed to close after 5 attempts. Check for obstructions at Andhauserstr.
+              71!
 garage_master_toggle:
   alias: Garage Master Toggle
   sequence:
-  - if:
-    - condition: state
-      entity_id: binary_sensor.garage_door_fully_closed
-      state: 'off'
-    then:
-    - action: script.pulse_garage_relay
-    else:
-    - action: script.garage_multi_attempt_close
+    - if:
+        - condition: state
+          entity_id: binary_sensor.garage_door_fully_closed
+          state: "off"
+      then:
+        - action: script.pulse_garage_relay
+      else:
+        - action: script.garage_multi_attempt_close
 pool_open_sequence:
-  alias: 'Sequence: Open Pool'
+  alias: "Sequence: Open Pool"
   icon: mdi:pool
   sequence:
-  - action: switch.turn_on
-    target:
-      entity_id: switch.pool_u_aussenbekl_pool_stop
-  - delay: 00:00:01
-  - action: switch.turn_on
-    target:
-      entity_id: switch.pool_u_aussenbekl_pool_open
-  - delay: 00:00:01
-  - action: switch.turn_off
-    target:
-      entity_id: switch.pool_u_aussenbekl_pool_open
+    - action: switch.turn_on
+      target:
+        entity_id: switch.pool_u_aussenbekl_pool_stop
+    - delay: 00:00:01
+    - action: switch.turn_on
+      target:
+        entity_id: switch.pool_u_aussenbekl_pool_open
+    - delay: 00:00:01
+    - action: switch.turn_off
+      target:
+        entity_id: switch.pool_u_aussenbekl_pool_open
 pool_close_sequence:
-  alias: 'Sequence: Close Pool'
+  alias: "Sequence: Close Pool"
   icon: mdi:pool
   sequence:
-  - action: switch.turn_on
-    target:
-      entity_id: switch.pool_u_aussenbekl_pool_stop
-  - delay: 00:00:01
-  - action: switch.turn_on
-    target:
-      entity_id: switch.pool_u_aussenbekl_pool_close
-  - delay: 00:00:01
-  - action: switch.turn_off
-    target:
-      entity_id: switch.pool_u_aussenbekl_pool_close
+    - action: switch.turn_on
+      target:
+        entity_id: switch.pool_u_aussenbekl_pool_stop
+    - delay: 00:00:01
+    - action: switch.turn_on
+      target:
+        entity_id: switch.pool_u_aussenbekl_pool_close
+    - delay: 00:00:01
+    - action: switch.turn_off
+      target:
+        entity_id: switch.pool_u_aussenbekl_pool_close
 pool_stop_sequence:
-  alias: 'Sequence: Stop Pool'
+  alias: "Sequence: Stop Pool"
   icon: mdi:stop
   sequence:
-  - action: switch.turn_off
-    target:
-      entity_id: switch.pool_u_aussenbekl_pool_stop
+    - action: switch.turn_off
+      target:
+        entity_id: switch.pool_u_aussenbekl_pool_stop
 reset_innr_garden_spots:
-  alias: 'System: Put Garden Spots in Pairing Mode (all)'
+  alias: "System: Put Garden Spots in Pairing Mode (all)"
   icon: mdi:lightbulb-sync
   mode: single
   sequence:
-  - action: switch.turn_on
-    target:
-      entity_id:
-      - switch.garden_garage_spots_fixed
-      - switch.garden_entry_spots_fixed
-  - delay:
-      seconds: 6
-  - repeat:
-      count: 6
-      sequence:
-      - action: switch.turn_off
-        target:
-          entity_id:
+    - action: switch.turn_on
+      target:
+        entity_id:
           - switch.garden_garage_spots_fixed
           - switch.garden_entry_spots_fixed
-      - delay:
-          seconds: 1
-      - action: switch.turn_on
-        target:
-          entity_id:
+    - delay:
+        seconds: 6
+    - repeat:
+        count: 6
+        sequence:
+          - action: switch.turn_off
+            target:
+              entity_id:
+                - switch.garden_garage_spots_fixed
+                - switch.garden_entry_spots_fixed
+          - delay:
+              seconds: 1
+          - action: switch.turn_on
+            target:
+              entity_id:
+                - switch.garden_garage_spots_fixed
+                - switch.garden_entry_spots_fixed
+          - delay:
+              milliseconds: 1000
+    - action: switch.turn_on
+      target:
+        entity_id:
           - switch.garden_garage_spots_fixed
           - switch.garden_entry_spots_fixed
-      - delay:
-          milliseconds: 1000
-  - action: switch.turn_on
-    target:
-      entity_id:
-      - switch.garden_garage_spots_fixed
-      - switch.garden_entry_spots_fixed
-  description: ''
+  description: ""
 system_put_garden_spots_in_pairing_mode_garage_only:
-  alias: 'System: Put Garden Spots in Pairing Mode (Garage only)'
+  alias: "System: Put Garden Spots in Pairing Mode (Garage only)"
   icon: mdi:lightbulb-sync
   mode: single
-  description: ''
+  description: ""
   sequence:
-  - action: switch.turn_on
-    target:
-      entity_id:
-      - switch.garden_garage_spots_fixed
-  - delay:
-      seconds: 6
-  - repeat:
-      count: 6
-      sequence:
-      - action: switch.turn_off
-        target:
-          entity_id:
+    - action: switch.turn_on
+      target:
+        entity_id:
           - switch.garden_garage_spots_fixed
-      - delay:
-          seconds: 1
-      - action: switch.turn_on
-        target:
-          entity_id:
+    - delay:
+        seconds: 6
+    - repeat:
+        count: 6
+        sequence:
+          - action: switch.turn_off
+            target:
+              entity_id:
+                - switch.garden_garage_spots_fixed
+          - delay:
+              seconds: 1
+          - action: switch.turn_on
+            target:
+              entity_id:
+                - switch.garden_garage_spots_fixed
+          - delay:
+              seconds: 1
+    - action: switch.turn_on
+      target:
+        entity_id:
           - switch.garden_garage_spots_fixed
-      - delay:
-          seconds: 1
-  - action: switch.turn_on
-    target:
-      entity_id:
-      - switch.garden_garage_spots_fixed
 system_put_garden_spots_in_pairing_mode_entry_only:
-  alias: 'System: Put Garden Spots in Pairing Mode (Entry only)'
+  alias: "System: Put Garden Spots in Pairing Mode (Entry only)"
   icon: mdi:lightbulb-sync
   mode: single
-  description: ''
+  description: ""
   sequence:
-  - action: switch.turn_on
-    target:
-      entity_id:
-      - switch.garden_entry_spots_fixed
-  - delay:
-      seconds: 6
-  - repeat:
-      count: 6
-      sequence:
-      - action: switch.turn_off
-        target:
-          entity_id:
+    - action: switch.turn_on
+      target:
+        entity_id:
           - switch.garden_entry_spots_fixed
-      - delay:
-          seconds: 1
-      - action: switch.turn_on
-        target:
-          entity_id:
+    - delay:
+        seconds: 6
+    - repeat:
+        count: 6
+        sequence:
+          - action: switch.turn_off
+            target:
+              entity_id:
+                - switch.garden_entry_spots_fixed
+          - delay:
+              seconds: 1
+          - action: switch.turn_on
+            target:
+              entity_id:
+                - switch.garden_entry_spots_fixed
+          - delay:
+              milliseconds: 1000
+    - action: switch.turn_on
+      target:
+        entity_id:
           - switch.garden_entry_spots_fixed
-      - delay:
-          milliseconds: 1000
-  - action: switch.turn_on
-    target:
-      entity_id:
-      - switch.garden_entry_spots_fixed
 pool_start_swimming:
   alias: pool_start_swimming
   icon: mdi:pool
   description: Apre piscina, abbassa tenda strada e accende luce se è buio
   sequence:
-  - action: cover.open_cover
-    target:
-      entity_id: cover.pool_tetto
-  - action: cover.close_cover
-    target:
-      entity_id: cover.pergola_tenda_strada
-  - if:
-    - condition: numeric_state
-      entity_id: sensor.rain_light_sensor_illuminance
-      below: 200
-    then:
-    - action: switch.turn_on
+    - action: cover.open_cover
       target:
-        entity_id: switch.pool_u_aussenbekl_pool_light
+        entity_id: cover.pool_tetto
+    - action: cover.close_cover
+      target:
+        entity_id: cover.pergola_tenda_strada
+    - if:
+        - condition: numeric_state
+          entity_id: sensor.rain_light_sensor_illuminance
+          below: 200
+      then:
+        - action: switch.turn_on
+          target:
+            entity_id: switch.pool_u_aussenbekl_pool_light
 pool_finished:
   alias: pool_finished
   icon: mdi:pool-off
   description: Chiude piscina e spegne la luce
   sequence:
-  - action: cover.close_cover
-    target:
-      entity_id: cover.pool_tetto
-  - action: switch.turn_off
-    target:
-      entity_id: switch.pool_u_aussenbekl_pool_light
+    - action: cover.close_cover
+      target:
+        entity_id: cover.pool_tetto
+    - action: switch.turn_off
+      target:
+        entity_id: switch.pool_u_aussenbekl_pool_light
