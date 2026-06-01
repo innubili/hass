@@ -401,6 +401,10 @@
     entity_id: sensor.rain_light_sensor_illuminance
     above: 3000
     alias: C'è sole (luminosità sopra i 3000 lx)
+  - condition: state
+    entity_id: binary_sensor.rain_light_sensor
+    state: 'off'
+    alias: Non sta piovendo
   actions:
   - action: cover.close_cover
     target:
