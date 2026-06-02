@@ -263,18 +263,50 @@ registra_e_notifica_tg138648:
   alias: "Registra e Notifica TG138648"
   icon: mdi:car-connected
   sequence:
+    # 1. Eseguiamo la chiamata e salviamo il risultato nella variabile 'risposta_server'
     - action: rest_command.registra_tg138648
-    - action: notify.pixel_10_pro
-      data:
-        title: "Parcheggio Märwil (TG138648)"
-        message: "Auto TG138648 registrata sul server. Rinnovo automatico tra 11h 45m."
+      response_variable: risposta_server
+      continue_on_error: true # FONDAMENTALE: se c'è un errore di rete grave, lo script non va in crash ma procede
+
+    # 2. Verifichiamo se è andato tutto bene (Codice 201)
+    - if:
+        - condition: template
+          value_template: "{{ risposta_server is defined and risposta_server['status'] == 201 }}"
+      then:
+        - action: notify.pixel_10_pro
+          data:
+            title: "✅ Parcheggio Märwil (TG138648)"
+            message: "Auto registrata con successo! Rinnovo tra 11h 45m."
+      else:
+        - action: notify.pixel_10_pro
+          data:
+            title: "⚠️ ERRORE Parcheggio (TG138648)"
+            message: >
+              Registrazione fallita! Controlla l'app.
+              Status: {{ risposta_server['status'] | default('Server Irraggiungibile/Timeout') }}
 
 registra_e_notifica_tg177824:
   alias: "Registra e Notifica TG177824"
   icon: mdi:car-connected
   sequence:
+    # 1. Eseguiamo la chiamata e salviamo il risultato nella variabile 'risposta_server'
     - action: rest_command.registra_tg177824
-    - action: notify.pixel_10_pro
-      data:
-        title: "Parcheggio Märwil (TG177824)"
-        message: "Auto TG177824 registrata sul server. Rinnovo automatico tra 11h 45m."
+      response_variable: risposta_server
+      continue_on_error: true
+
+    # 2. Verifichiamo se è andato tutto bene (Codice 201)
+    - if:
+        - condition: template
+          value_template: "{{ risposta_server is defined and risposta_server['status'] == 201 }}"
+      then:
+        - action: notify.pixel_10_pro
+          data:
+            title: "✅ Parcheggio Märwil (TG177824)"
+            message: "Auto registrata con successo! Rinnovo tra 11h 45m."
+      else:
+        - action: notify.pixel_10_pro
+          data:
+            title: "⚠️ ERRORE Parcheggio (TG177824)"
+            message: >
+              Registrazione fallita! Controlla l'app.
+              Status: {{ risposta_server['status'] | default('Server Irraggiungibile/Timeout') }}
