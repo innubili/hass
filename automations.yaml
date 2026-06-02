@@ -467,12 +467,8 @@
           entity_id: device_tracker.mary_s_ix
           zone: zone.maerwil
       sequence:
-      - action: rest_command.registra_tg138648
-      - action: rest_command.registra_tg177824
-      - action: notify.pixel_10_pro
-        data:
-          title: Parcheggio Märwil
-          message: Entrambe le auto registrate. Rinnovo automatico tra 11h 45m.
+      - action: script.registra_e_notifica_tg138648
+      - action: script.registra_e_notifica_tg177824
       - wait_template: "{{ not is_state('device_tracker.pixel_10_pro', 'maerwil')
           and \n   not is_state('device_tracker.mary_s_ix', 'maerwil') }}\n"
         timeout: '11:45:00'
