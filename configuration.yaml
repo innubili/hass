@@ -19,6 +19,25 @@ rest_command:
       {
         "data": "Esportazione del {{ now().strftime('%d/%m/%Y %H:%M') }}\n{% for state in states | groupby('domain') %}\n=== {{ state.grouper | upper }} ===\n{% for entity in state.list %}- {{ entity.entity_id }} ({{ entity.name }})\n{% endfor %}\n{% endfor %}"
       }
+    registra_e_notifica_tg138648:
+  alias: "Registra e Notifica TG138648"
+  icon: mdi:car-connected
+  sequence:
+    - action: rest_command.registra_tg138648
+    - action: notify.pixel_10_pro
+      data:
+        title: "Parcheggio Märwil (TG138648)"
+        message: "Auto TG138648 registrata sul server. Rinnovo automatico tra 11h 45m."
+
+registra_e_notifica_tg177824:
+  alias: "Registra e Notifica TG177824"
+  icon: mdi:car-connected
+  sequence:
+    - action: rest_command.registra_tg177824
+    - action: notify.pixel_10_pro
+      data:
+        title: "Parcheggio Märwil (TG177824)"
+        message: "Auto TG177824 registrata sul server. Rinnovo automatico tra 11h 45m."    
 
 logger:
   default: warn
