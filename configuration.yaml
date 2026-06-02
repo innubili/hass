@@ -19,6 +19,7 @@ rest_command:
       {
         "data": "Esportazione del {{ now().strftime('%d/%m/%Y %H:%M') }}\n{% for state in states | groupby('domain') %}\n=== {{ state.grouper | upper }} ===\n{% for entity in state.list %}- {{ entity.entity_id }} ({{ entity.name }})\n{% endfor %}\n{% endfor %}"
       }
+        
   # --- INIZIO NUOVI COMANDI PARCHEGGIO ---
   registra_tg138648:
     url: "https://parkosecure-backend-backup.herokuapp.com/api/parkingFields/6937e3ffa3acc200159e902d/registeredCars"
