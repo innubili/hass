@@ -258,3 +258,4 @@ pool_finished:
   - action: switch.turn_off
     target:
       entity_id: switch.pool_u_aussenbekl_pool_light
+
