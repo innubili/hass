@@ -270,15 +270,28 @@ registra_e_notifica_tg138648:
 
     - if:
         - condition: template
-          # Aggiunto '| int' per assicurarsi che il valore 201 sia letto correttamente come numero
           value_template: "{{ risposta_server is defined and risposta_server['status'] | int == 201 }}"
       then:
+        # Notifica Pixel 10 Pro
         - action: notify.mobile_app_pixel_10_pro
           data:
             title: "✅ Parcheggio Märwil (TG138648)"
             message: "Auto registrata con successo! Rinnovo tra 11h 45m."
+        # Notifica iPhone Mary
+        - action: notify.mobile_app_mary_s_ix
+          data:
+            title: "✅ Parcheggio Märwil (TG138648)"
+            message: "Auto registrata con successo! Rinnovo tra 11h 45m."
       else:
+        # Notifica Errore Pixel 10 Pro
         - action: notify.mobile_app_pixel_10_pro
+          data:
+            title: "⚠️ ERRORE Parcheggio (TG138648)"
+            message: >
+              Registrazione fallita! Controlla l'app.
+              Status: {{ risposta_server['status'] | default('Server Irraggiungibile/Timeout') }}
+        # Notifica Errore iPhone Mary
+        - action: notify.mobile_app_mary_s_ix
           data:
             title: "⚠️ ERRORE Parcheggio (TG138648)"
             message: >
@@ -297,12 +310,26 @@ registra_e_notifica_tg177824:
         - condition: template
           value_template: "{{ risposta_server is defined and risposta_server['status'] | int == 201 }}"
       then:
+        # Notifica Pixel 10 Pro
         - action: notify.mobile_app_pixel_10_pro
           data:
             title: "✅ Parcheggio Märwil (TG177824)"
             message: "Auto registrata con successo! Rinnovo tra 11h 45m."
+        # Notifica iPhone Mary
+        - action: notify.mobile_app_mary_s_ix
+          data:
+            title: "✅ Parcheggio Märwil (TG177824)"
+            message: "Auto registrata con successo! Rinnovo tra 11h 45m."
       else:
+        # Notifica Errore Pixel 10 Pro
         - action: notify.mobile_app_pixel_10_pro
+          data:
+            title: "⚠️ ERRORE Parcheggio (TG177824)"
+            message: >
+              Registrazione fallita! Controlla l'app.
+              Status: {{ risposta_server['status'] | default('Server Irraggiungibile/Timeout') }}
+        # Notifica Errore iPhone Mary
+        - action: notify.mobile_app_mary_s_ix
           data:
             title: "⚠️ ERRORE Parcheggio (TG177824)"
             message: >
