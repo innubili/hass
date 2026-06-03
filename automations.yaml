@@ -1,448 +1,466 @@
-- id: '1670965598190'
+- id: "1670965598190"
   alias: Close Garage if open at night
-  description: ''
+  description: ""
   triggers:
-  - trigger: time
-    at:
-    - '22:00:00'
-    - '23:00:00'
-    - '23:59:59'
+    - trigger: time
+      at:
+        - "22:00:00"
+        - "23:00:00"
+        - "23:59:59"
   conditions:
-  - condition: state
-    entity_id: binary_sensor.garage_door_fully_closed
-    state: 'on'
+    - condition: state
+      entity_id: binary_sensor.garage_door_fully_closed
+      state: "on"
   actions:
-  - action: script.garage_multi_attempt_close
+    - action: script.garage_multi_attempt_close
   mode: single
 - id: garage_closure_watchdog
   alias: Garage Closure Watchdog
   description: Ensures door closes even if triggered by car remote
   triggers:
-  - trigger: state
-    entity_id: binary_sensor.garage_door_fully_open
-    from: 'off'
-    to: 'on'
+    - trigger: state
+      entity_id: binary_sensor.garage_door_fully_open
+      from: "off"
+      to: "on"
   actions:
-  - delay: 00:00:20
-  - if:
-    - condition: state
-      entity_id: binary_sensor.garage_door_fully_closed
-      state: 'on'
-    then:
-    - action: script.garage_multi_attempt_close
-      data: {}
-- id: '1777552180711'
-  alias: 'Watchdog: Auto-Off Irrigation Hedge South (Hydro1)'
+    - delay: 00:00:20
+    - if:
+        - condition: state
+          entity_id: binary_sensor.garage_door_fully_closed
+          state: "on"
+      then:
+        - action: script.garage_multi_attempt_close
+          data: {}
+- id: "1777552180711"
+  alias: "Watchdog: Auto-Off Irrigation Hedge South (Hydro1)"
   description: Spegne l'irrigazione della siepe se rimane accesa per più di 20 minuti.
   triggers:
-  - entity_id: switch.hydro1
-    to: 'on'
-    for:
-      minutes: 35
-    trigger: state
+    - entity_id: switch.hydro1
+      to: "on"
+      for:
+        minutes: 35
+      trigger: state
   conditions: []
   actions:
-  - action: switch.turn_off
-    target:
-      entity_id: switch.hydro1
-  - action: notify.notify
-    data:
-      title: Allarme Irrigazione!
-      message: La valvola della siepe a sud è rimasta aperta troppo a lungo. Il Watchdog
-        l'ha spenta.
+    - action: switch.turn_off
+      target:
+        entity_id: switch.hydro1
+    - action: notify.notify
+      data:
+        title: Allarme Irrigazione!
+        message:
+          La valvola della siepe a sud è rimasta aperta troppo a lungo. Il Watchdog
+          l'ha spenta.
   mode: single
 - id: pergola_roof_safety_master
-  alias: 'Pergola: Security Roof Closing'
+  alias: "Pergola: Security Roof Closing"
   description: Chiude il tetto se piove, dopo le 23:00 o se è inverno
   triggers:
-  - trigger: state
-    entity_id: weather.home
-    to: rainy
-  - trigger: time
-    at: '23:00:00'
-  - trigger: state
-    entity_id: sensor.season
-    to: winter
-  - trigger: time_pattern
-    hours: /1
+    - trigger: state
+      entity_id: weather.home
+      to: rainy
+    - trigger: time
+      at: "23:00:00"
+    - trigger: state
+      entity_id: sensor.season
+      to: winter
+    - trigger: time_pattern
+      hours: /1
   conditions:
-  - condition: state
-    entity_id: cover.pergola_tetto_corrected
-    state: open
+    - condition: state
+      entity_id: cover.pergola_tetto_corrected
+      state: open
   actions:
-  - choose:
-    - conditions:
-      - condition: state
-        entity_id: sensor.season
-        state: winter
-      sequence:
-      - action: cover.close_cover
-        target:
-          entity_id: cover.pergola_tetto_corrected
-      - action: notify.notify
-        data:
-          title: 'Pergola: Chiusura Invernale'
-          message: Tetto chiuso automaticamente perché è inverno.
-    - conditions:
-      - or:
-        - condition: state
-          entity_id: weather.home
-          state: rainy
-        - condition: time
-          after: '23:00:00'
-          before: 06:00:00
-      sequence:
-      - action: cover.close_cover
-        target:
-          entity_id: cover.pergola_tetto_corrected
-      - action: notify.notify
-        data:
-          title: 'Pergola: Sicurezza'
-          message: Tetto chiuso per pioggia o orario notturno.
+    - choose:
+        - conditions:
+            - condition: state
+              entity_id: sensor.season
+              state: winter
+          sequence:
+            - action: cover.close_cover
+              target:
+                entity_id: cover.pergola_tetto_corrected
+            - action: notify.notify
+              data:
+                title: "Pergola: Chiusura Invernale"
+                message: Tetto chiuso automaticamente perché è inverno.
+        - conditions:
+            - or:
+                - condition: state
+                  entity_id: weather.home
+                  state: rainy
+                - condition: time
+                  after: "23:00:00"
+                  before: 06:00:00
+          sequence:
+            - action: cover.close_cover
+              target:
+                entity_id: cover.pergola_tetto_corrected
+            - action: notify.notify
+              data:
+                title: "Pergola: Sicurezza"
+                message: Tetto chiuso per pioggia o orario notturno.
   mode: restart
-- id: '1650735139689'
+- id: "1650735139689"
   alias: Alarm when GARAGE-door left open
   description: Alerts if garage is left open when Rudy and Mary leave
   triggers:
-  - trigger: state
-    entity_id: cover.garage_door
-    to: open
-    for:
-      minutes: 5
+    - trigger: state
+      entity_id: cover.garage_door
+      to: open
+      for:
+        minutes: 5
   conditions:
-  - condition: state
-    entity_id: person.rudy_federici
-    state: not_home
-  - condition: state
-    entity_id: device_tracker.mary_s_iphonex
-    state: not_home
+    - condition: state
+      entity_id: person.rudy_federici
+      state: not_home
+    - condition: state
+      entity_id: device_tracker.mary_s_iphonex
+      state: not_home
   actions:
-  - action: notify.notify
-    data:
-      title: 'ALARM: Garage Open'
-      message: Mary & Rudy left home but the garage is still OPEN!
+    - action: notify.notify
+      data:
+        title: "ALARM: Garage Open"
+        message: Mary & Rudy left home but the garage is still OPEN!
   mode: single
-- id: '1779314593861'
+- id: "1779314593861"
   alias: Export Entity List to Google Doc
   triggers:
-  - at: 03:00:00
-    trigger: time
+    - at: 03:00:00
+      trigger: time
   actions:
-  - action: rest_command.post_entities
+    - action: rest_command.post_entities
   mode: single
-- id: '1779436659476'
-  alias: 'Watchdog: Welcome Home Lights'
-  description: Accende le lampade Sonoff Duo e imposta gli spot al 100% per 3 minuti
+- id: "1779436659476"
+  alias: "Watchdog: Welcome Home Lights"
+  description:
+    Accende le lampade Sonoff Duo e imposta gli spot al 100% per 3 minuti
     quando viene rilevata una presenza al buio, poi abbassa gli spot al 25%
   triggers:
-  - trigger: state
-    entity_id: binary_sensor.sonoff_100149f0b2
-    to: 'on'
-  - trigger: state
-    entity_id: binary_sensor.pir_main_door
-    to: 'on'
-  - trigger: state
-    entity_id: binary_sensor.aarlo_motion_entry
-    to: 'on'
+    - trigger: state
+      entity_id: binary_sensor.sonoff_100149f0b2
+      to: "on"
+    - trigger: state
+      entity_id: binary_sensor.pir_main_door
+      to: "on"
+    - trigger: state
+      entity_id: binary_sensor.aarlo_motion_entry
+      to: "on"
   conditions:
-  - condition: numeric_state
-    entity_id: sensor.rain_light_sensor_illuminance
-    below: 50
+    - condition: numeric_state
+      entity_id: sensor.rain_light_sensor_illuminance
+      below: 50
   actions:
-  - parallel:
-    - target:
-        entity_id: switch.lan_coordinator_ezsp_enntry_lights
-      action: switch.turn_on
-      data: {}
-    - target:
-        entity_id: light.slzu_06mu_zb_coordinator_ezsp_spots_entrata
-      data:
-        brightness_pct: 100
-        transition: 3
-      action: light.turn_on
-  - delay:
-      hours: 0
-      minutes: 3
-      seconds: 0
-  - parallel:
-    - target:
-        entity_id: switch.lan_coordinator_ezsp_enntry_lights
-      action: switch.turn_off
-      data: {}
-    - target:
-        entity_id: light.slzu_06mu_zb_coordinator_ezsp_spots_entrata
-      data:
-        brightness_pct: 25
-        transition: 10
-      action: light.turn_on
+    - parallel:
+        - target:
+            entity_id: switch.lan_coordinator_ezsp_enntry_lights
+          action: switch.turn_on
+          data: {}
+        - target:
+            entity_id: light.slzu_06mu_zb_coordinator_ezsp_spots_entrata
+          data:
+            brightness_pct: 100
+            transition: 3
+          action: light.turn_on
+    - delay:
+        hours: 0
+        minutes: 3
+        seconds: 0
+    - parallel:
+        - target:
+            entity_id: switch.lan_coordinator_ezsp_enntry_lights
+          action: switch.turn_off
+          data: {}
+        - target:
+            entity_id: light.slzu_06mu_zb_coordinator_ezsp_spots_entrata
+          data:
+            brightness_pct: 25
+            transition: 10
+          action: light.turn_on
   mode: restart
-- id: '1779436862793'
-  alias: 'Watchdog: Low Battery Monitor'
-  description: Controlla tutte le batterie ogni giorno e invia una notifica se qualcuna
+- id: "1779436862793"
+  alias: "Watchdog: Low Battery Monitor"
+  description:
+    Controlla tutte le batterie ogni giorno e invia una notifica se qualcuna
     è sotto il 15%
   triggers:
-  - at: '18:00:00'
-    trigger: time
+    - at: "18:00:00"
+      trigger: time
   conditions:
-  - condition: template
-    value_template: "{% set threshold = 15 %} {% set ns = namespace(low_batteries=0)
-      %} {% for state in states.sensor %}\n  {% if (state.attributes.device_class
-      | default('') == 'battery' or '_battery' in state.entity_id) and '_voltage'
-      not in state.entity_id and '_state' not in state.entity_id %}\n    {% if state.state
-      | is_number and state.state | int < threshold %}\n      {% set ns.low_batteries
-      = ns.low_batteries + 1 %}\n    {% endif %}\n  {% endif %}\n{% endfor %} {{ ns.low_batteries
-      > 0 }}\n"
-  actions:
-  - data:
-      title: ⚠️ Avviso Livello Batterie
-      message: "Le seguenti batterie sono in esaurimento (sotto il 15%):\n{% set threshold
-        = 15 %} {% for state in states.sensor %}\n  {% if (state.attributes.device_class
+    - condition: template
+      value_template:
+        "{% set threshold = 15 %} {% set ns = namespace(low_batteries=0)
+        %} {% for state in states.sensor %}\n  {% if (state.attributes.device_class
         | default('') == 'battery' or '_battery' in state.entity_id) and '_voltage'
         not in state.entity_id and '_state' not in state.entity_id %}\n    {% if state.state
-        | is_number and state.state | int < threshold %}\n      - {{ state.name }}:
-        {{ state.state }}%\n    {% endif %}\n  {% endif %}\n{% endfor %}\n"
-    action: notify.pixel_10_pro
+        | is_number and state.state | int < threshold %}\n      {% set ns.low_batteries
+        = ns.low_batteries + 1 %}\n    {% endif %}\n  {% endif %}\n{% endfor %} {{ ns.low_batteries
+        > 0 }}\n"
+  actions:
+    - data:
+        title: ⚠️ Avviso Livello Batterie
+        message:
+          "Le seguenti batterie sono in esaurimento (sotto il 15%):\n{% set threshold
+          = 15 %} {% for state in states.sensor %}\n  {% if (state.attributes.device_class
+          | default('') == 'battery' or '_battery' in state.entity_id) and '_voltage'
+          not in state.entity_id and '_state' not in state.entity_id %}\n    {% if state.state
+          | is_number and state.state | int < threshold %}\n      - {{ state.name }}:
+          {{ state.state }}%\n    {% endif %}\n  {% endif %}\n{% endfor %}\n"
+      action: notify.pixel_10_pro
   mode: single
-- id: '1779567176530'
-  alias: 'Giardino: Accensione Spots al 25%'
-  description: Accende il gruppo Spots tutti al 25% quando fa buio, o alle 05:00 del
+- id: "1779567176530"
+  alias: "Giardino: Accensione Spots al 25%"
+  description:
+    Accende il gruppo Spots tutti al 25% quando fa buio, o alle 05:00 del
     mattino se è ancora buio
   triggers:
-  - entity_id:
-    - sensor.rain_light_sensor_illuminance
-    below: 200
-    trigger: numeric_state
-  - at: 05:00:00
-    trigger: time
+    - entity_id:
+        - sensor.rain_light_sensor_illuminance
+      below: 200
+      trigger: numeric_state
+    - at: 05:00:00
+      trigger: time
   conditions:
-  - condition: numeric_state
-    entity_id: sensor.rain_light_sensor_illuminance
-    below: 200
+    - condition: numeric_state
+      entity_id: sensor.rain_light_sensor_illuminance
+      below: 200
   actions:
-  - action: light.turn_on
-    target:
-      entity_id: light.slzu_06mu_zb_coordinator_ezsp_all_garden_lights
-    data:
-      brightness_pct: 25
+    - action: light.turn_on
+      target:
+        entity_id: light.slzu_06mu_zb_coordinator_ezsp_all_garden_lights
+      data:
+        brightness_pct: 25
   mode: single
-- id: '1779567212063'
-  alias: 'Giardino: Spegnimento Spots'
+- id: "1779567212063"
+  alias: "Giardino: Spegnimento Spots"
   description: Spegne il gruppo Spots tutti alle 02:00 e quando si fa chiaro
   triggers:
-  - at: 02:00:00
-    trigger: time
-  - entity_id:
-    - sensor.rain_light_sensor_illuminance
-    above: 200
-    trigger: numeric_state
+    - at: 02:00:00
+      trigger: time
+    - entity_id:
+        - sensor.rain_light_sensor_illuminance
+      above: 200
+      trigger: numeric_state
   conditions: []
   actions:
-  - action: light.turn_off
-    target:
-      entity_id: light.slzu_06mu_zb_coordinator_ezsp_all_garden_lights
-    data: {}
+    - action: light.turn_off
+      target:
+        entity_id: light.slzu_06mu_zb_coordinator_ezsp_all_garden_lights
+      data: {}
   mode: single
-- id: '1779694545131'
+- id: "1779694545131"
   alias: Irrigation Hedge South Hydro1
-  description: Irriga la siepe. Controlla umidità del suolo con soglie dinamiche basate
+  description:
+    Irriga la siepe. Controlla umidità del suolo con soglie dinamiche basate
     sulla temperatura massima (API weather.get_forecasts).
   triggers:
-  - trigger: time
-    at: 06:00:00
+    - trigger: time
+      at: 06:00:00
   conditions:
-  - condition: not
-    conditions:
-    - condition: state
-      entity_id: weather.forecast_home
-      state:
-      - rainy
-      - pouring
-      - lightning_rainy
+    - condition: not
+      conditions:
+        - condition: state
+          entity_id: weather.forecast_home
+          state:
+            - rainy
+            - pouring
+            - lightning_rainy
   actions:
-  - action: weather.get_forecasts
-    target:
-      entity_id: weather.forecast_home
-    data:
-      type: daily
-    response_variable: daily_forecast
-  - variables:
-      max_temp: '{{ daily_forecast[''weather.forecast_home''].forecast[0].temperature
-        | float(20) }}'
-      current_moisture: '{{ states(''sensor.sgs01z_taxus_soil_moisture'') | float(100)
-        }}'
-      moisture_threshold: "{% if max_temp >= 30 %}\n  50\n{% elif max_temp >= 25 %}\n
-        \ 45\n{% elif max_temp < 20 %}\n  35\n{% else %}\n  40\n{% endif %}\n"
-  - condition: template
-    value_template: '{{ current_moisture < (moisture_threshold | float) }}'
-  - action: switch.turn_on
-    target:
-      entity_id: switch.hydro1
-  - delay: 00:15:00
-  - action: switch.turn_off
-    target:
-      entity_id: switch.hydro1
-  - delay: 00:30:00
-  - action: switch.turn_on
-    target:
-      entity_id: switch.hydro1
-  - delay: 00:15:00
-  - action: switch.turn_off
-    target:
-      entity_id: switch.hydro1
-  - delay: 00:30:00
-  - action: switch.turn_on
-    target:
-      entity_id: switch.hydro1
-  - delay: 00:15:00
-  - action: switch.turn_off
-    target:
-      entity_id: switch.hydro1
+    - action: weather.get_forecasts
+      target:
+        entity_id: weather.forecast_home
+      data:
+        type: daily
+      response_variable: daily_forecast
+    - variables:
+        max_temp:
+          "{{ daily_forecast['weather.forecast_home'].forecast[0].temperature
+          | float(20) }}"
+        current_moisture:
+          "{{ states('sensor.sgs01z_taxus_soil_moisture') | float(100)
+          }}"
+        moisture_threshold:
+          "{% if max_temp >= 30 %}\n  50\n{% elif max_temp >= 25 %}\n
+          \ 45\n{% elif max_temp < 20 %}\n  35\n{% else %}\n  40\n{% endif %}\n"
+    - condition: template
+      value_template: "{{ current_moisture < (moisture_threshold | float) }}"
+    - action: switch.turn_on
+      target:
+        entity_id: switch.hydro1
+    - delay: 00:15:00
+    - action: switch.turn_off
+      target:
+        entity_id: switch.hydro1
+    - delay: 00:30:00
+    - action: switch.turn_on
+      target:
+        entity_id: switch.hydro1
+    - delay: 00:15:00
+    - action: switch.turn_off
+      target:
+        entity_id: switch.hydro1
+    - delay: 00:30:00
+    - action: switch.turn_on
+      target:
+        entity_id: switch.hydro1
+    - delay: 00:15:00
+    - action: switch.turn_off
+      target:
+        entity_id: switch.hydro1
   mode: single
-- id: '1779734149348'
+- id: "1779734149348"
   alias: Irrigation Flowerbed Hydro2
-  description: Irriga l'aiuola ogni mattina con soglie elevate specifiche per apparato
+  description:
+    Irriga l'aiuola ogni mattina con soglie elevate specifiche per apparato
     radicale superficiale.
   triggers:
-  - trigger: time
-    at: 06:00:00
+    - trigger: time
+      at: 06:00:00
   conditions:
-  - condition: not
-    conditions:
-    - condition: state
-      entity_id: weather.forecast_home
-      state:
-      - rainy
-      - pouring
-      - lightning_rainy
+    - condition: not
+      conditions:
+        - condition: state
+          entity_id: weather.forecast_home
+          state:
+            - rainy
+            - pouring
+            - lightning_rainy
   actions:
-  - action: weather.get_forecasts
-    target:
-      entity_id: weather.forecast_home
-    data:
-      type: daily
-    response_variable: daily_forecast
-  - variables:
-      max_temp: '{{ daily_forecast[''weather.forecast_home''].forecast[0].temperature
-        | float(20) }}'
-      current_moisture: '{{ states(''sensor.sgs01z_aioula_soil_moisture'') | float(100)
-        }}'
-      moisture_threshold: "{% if max_temp >= 30 %}\n  65\n{% elif max_temp >= 25 %}\n
-        \ 55\n{% elif max_temp < 20 %}\n  45\n{% else %}\n  50\n{% endif %}\n"
-  - condition: template
-    value_template: '{{ current_moisture < (moisture_threshold | float) }}'
-  - action: switch.turn_on
-    target:
-      entity_id: switch.hydro2
-  - delay:
-      minutes: 2
-  - action: switch.turn_off
-    target:
-      entity_id: switch.hydro2
-  - delay:
-      minutes: 10
-  - action: switch.turn_on
-    target:
-      entity_id: switch.hydro2
-  - delay:
-      minutes: 15
-  - action: switch.turn_off
-    target:
-      entity_id: switch.hydro2
+    - action: weather.get_forecasts
+      target:
+        entity_id: weather.forecast_home
+      data:
+        type: daily
+      response_variable: daily_forecast
+    - variables:
+        max_temp:
+          "{{ daily_forecast['weather.forecast_home'].forecast[0].temperature
+          | float(20) }}"
+        current_moisture:
+          "{{ states('sensor.sgs01z_aioula_soil_moisture') | float(100)
+          }}"
+        moisture_threshold:
+          "{% if max_temp >= 30 %}\n  65\n{% elif max_temp >= 25 %}\n
+          \ 55\n{% elif max_temp < 20 %}\n  45\n{% else %}\n  50\n{% endif %}\n"
+    - condition: template
+      value_template: "{{ current_moisture < (moisture_threshold | float) }}"
+    - action: switch.turn_on
+      target:
+        entity_id: switch.hydro2
+    - delay:
+        minutes: 2
+    - action: switch.turn_off
+      target:
+        entity_id: switch.hydro2
+    - delay:
+        minutes: 10
+    - action: switch.turn_on
+      target:
+        entity_id: switch.hydro2
+    - delay:
+        minutes: 15
+    - action: switch.turn_off
+      target:
+        entity_id: switch.hydro2
   mode: single
-- id: '1779734334464'
-  alias: 'Watchdog: Auto-Off Irrigation Flowerbed (Hydro2)'
+- id: "1779734334464"
+  alias: "Watchdog: Auto-Off Irrigation Flowerbed (Hydro2)"
   description: Spegne l'irrigazione dell'aiuola se rimane accesa per più di 35 minuti.
   triggers:
-  - entity_id:
-    - switch.hydro2
-    to:
-    - 'on'
-    for:
-      minutes: 35
-    trigger: state
+    - entity_id:
+        - switch.hydro2
+      to:
+        - "on"
+      for:
+        minutes: 35
+      trigger: state
   conditions: []
   actions:
-  - action: switch.turn_off
-    target:
-      entity_id: switch.hydro2
-    data: {}
-  - action: notify.notify
-    data:
-      title: Allarme Irrigazione!
-      message: La valvola dell'aiuola  è rimasta aperta troppo a lungo. Il Watchdog
-        l'ha spenta.
+    - action: switch.turn_off
+      target:
+        entity_id: switch.hydro2
+      data: {}
+    - action: notify.notify
+      data:
+        title: Allarme Irrigazione!
+        message:
+          La valvola dell'aiuola  è rimasta aperta troppo a lungo. Il Watchdog
+          l'ha spenta.
   mode: single
-- id: '1779982470755'
-  alias: 'Pergola: Close South Awning in Summer Afternoon (Sensors)'
-  description: Closes the south awning (Tenda Strada) after 12:00 from April to October
+- id: "1779982470755"
+  alias: "Pergola: Close South Awning in Summer Afternoon (Sensors)"
+  description:
+    Closes the south awning (Tenda Strada) after 12:00 from April to October
     if it's hot and sunny, using local pergola sensors.
   triggers:
-  - trigger: time
-    at: '12:00:00'
-  - trigger: numeric_state
-    entity_id: sensor.th2_pergola_temprature_2
-    above: 23
-  - trigger: numeric_state
-    entity_id: sensor.rain_light_sensor_illuminance
-    above: 3000
+    - trigger: time
+      at: "12:00:00"
+    - trigger: numeric_state
+      entity_id: sensor.th2_pergola_temprature_2
+      above: 23
+    - trigger: numeric_state
+      entity_id: sensor.rain_light_sensor_illuminance
+      above: 3000
   conditions:
-  - condition: template
-    value_template: '{{ now().month >= 4 and now().month <= 9 }}'
-    alias: Incluso tra Aprile e Settembre
-  - condition: time
-    after: '11:59:59'
-    before: '18:00:00'
-    alias: È pomeriggio (12:00 - 18:00)
-  - condition: numeric_state
-    entity_id: sensor.th2_pergola_temprature_2
-    above: 23
-    alias: Temperatura pergola elevata (sopra i 23°C)
-  - condition: numeric_state
-    entity_id: sensor.rain_light_sensor_illuminance
-    above: 3000
-    alias: C'è sole (luminosità sopra i 3000 lx)
-  - condition: state
-    entity_id: binary_sensor.rain_light_sensor
-    state: 'off'
-    alias: Non sta piovendo
+    - condition: template
+      value_template: "{{ now().month >= 4 and now().month <= 9 }}"
+      alias: Incluso tra Aprile e Settembre
+    - condition: time
+      after: "11:59:59"
+      before: "18:00:00"
+      alias: È pomeriggio (12:00 - 18:00)
+    - condition: numeric_state
+      entity_id: sensor.th2_pergola_temprature_2
+      above: 23
+      alias: Temperatura pergola elevata (sopra i 23°C)
+    - condition: numeric_state
+      entity_id: sensor.rain_light_sensor_illuminance
+      above: 3000
+      alias: C'è sole (luminosità sopra i 3000 lx)
+    - condition: state
+      entity_id: binary_sensor.rain_light_sensor
+      state: "off"
+      alias: Non sta piovendo
   actions:
-  - action: cover.close_cover
-    target:
-      entity_id: cover.pergola_tenda_strada
+    - action: cover.close_cover
+      target:
+        entity_id: cover.pergola_tenda_strada
   mode: single
-- id: '1780089464509'
-  alias: 'Pool Cover Watchdog: Auto Light Off'
-  description: Spegne la luce della piscina automaticamente quando il sensore di chiusura
+- id: "1780089464509"
+  alias: "Pool Cover Watchdog: Auto Light Off"
+  description:
+    Spegne la luce della piscina automaticamente quando il sensore di chiusura
     si attiva.
   triggers:
-  - entity_id:
-    - binary_sensor.pool_u_aussenbekl_pool_fully_closed
-    to: 'on'
-    trigger: state
+    - entity_id:
+        - binary_sensor.pool_u_aussenbekl_pool_fully_closed
+      to: "on"
+      trigger: state
   conditions:
-  - condition: state
-    entity_id: switch.pool_u_aussenbekl_pool_light
-    state: 'on'
-  actions:
-  - action: switch.turn_off
-    target:
+    - condition: state
       entity_id: switch.pool_u_aussenbekl_pool_light
+      state: "on"
+  actions:
+    - action: switch.turn_off
+      target:
+        entity_id: switch.pool_u_aussenbekl_pool_light
   mode: single
-- id: '1780305998070'
-  alias: 'Pergola: Open South Awning on Rain (Safety)'
-  description: Riapre (ritira) immediatamente la Tenda Strada della pergola se il
+- id: "1780305998070"
+  alias: "Pergola: Open South Awning on Rain (Safety)"
+  description:
+    Riapre (ritira) immediatamente la Tenda Strada della pergola se il
     sensore rileva pioggia per evitare danni.
   triggers:
-  - trigger: state
-    entity_id: binary_sensor.rain_light_sensor
-    to: 'on'
+    - trigger: state
+      entity_id: binary_sensor.rain_light_sensor
+      to: "on"
   conditions: []
   actions:
-  - action: cover.open_cover
-    target:
-      entity_id: cover.pergola_tenda_strada
+    - action: cover.open_cover
+      target:
+        entity_id: cover.pergola_tenda_strada
   mode: single
-- id: '1780435013101'
+- id: "1780435013101"
   alias: "Registrazione Parcheggio Märwil - Ciclo Infinito"
   description: "Registra TG138648 e TG177824 ogni 12h finché Pixel 10 Pro o iPhone di Mary sono a Maerwil"
   mode: restart
@@ -474,4 +492,4 @@
               {{ not is_state('device_tracker.pixel_10_pro', 'noemi') and 
                 not is_state('device_tracker.mary_s_ix', 'noemi') }}
             timeout: "11:45:00"
-            continue_on_timeout: true 
+            continue_on_timeout: true
