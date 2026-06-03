@@ -363,6 +363,7 @@
       target:
         entity_id: switch.hydro2
   mode: single
+  
 - id: "1779734334464"
   alias: "Watchdog: Auto-Off Irrigation Flowerbed (Hydro2)"
   description: Spegne l'irrigazione dell'aiuola se rimane accesa per più di 35 minuti.
@@ -387,7 +388,7 @@
           La valvola dell'aiuola  è rimasta aperta troppo a lungo. Il Watchdog
           l'ha spenta.
   mode: single
-  
+
 - id: "1779982470755"
   alias: "Pergola: Close South Awning in Summer Afternoon (Sensors)"
   description:
