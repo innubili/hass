@@ -443,34 +443,35 @@
       entity_id: cover.pergola_tenda_strada
   mode: single
 - id: '1780435013101'
-  alias: Registrazione Parcheggio Märwil - Ciclo Infinito
-  description: Registra TG138648 e TG177824 ogni 12h finché Pixel 10 Pro o iPhone
-    di Mary sono a Maerwil
-  triggers:
+ alias: "Registrazione Parcheggio Märwil - Ciclo Infinito"
+description: "Registra TG138648 e TG177824 ogni 12h finché Pixel 10 Pro o iPhone di Mary sono a Maerwil"
+mode: restart
+trigger:
   - trigger: zone
     entity_id: device_tracker.pixel_10_pro
-    zone: zone.maerwil
+    zone: zone.noemi
     event: enter
   - trigger: zone
     entity_id: device_tracker.mary_s_ix
-    zone: zone.maerwil
+    zone: zone.noemi
     event: enter
-  actions:
+action:
   - repeat:
       while:
-      - condition: or
-        conditions:
-        - condition: zone
-          entity_id: device_tracker.pixel_10_pro
-          zone: zone.maerwil
-        - condition: zone
-          entity_id: device_tracker.mary_s_ix
-          zone: zone.maerwil
+        - condition: or
+          conditions:
+            - condition: zone
+              entity_id: device_tracker.pixel_10_pro
+              zone: zone.noemi
+            - condition: zone
+              entity_id: device_tracker.mary_s_ix
+              zone: zone.noemi
       sequence:
-      - action: script.registra_e_notifica_tg138648
-      - action: script.registra_e_notifica_tg177824
-      - wait_template: "{{ not is_state('device_tracker.pixel_10_pro', 'maerwil')
-          and \n   not is_state('device_tracker.mary_s_ix', 'maerwil') }}\n"
-        timeout: '11:45:00'
-        continue_on_timeout: true
-  mode: restart
+        - action: script.registra_e_notifica_tg138648
+        - action: script.registra_e_notifica_tg177824
+
+        - wait_template: >
+            {{ not is_state('device_tracker.pixel_10_pro', 'noemi') and 
+               not is_state('device_tracker.mary_s_ix', 'noemi') }}
+          timeout: "11:45:00"
+          continue_on_timeout: true
