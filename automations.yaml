@@ -474,4 +474,4 @@ action:
             {{ not is_state('device_tracker.pixel_10_pro', 'noemi') and 
                not is_state('device_tracker.mary_s_ix', 'noemi') }}
           timeout: "11:45:00"
-          continue_on_timeout: true
+          continue_on_timeout: true 
