@@ -426,6 +426,7 @@
       target:
         entity_id: cover.pergola_tenda_strada
   mode: single
+  
 - id: "1780089464509"
   alias: "Pool Cover Watchdog: Auto Light Off"
   description:
@@ -460,6 +461,7 @@
       target:
         entity_id: cover.pergola_tenda_strada
   mode: single
+
 - id: "1780435013101"
   alias: "Registrazione Parcheggio Märwil - Ciclo Infinito"
   description: "Registra TG138648 e TG177824 ogni 12h finché Pixel 10 Pro o iPhone di Mary sono a Maerwil"
