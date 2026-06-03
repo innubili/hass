@@ -387,6 +387,7 @@
           La valvola dell'aiuola  è rimasta aperta troppo a lungo. Il Watchdog
           l'ha spenta.
   mode: single
+  
 - id: "1779982470755"
   alias: "Pergola: Close South Awning in Summer Afternoon (Sensors)"
   description:
@@ -426,7 +427,7 @@
       target:
         entity_id: cover.pergola_tenda_strada
   mode: single
-  
+
 - id: "1780089464509"
   alias: "Pool Cover Watchdog: Auto Light Off"
   description:
