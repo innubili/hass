@@ -151,30 +151,34 @@
   actions:
   - parallel:
     - action: switch.turn_on
-      data: {}
       target:
-        entity_id: switch.main_door_lights_swicthes
-    - target:
+        entity_id: switch.mini_duo_l_switch_switch
+    - action: switch.turn_on
+      target:
+        entity_id: switch.mini_duo_l_switch_switch_2
+    - action: light.turn_on
+      target:
         entity_id: light.slzu_06mu_zb_coordinator_ezsp_spots_entrata
       data:
         brightness_pct: 100
         transition: 3
-      action: light.turn_on
   - delay:
       hours: 0
       minutes: 3
       seconds: 0
   - parallel:
     - action: switch.turn_off
-      data: {}
       target:
-        entity_id: switch.main_door_lights_swicthes
-    - target:
+        entity_id: switch.mini_duo_l_switch_switch
+    - action: switch.turn_off
+      target:
+        entity_id: switch.mini_duo_l_switch_switch_2
+    - action: light.turn_on
+      target:
         entity_id: light.slzu_06mu_zb_coordinator_ezsp_spots_entrata
       data:
         brightness_pct: 25
         transition: 10
-      action: light.turn_on
   mode: restart
 - id: '1779436862793'
   alias: 'Watchdog: Low Battery Monitor'
