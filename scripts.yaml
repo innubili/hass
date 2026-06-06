@@ -63,7 +63,7 @@ garage_multi_attempt_close:
                 entity_id: binary_sensor.garage_door_fully_open
                 to: "off"
             timeout:
-              seconds: 25 # Margine di 25s per l'apertura completa
+              seconds: 20 # Margine di 25s per l'apertura completa
 
           # 3. Pulse garage -> il garage inizia a richiudersi
           - action: script.pulse_garage_relay
