@@ -96,66 +96,8 @@ garage_multi_attempt_close:
           message: >-
             Failed to close after 5 attempts. Check for obstructions at
             Andhauserstr. 71!alias: Garage Multi Attempt Close
-mode: single
-sequence:
-  - if:
-      - condition: state
-        entity_id: binary_sensor.garage_door_fully_closed
-        state: "off"
-    then:
-      - stop: Il garage è già chiuso, annullo l'esecuzione.
-  
-  - repeat:
-      count: 5
-      sequence:
-        - action: notify.notify
-          data:
-            title: Garage Recovery
-            message: "Attempt {{ repeat.index }} of 5 to reset error and close the garage..."
-        
-        # 1. Pulse garage -> il garage comincia ad aprirsi
-        - action: script.pulse_garage_relay
-        
-        # 2. Attendi che il garage si apra completamente (stato 'off' = finecorsa toccato)
-        - wait_for_trigger:
-            - trigger: state
-              entity_id: binary_sensor.garage_door_fully_open
-              to: "off"
-          timeout:
-            seconds: 25 # Margine di 25s per l'apertura completa
-        
-        # 3. Pulse garage -> il garage inizia a richiudersi
-        - action: script.pulse_garage_relay
-        
-        # 4. Attendi che il garage si chiuda completamente (stato 'off')
-        - wait_for_trigger:
-            - trigger: state
-              entity_id: binary_sensor.garage_door_fully_closed
-              to: "off"
-          timeout:
-            seconds: 20
-        
-        # 5. Verifica: se si è chiuso con successo, esci definitivamente dallo script
-        - if:
-            - condition: state
-              entity_id: binary_sensor.garage_door_fully_closed
-              state: "off"
-          then:
-            - stop: "Garage ripristinato e chiuso con successo al tentativo {{ repeat.index }}."
 
-  # 6. Se il ciclo finisce (tutti e 5 i tentativi falliti), invia allarme critico
-  - if:
-      - condition: state
-        entity_id: binary_sensor.garage_door_fully_closed
-        state: "on"
-    then:
-      - action: notify.notify
-        data:
-          title: "CRITICAL: Garage Failure"
-          message: >-
-            Failed to close after 5 attempts. Check for obstructions at
-            Andhauserstr. 71!
-garage_master_toggle:
+            garage_master_toggle:
   alias: Garage Master Toggle
   sequence:
   - if:
