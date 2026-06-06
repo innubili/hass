@@ -97,7 +97,7 @@ garage_multi_attempt_close:
             Failed to close after 5 attempts. Check for obstructions at
             Andhauserstr. 71!alias: Garage Multi Attempt Close
 
-            garage_master_toggle:
+garage_master_toggle:
   alias: Garage Master Toggle
   sequence:
   - if:
