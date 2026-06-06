@@ -171,7 +171,35 @@ template:
           action: script.pool_close_sequence
         stop_cover:
           action: script.pool_stop_sequence
-  -
+  # Migration of legacy template switches
+  - switch:
+      - name: "Garden Entry (LCN)Spots"
+        unique_id: garden_entry_spots_fixed_modern
+        icon: mdi:outdoor-lamp
+        state: "{{ is_state('switch.pool_u_aussenbekl_garden_spots', 'off') }}"
+        turn_on:
+          action: switch.turn_off
+          target:
+            entity_id: switch.pool_u_aussenbekl_garden_spots
+        turn_off:
+          action: switch.turn_on
+          target:
+            entity_id: switch.pool_u_aussenbekl_garden_spots
+
+      - name: "Garden Garage (LCN)Spots"
+        unique_id: garden_garage_spots_fixed_modern
+        icon: mdi:outdoor-lamp
+        state: "{{ is_state('switch.pool_u_aussenbekl_led_strip_entrance', 'off') }}"
+        turn_on:
+          action: switch.turn_off
+          target:
+            entity_id: switch.pool_u_aussenbekl_led_strip_entrance
+        turn_off:
+          action: switch.turn_on
+          target:
+            entity_id: switch.pool_u_aussenbekl_led_strip_entrance
+Steps to Apply
+Remove the old switch: block starting from - platform: template at line 528 down to the end of the garden_garage_spots_fixed configuration at line 532.
 
 # light groups
 light:
