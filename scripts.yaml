@@ -95,7 +95,7 @@ garage_multi_attempt_close:
             title: "CRITICAL: Garage Failure"
             message: >-
               Failed to close after 5 attempts. Check for obstructions at
-              Andhauserstr. 71!alias: Garage Multi Attempt Close
+              Andhauserstr. 71!
 
 garage_master_toggle:
   alias: Garage Master Toggle
