@@ -171,7 +171,7 @@ template:
           action: script.pool_close_sequence
         stop_cover:
           action: script.pool_stop_sequence
-          
+
   # Migration of legacy template switches
   - switch:
       - name: "Garden Entry (LCN)Spots"
