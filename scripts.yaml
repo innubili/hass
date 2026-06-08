@@ -272,80 +272,109 @@ pool_finished:
     - action: switch.turn_off
       target:
         entity_id: switch.pool_u_aussenbekl_pool_light
-        
+
 registra_e_notifica_tg138648:
   alias: Registra e Notifica TG138648
   icon: mdi:car-connected
+  mode: single
   sequence:
+    # 1. CONTROLLO ANTI-SPAM (Zero-Bug Logic Check)
+    # Se la registrazione è avvenuta nelle ultime 11 ore (39600 secondi), lo script si ferma qui.
+    - condition: template
+      value_template: >
+        {% set last_reg = states('sensor.ultima_registrazione_tg138648') %}
+        {% if last_reg in ['unknown', 'unavailable'] %}
+          true
+        {% else %}
+          {{ (now() - as_datetime(last_reg)).total_seconds() > 39600 }}
+        {% endif %}
+
+    # 2. CHIAMATA API AL PARCHEGGIO
     - action: rest_command.registra_tg138648
       response_variable: risposta_server
       continue_on_error: true
+
+    # 3. VERIFICA RISPOSTA E NOTIFICA
     - if:
         - condition: template
-          value_template:
-            "{{ risposta_server is defined and risposta_server['status']
-            | int == 201 }}"
+          value_template: >
+            {{ risposta_server is defined and risposta_server['status'] | int == 201 }}
       then:
-        - action: notify.mobile_app_pixel_10_pro
+        # Registrazione riuscita: Aggiorna il sensore sparando l'evento
+        - event: registrazione_parcheggio_ok
+          event_data:
+            targa: tg138648
+        
+        # Invia la notifica singola ai dispositivi
+        - action: notify.pixel_10_pro
           data:
-            title: ✅ Parcheggio Märwil (TG138648)
-            message: Auto registrata con successo! Rinnovo tra 11h 45m.
-        - action: notify.mobile_app_mary_s_16p
+            title: "✅ Parcheggio Märwil (TG138648)"
+            message: "Auto registrata con successo! Rinnovo tra 11h 45m."
+        - action: notify.mary_s_ix
           data:
-            title: ✅ Parcheggio Märwil (TG138648)
-            message: Auto registrata con successo! Rinnovo tra 11h 45m.
+            title: "✅ Parcheggio Märwil (TG138648)"
+            message: "Auto registrata con successo! Rinnovo tra 11h 45m."
+      
       else:
-        - action: notify.mobile_app_pixel_10_pro
+        # In caso di errore API (e solo se ha superato il blocco delle 11 ore)
+        - action: notify.pixel_10_pro
           data:
-            title: ⚠️ ERRORE Parcheggio (TG138648)
-            message:
-              "Registrazione fallita! Controlla l'app. Status: {{ risposta_server['status']
-              | default('Timeout') }}
-
-              "
-        - action: notify.mobile_app_mary_s_16p
+            title: "⚠️ ERRORE Parcheggio (TG138648)"
+            message: "Registrazione fallita! Status: {{ risposta_server['status'] | default('Timeout') }}"
+        - action: notify.mary_s_ix
           data:
-            title: ⚠️ ERRORE Parcheggio (TG138648)
-            message:
-              "Registrazione fallita! Controlla l'app. Status: {{ risposta_server['status']
-              | default('Timeout') }}
+            title: "⚠️ ERRORE Parcheggio (TG138648)"
+            message: "Registrazione fallita! Status: {{ risposta_server['status'] | default('Timeout') }}"
 
-              "
+
 registra_e_notifica_tg177824:
   alias: Registra e Notifica TG177824
   icon: mdi:car-connected
+  mode: single
   sequence:
+    # 1. CONTROLLO ANTI-SPAM (Zero-Bug Logic Check)
+    - condition: template
+      value_template: >
+        {% set last_reg = states('sensor.ultima_registrazione_tg177824') %}
+        {% if last_reg in ['unknown', 'unavailable'] %}
+          true
+        {% else %}
+          {{ (now() - as_datetime(last_reg)).total_seconds() > 39600 }}
+        {% endif %}
+
+    # 2. CHIAMATA API AL PARCHEGGIO
     - action: rest_command.registra_tg177824
       response_variable: risposta_server
       continue_on_error: true
+
+    # 3. VERIFICA RISPOSTA E NOTIFICA
     - if:
         - condition: template
-          value_template:
-            "{{ risposta_server is defined and risposta_server['status']
-            | int == 201 }}"
+          value_template: >
+            {{ risposta_server is defined and risposta_server['status'] | int == 201 }}
       then:
-        - action: notify.mobile_app_pixel_10_pro
+        # Registrazione riuscita: Aggiorna il sensore sparando l'evento
+        - event: registrazione_parcheggio_ok
+          event_data:
+            targa: tg177824
+        
+        # Invia la notifica singola ai dispositivi
+        - action: notify.pixel_10_pro
           data:
-            title: ✅ Parcheggio Märwil (TG177824)
-            message: Auto registrata con successo! Rinnovo tra 11h 45m.
-        - action: notify.mobile_app_mary_s_16p
+            title: "✅ Parcheggio Märwil (TG177824)"
+            message: "Auto registrata con successo! Rinnovo tra 11h 45m."
+        - action: notify.mary_s_ix
           data:
-            title: ✅ Parcheggio Märwil (TG177824)
-            message: Auto registrata con successo! Rinnovo tra 11h 45m.
+            title: "✅ Parcheggio Märwil (TG177824)"
+            message: "Auto registrata con successo! Rinnovo tra 11h 45m."
+      
       else:
-        - action: notify.mobile_app_pixel_10_pro
+        # In caso di errore API 
+        - action: notify.pixel_10_pro
           data:
-            title: ⚠️ ERRORE Parcheggio (TG177824)
-            message:
-              "Registrazione fallita! Controlla l'app. Status: {{ risposta_server['status']
-              | default('Timeout') }}
-
-              "
-        - action: notify.mobile_app_mary_s_16p
+            title: "⚠️ ERRORE Parcheggio (TG177824)"
+            message: "Registrazione fallita! Status: {{ risposta_server['status'] | default('Timeout') }}"
+        - action: notify.mary_s_ix
           data:
-            title: ⚠️ ERRORE Parcheggio (TG177824)
-            message:
-              "Registrazione fallita! Controlla l'app. Status: {{ risposta_server['status']
-              | default('Timeout') }}
-
-              "
+            title: "⚠️ ERRORE Parcheggio (TG177824)"
+            message: "Registrazione fallita! Status: {{ risposta_server['status'] | default('Timeout') }}"
