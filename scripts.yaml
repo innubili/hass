@@ -279,7 +279,6 @@ registra_e_notifica_tg138648:
   mode: single
   sequence:
     # 1. CONTROLLO ANTI-SPAM (Zero-Bug Logic Check)
-    # Se la registrazione è avvenuta nelle ultime 11 ore (39600 secondi), lo script si ferma qui.
     - condition: template
       value_template: >
         {% set last_reg = states('sensor.ultima_registrazione_tg138648') %}
@@ -304,27 +303,28 @@ registra_e_notifica_tg138648:
         - event: registrazione_parcheggio_ok
           event_data:
             targa: tg138648
-
-        # Invia la notifica singola ai dispositivi
-        - action: notify.pixel_10_pro
+        
+        # Invia la notifica singola ai dispositivi tramite Companion App
+        - action: notify.mobile_app_pixel_10_pro
           data:
             title: "✅ Parcheggio Märwil (TG138648)"
             message: "Auto registrata con successo! Rinnovo tra 11h 45m."
-        - action: notify.mary_s_ix
+        - action: notify.mobile_app_mary_s_16p
           data:
             title: "✅ Parcheggio Märwil (TG138648)"
             message: "Auto registrata con successo! Rinnovo tra 11h 45m."
-
+      
       else:
-        # In caso di errore API (e solo se ha superato il blocco delle 11 ore)
-        - action: notify.pixel_10_pro
+        # In caso di errore API 
+        - action: notify.mobile_app_pixel_10_pro
           data:
             title: "⚠️ ERRORE Parcheggio (TG138648)"
             message: "Registrazione fallita! Status: {{ risposta_server['status'] | default('Timeout') }}"
-        - action: notify.mary_s_ix
+        - action: notify.mobile_app_mary_s_16p
           data:
             title: "⚠️ ERRORE Parcheggio (TG138648)"
             message: "Registrazione fallita! Status: {{ risposta_server['status'] | default('Timeout') }}"
+
 
 registra_e_notifica_tg177824:
   alias: Registra e Notifica TG177824
@@ -356,24 +356,24 @@ registra_e_notifica_tg177824:
         - event: registrazione_parcheggio_ok
           event_data:
             targa: tg177824
-
-        # Invia la notifica singola ai dispositivi
-        - action: notify.pixel_10_pro
+        
+        # Invia la notifica singola ai dispositivi tramite Companion App
+        - action: notify.mobile_app_pixel_10_pro
           data:
             title: "✅ Parcheggio Märwil (TG177824)"
             message: "Auto registrata con successo! Rinnovo tra 11h 45m."
-        - action: notify.mary_s_ix
+        - action: notify.mobile_app_mary_s_16p
           data:
             title: "✅ Parcheggio Märwil (TG177824)"
             message: "Auto registrata con successo! Rinnovo tra 11h 45m."
-
+      
       else:
-        # In caso di errore API
-        - action: notify.pixel_10_pro
+        # In caso di errore API 
+        - action: notify.mobile_app_pixel_10_pro
           data:
             title: "⚠️ ERRORE Parcheggio (TG177824)"
             message: "Registrazione fallita! Status: {{ risposta_server['status'] | default('Timeout') }}"
-        - action: notify.mary_s_ix
+        - action: notify.mobile_app_mary_s_16p
           data:
             title: "⚠️ ERRORE Parcheggio (TG177824)"
             message: "Registrazione fallita! Status: {{ risposta_server['status'] | default('Timeout') }}"
