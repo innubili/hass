@@ -200,6 +200,30 @@ template:
           target:
             entity_id: switch.pool_u_aussenbekl_led_strip_entrance
 
+  # Sensore per l'auto di Mary
+  - trigger:
+      - trigger: event
+        event_type: registrazione_parcheggio_ok
+        event_data:
+          targa: tg177824
+    sensor:
+      - name: "Ultima Registrazione Parcheggio Mary"
+        unique_id: ultima_registrazione_tg177824
+        state: "{{ now() }}"
+        device_class: timestamp
+
+  # Sensore per la tua auto
+  - trigger:
+      - trigger: event
+        event_type: registrazione_parcheggio_ok
+        event_data:
+          targa: tg138648
+    sensor:
+      - name: "Ultima Registrazione Parcheggio Mia"
+        unique_id: ultima_registrazione_tg138648
+        state: "{{ now() }}"
+        device_class: timestamp
+
 # light groups
 light:
   # Gruppo Settore GARAGE
