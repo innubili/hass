@@ -304,7 +304,7 @@ registra_e_notifica_tg138648:
         - event: registrazione_parcheggio_ok
           event_data:
             targa: tg138648
-        
+
         # Invia la notifica singola ai dispositivi
         - action: notify.pixel_10_pro
           data:
@@ -314,7 +314,7 @@ registra_e_notifica_tg138648:
           data:
             title: "✅ Parcheggio Märwil (TG138648)"
             message: "Auto registrata con successo! Rinnovo tra 11h 45m."
-      
+
       else:
         # In caso di errore API (e solo se ha superato il blocco delle 11 ore)
         - action: notify.pixel_10_pro
@@ -325,7 +325,6 @@ registra_e_notifica_tg138648:
           data:
             title: "⚠️ ERRORE Parcheggio (TG138648)"
             message: "Registrazione fallita! Status: {{ risposta_server['status'] | default('Timeout') }}"
-
 
 registra_e_notifica_tg177824:
   alias: Registra e Notifica TG177824
@@ -357,7 +356,7 @@ registra_e_notifica_tg177824:
         - event: registrazione_parcheggio_ok
           event_data:
             targa: tg177824
-        
+
         # Invia la notifica singola ai dispositivi
         - action: notify.pixel_10_pro
           data:
@@ -367,9 +366,9 @@ registra_e_notifica_tg177824:
           data:
             title: "✅ Parcheggio Märwil (TG177824)"
             message: "Auto registrata con successo! Rinnovo tra 11h 45m."
-      
+
       else:
-        # In caso di errore API 
+        # In caso di errore API
         - action: notify.pixel_10_pro
           data:
             title: "⚠️ ERRORE Parcheggio (TG177824)"
