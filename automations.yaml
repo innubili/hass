@@ -221,7 +221,6 @@
   - trigger: sun
     event: sunset
     offset: 00:30:00
-  conditions: []
   actions:
   - action: light.turn_on
     target:
