@@ -218,6 +218,9 @@
     trigger: numeric_state
   - at: 05:00:00
     trigger: time
+  - trigger: sun
+    event: sunset
+    offset: 00:30:00
   conditions:
   - condition: numeric_state
     entity_id: sensor.rain_light_sensor_illuminance
