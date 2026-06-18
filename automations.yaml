@@ -260,7 +260,7 @@
   - condition: not
     conditions:
     - condition: state
-      entity_id: weather.forecast_home
+      entity_id: weather.home
       state:
       - rainy
       - pouring
