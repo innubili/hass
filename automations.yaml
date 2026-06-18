@@ -333,8 +333,8 @@
       type: daily
     response_variable: daily_forecast
   - variables:
-      max_temp: '{{ daily_forecast[''weather.forecast_home''].forecast[0].temperature
-        | float(20) }}'
+      max_temp: '{{ daily_forecast[''weather.home''].forecast[0].temperature | float(20)
+        }}'
       current_moisture: '{{ states(''sensor.sgs01z_aioula_soil_moisture'') | float(100)
         }}'
       moisture_threshold: "{% if max_temp >= 30 %}\n  65\n{% elif max_temp >= 25 %}\n
