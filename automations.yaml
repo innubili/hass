@@ -544,3 +544,26 @@
       entity_id: switch.hydro3
     data: {}
   mode: single
+- id: '1781788716067'
+  alias: New automation
+  description: Spegne l'irrigazione dell'aiuola se rimane accesa per più di 35 minuti.
+  triggers:
+  - entity_id:
+    - switch.hydro2
+    to:
+    - 'on'
+    for:
+      minutes: 35
+    trigger: state
+  conditions: []
+  actions:
+  - action: switch.turn_off
+    target:
+      entity_id: switch.hydro3
+    data: {}
+  - action: notify.notify
+    data:
+      title: Allarme Irrigazione!
+      message: La valvola dell'aiuola  è rimasta aperta troppo a lungo. Il Watchdog
+        l'ha spenta.
+  mode: single
