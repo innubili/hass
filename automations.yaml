@@ -485,3 +485,62 @@
           \n  not is_state('device_tracker.mary_s_ix', 'noemi') }}\n"
         timeout: '11:45:00'
         continue_on_timeout: true
+- id: '1781788033984'
+  alias: Irrigation 3
+  description: Irriga l'erba ogni mattina con soglie elevate specifiche per apparato
+    radicale superficiale.
+  triggers:
+  - trigger: time
+    at: 06:00:00
+  - trigger: numeric_state
+    entity_id:
+    - sensor.sgs01z_aioula_soil_moisture
+    below: 50
+  conditions:
+  - condition: not
+    conditions:
+    - condition: state
+      entity_id: weather.forecast_home
+      state:
+      - rainy
+      - pouring
+      - lightning_rainy
+  actions:
+  - action: weather.get_forecasts
+    target:
+      entity_id: weather.home
+    data:
+      type: daily
+    response_variable: daily_forecast
+  - variables:
+      max_temp: '{{ daily_forecast[''weather.forecast_home''].forecast[0].temperature
+        | float(20) }}'
+      current_moisture: '{{ states(''sensor.sgs01z_aioula_soil_moisture'') | float(100)
+        }}'
+      moisture_threshold: "{% if max_temp >= 30 %}\n  65\n{% elif max_temp >= 25 %}\n
+        \ 55\n{% elif max_temp < 20 %}\n  45\n{% else %}\n  50\n{% endif %}\n"
+  - condition: template
+    value_template: '{{ current_moisture < (moisture_threshold | float) }}'
+  - action: switch.turn_on
+    data: {}
+    target:
+      entity_id: switch.hydro3
+  - delay:
+      minutes: 2
+  - action: switch.turn_off
+    target:
+      entity_id: switch.hydro3
+    data: {}
+  - delay:
+      minutes: 10
+  - action: switch.turn_on
+    target:
+      entity_id: switch.hydro3
+    data: {}
+  - delay:
+      minutes: 15
+  - action: switch.turn_off
+    target:
+      entity_id: switch.hydro3
+    data: {}
+  mode: single
