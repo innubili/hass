@@ -316,7 +316,9 @@
     entity_id:
     - sensor.sgs01z_aioula_soil_moisture
     below: 50
-  conditions: []
+  conditions:
+  - condition: not
+    conditions: []
   actions:
   - action: weather.get_forecasts
     target:
