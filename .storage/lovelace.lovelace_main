@@ -465,15 +465,6 @@
               "title": "Aiuola"
             },
             {
-              "type": "entities",
-              "entities": [
-                {
-                  "entity": "cover.grill_tenda"
-                }
-              ],
-              "title": "Grill"
-            },
-            {
               "type": "vertical-stack",
               "cards": [
                 {
@@ -508,6 +499,15 @@
                 }
               ],
               "title": "Erba (West)"
+            },
+            {
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "cover.grill_tenda"
+                }
+              ],
+              "title": "Grill"
             },
             {
               "type": "vertical-stack",
