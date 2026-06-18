@@ -252,6 +252,10 @@
   triggers:
   - trigger: time
     at: 06:00:00
+  - trigger: numeric_state
+    entity_id:
+    - sensor.sgs01z_taxus_soil_moisture
+    below: 40
   conditions:
   - condition: not
     conditions:
