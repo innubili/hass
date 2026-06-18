@@ -308,6 +308,10 @@
   triggers:
   - trigger: time
     at: 06:00:00
+  - trigger: numeric_state
+    entity_id:
+    - sensor.sgs01z_aioula_soil_moisture
+    below: 40
   conditions:
   - condition: not
     conditions:
@@ -320,7 +324,7 @@
   actions:
   - action: weather.get_forecasts
     target:
-      entity_id: weather.forecast_home
+      entity_id: weather.home
     data:
       type: daily
     response_variable: daily_forecast
