@@ -398,42 +398,6 @@
                 {
                   "graph": "line",
                   "type": "sensor",
-                  "detail": 1,
-                  "entity": "sensor.sgs01z_aioula_soil_moisture",
-                  "limits": {
-                    "min": 20,
-                    "max": 80
-                  },
-                  "hours_to_show": 80,
-                  "name": "Umidità del terreno"
-                },
-                {
-                  "show_name": true,
-                  "show_icon": true,
-                  "type": "button",
-                  "entity": "automation.irrigation_flowerbed_aiuola_daily",
-                  "icon": "mdi:watering-can",
-                  "tap_action": {
-                    "action": "perform-action",
-                    "perform_action": "automation.trigger",
-                    "target": {
-                      "entity_id": "automation.irrigation_flowerbed_aiuola_daily"
-                    },
-                    "data": {
-                      "skip_condition": true
-                    }
-                  },
-                  "name": "Irrigazione"
-                }
-              ],
-              "title": "Aiuola"
-            },
-            {
-              "type": "vertical-stack",
-              "cards": [
-                {
-                  "graph": "line",
-                  "type": "sensor",
                   "detail": 2,
                   "entity": "sensor.sgs01z_taxus_soil_moisture",
                   "limits": {
@@ -465,6 +429,42 @@
               "title": "Siepe (Sud)"
             },
             {
+              "type": "vertical-stack",
+              "cards": [
+                {
+                  "graph": "line",
+                  "type": "sensor",
+                  "detail": 1,
+                  "entity": "sensor.sgs01z_aioula_soil_moisture",
+                  "limits": {
+                    "min": 20,
+                    "max": 80
+                  },
+                  "hours_to_show": 80,
+                  "name": "Umidità del terreno"
+                },
+                {
+                  "show_name": true,
+                  "show_icon": true,
+                  "type": "button",
+                  "entity": "automation.irrigation_flowerbed_aiuola_daily",
+                  "icon": "mdi:watering-can",
+                  "tap_action": {
+                    "action": "perform-action",
+                    "perform_action": "automation.trigger",
+                    "target": {
+                      "entity_id": "automation.irrigation_flowerbed_aiuola_daily"
+                    },
+                    "data": {
+                      "skip_condition": true
+                    }
+                  },
+                  "name": "Irrigazione"
+                }
+              ],
+              "title": "Aiuola"
+            },
+            {
               "type": "entities",
               "entities": [
                 {
@@ -472,36 +472,6 @@
                 }
               ],
               "title": "Grill"
-            },
-            {
-              "type": "vertical-stack",
-              "cards": [
-                {
-                  "type": "light",
-                  "entity": "light.garden_spots_all"
-                },
-                {
-                  "type": "light",
-                  "entity": "light.garden_spots_garage"
-                },
-                {
-                  "type": "light",
-                  "entity": "light.garden_spots_entry"
-                },
-                {
-                  "show_name": true,
-                  "show_icon": true,
-                  "type": "button",
-                  "tap_action": {
-                    "action": "toggle"
-                  },
-                  "icon": "mdi:lightbulb-auto",
-                  "show_state": true,
-                  "name": "SPOTS columns",
-                  "entity": "switch.pool_u_aussenbekl_column_spots"
-                }
-              ],
-              "title": "Lights"
             },
             {
               "type": "vertical-stack",
@@ -538,6 +508,36 @@
                 }
               ],
               "title": "Erba (West)"
+            },
+            {
+              "type": "vertical-stack",
+              "cards": [
+                {
+                  "type": "light",
+                  "entity": "light.garden_spots_all"
+                },
+                {
+                  "type": "light",
+                  "entity": "light.garden_spots_garage"
+                },
+                {
+                  "type": "light",
+                  "entity": "light.garden_spots_entry"
+                },
+                {
+                  "show_name": true,
+                  "show_icon": true,
+                  "type": "button",
+                  "tap_action": {
+                    "action": "toggle"
+                  },
+                  "icon": "mdi:lightbulb-auto",
+                  "show_state": true,
+                  "name": "SPOTS columns",
+                  "entity": "switch.pool_u_aussenbekl_column_spots"
+                }
+              ],
+              "title": "Lights"
             }
           ]
         },
