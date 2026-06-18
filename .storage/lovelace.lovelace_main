@@ -502,6 +502,41 @@
                 }
               ],
               "title": "Lights"
+            },
+            {
+              "type": "vertical-stack",
+              "cards": [
+                {
+                  "graph": "line",
+                  "type": "sensor",
+                  "detail": 2,
+                  "entity": "sensor.sgs01z_taxus_soil_moisture",
+                  "limits": {
+                    "min": 20,
+                    "max": 80
+                  },
+                  "hours_to_show": 80,
+                  "name": "Umidità del terremo"
+                },
+                {
+                  "show_name": true,
+                  "show_icon": true,
+                  "type": "button",
+                  "icon": "mdi:watering-can",
+                  "tap_action": {
+                    "action": "perform-action",
+                    "perform_action": "automation.trigger",
+                    "target": {
+                      "entity_id": "automation.irrigation_hedge_south_hydro1"
+                    },
+                    "data": {
+                      "skip_condition": true
+                    }
+                  },
+                  "name": "Irrigare"
+                }
+              ],
+              "title": "Erba (West)"
             }
           ]
         },
