@@ -549,7 +549,7 @@
   description: Spegne l'irrigazione dell'aiuola se rimane accesa per più di 35 minuti.
   triggers:
   - entity_id:
-    - switch.hydro2
+    - switch.hydro3
     to:
     - 'on'
     for:
