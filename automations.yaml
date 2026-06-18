@@ -264,7 +264,7 @@
   actions:
   - action: weather.get_forecasts
     target:
-      entity_id: weather.forecast_home
+      entity_id: weather.home
     data:
       type: daily
     response_variable: daily_forecast
