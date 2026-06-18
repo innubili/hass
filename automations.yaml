@@ -545,8 +545,8 @@
     data: {}
   mode: single
 - id: '1781788716067'
-  alias: New automation
-  description: Spegne l'irrigazione dell'aiuola se rimane accesa per più di 35 minuti.
+  alias: 'Watchdog: Auto-Off Irrigation Lawn (Hydro3)'
+  description: Spegne l'irrigazione dell'erba se rimane accesa per più di 35 minuti.
   triggers:
   - entity_id:
     - switch.hydro3
